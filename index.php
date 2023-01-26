@@ -7,6 +7,8 @@
     <title>Burza Opatov</title>
 </head>
 <body>
-    
+<?php
+
+?>
 </body>
 </html>
