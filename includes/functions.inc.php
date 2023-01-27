@@ -1,7 +1,22 @@
 <?php
-function emptyInputSignup($name, $surname, $pwd, $pwdrepeat){
+//function emptyInputSignup($name, $surname, $pwd, $pwdrepeat){
+//    $result;
+//    if(empty($name) || empty($surname) || empty($pwd) || empty($pwdrepeat)){
+//        $result = true;
+//    }else{
+//        $result = false;
+//    }
+//    return $result;
+//}
+
+function constructEmail($name, $surname, $class){
+    $email = substr($name, 0, 3) . substr($surname, 0, 3) . "." . $class ."@zaci.gopat.cz";
+    return $email;
+}
+
+function emptyInput($value){
     $result;
-    if(empty($name) || empty($surname) || empty($pwd) || empty($pwdrepeat)){
+    if(empty($value)){
         $result = true;
     }else{
         $result = false;
@@ -39,14 +54,17 @@ function pwdMatch($pwd, $pwdrepeat){
     return $result;
 }
 
-function uidExists($conn, $surname, $email){
-    $sql = "SELECT * FROM users WHERE surname = ? AND email = ?;";
+function uidExists($conn, $name, $surname, $class, $email){
+    $sql = "SELECT * FROM users WHERE email = ?;";
+    if(empty($email)){
+        $email = constructEmail($name, $surname, $class);
+    }
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../signup.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt, "ss", $surname, $email); // s = string
+    mysqli_stmt_bind_param($stmt, "s",  $email); // s = string
     mysqli_stmt_execute($stmt);
 
     $resultData = mysqli_stmt_get_result($stmt);
@@ -71,27 +89,30 @@ function createUser($conn, $name, $surname, $class, $email, $pwd){
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
+    if(empty($email))
+        $email = constructEmail($name, $surname, $class);
+
     mysqli_stmt_bind_param($stmt, "sssss", $name, $surname, $class, $email, $hashedPwd); // s = string
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
 
-    loginUser($conn, $email, $pwd);
+    loginUser($conn, $name, $surname, $class, $email, $pwd);
     exit();
 }
 
-function emptyInputLogin($username, $pwd){
-    $result;
-    if(empty($username) || empty($pwd)){
-        $result = true;
-    }else{
-        $result = false;
-    }
-    return $result;
-}
+//function emptyInputLogin($email, $pwd){
+//    $result;
+//    if(empty($email) || empty($pwd)){
+//        $result = true;
+//    }else{
+//        $result = false;
+//    }
+//    return $result;
+//}
 
-function loginUser($conn, $email, $pwd){
-    $uidExists = uidExists($conn, $email, $email);
+function loginUser($conn, $name, $surname, $class, $email, $pwd){
+    $uidExists = uidExists($conn, $name, $surname, $class, $email);
 
     if($uidExists === false){
         header("location: ../login.php?error=wronglogin");
@@ -107,8 +128,11 @@ function loginUser($conn, $email, $pwd){
         exit();
     }else if($checkPwd === true){
         session_start();
-        $_SESSION["userid"] = $uidExists["usersId"];
-        $_SESSION["useruid"] = $uidExists["usersUid"];
+        $_SESSION["id"] = $uidExists["id"];
+        $_SESSION["name"] = $uidExists["name"];
+        $_SESSION["surname"] = $uidExists["surname"];
+        $_SESSION["class"] = $uidExists["class"];
+        $_SESSION["mail"] = $uidExists["email"];
         header("location: ../index.php?error=none");
         exit();
     }
