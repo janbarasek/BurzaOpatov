@@ -3,8 +3,8 @@
 ?>
 
 <?php
-if (isset($_SESSION["useruid"])){
-    echo "<p> Hello " . $_SESSION["useruid"] . "!</p>";
+if (isset($_SESSION["id"])){
+    echo "<p> Hello " . $_SESSION["id"] . "!</p>";
 }
 ?>
 <p>
