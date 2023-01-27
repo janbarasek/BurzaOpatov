@@ -41,8 +41,11 @@
         else if ($_GET["error"] == "stmtfailed") {
             echo "<p>Something went wrong, try again!</p>";
         }
-        else if ($_GET["error"] == "usernametaken") {
+        else if ($_GET["error"] == "emailtaken") {
             echo "<p>Username is already taken!</p>";
+        }
+        else if ($_GET["error"] == "emptyclassoremail"){
+            echo "<p>Choose a class or an email!</p>";
         }
         else if ($_GET["error"] == "none") {
             echo "<p class='success'>You have signed up!</p>";
