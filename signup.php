@@ -6,19 +6,25 @@
         This is the signup page.
     </p>
 
-    <h2>Sign up</h2>
-    <form action="includes/signup.inc.php" method="post">
-        <input type="text" name="name" placeholder="Name..." required>
-        <input type="text" name="surname" placeholder="Surname..." required>
+    
+    <link rel="stylesheet" href="style.css"></link>
+    <form class="container" action="includes/signup.inc.php" method="post">
+    	<h2>Sign up</h2>
+        <input class="A" type="text" name="name" placeholder="Name..." required><br>
+
+        <input class="A" type="text" name="surname" placeholder="Surname..." required><br>
         <select name="class">
             <option name="class" value="" selected="selected">Class...</option>
             <option name="class" value="U">U</option>
             <option name="class" value="T">T</option>
         </select>
-        <input type="email" name="email" placeholder="Email...">
-        <input type="password" name="pwd" placeholder="Password..." required>
-        <input type="password" name="pwdrepeat" placeholder="Repeat password..." required>
-        <button type="submit" name="submit">Sign up</button>
+        <br>
+        <br>
+        <input class="A" type="email" name="email" placeholder="Email...">
+        <br>
+        <input class="B" type="password" name="pwd" placeholder="Password..." required><br>
+        <input class="C" type="password" name="pwdrepeat" placeholder="Repeat password..." required><br>
+        <button class="D" type="submit" name="submit">Sign up</button>
     </form>
 
 <?php
