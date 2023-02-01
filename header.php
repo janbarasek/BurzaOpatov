@@ -18,7 +18,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Roboto:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
+
+        <?php
+    include_once 'header.php';
+?>
+    
+
+<nav class="menu-container">
+
+  <input type="checkbox" aria-label="Toggle menu" />
+  <span></span>
+  <span></span>
+  <span></span>
+
+
+  <a href="index.php" class="opatak">
+    OPATOV</a>
+
+
+  
+  <div class="menu">
     <ul>
+      <li>
+        <a href="index.php">
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#pricing">
+          Buy
+        </a>
+      </li>
+      <li>
+        <a href="#blog">
+          Sell
+        </a>
+      </li>
+      <li>
+        <a href="#docs">
+          Profile
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a class="signup" href="signup.php">
+          Sign-up
+        </a>
+      </li>
+      <li>
+        <a class="login" href="login.php">
+          Login
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<ul>
         <li><a href="index.php">Home</a></li>
         <?php
             //debugging
@@ -31,22 +87,4 @@
                 echo "<li><a href='login.php'>Log In</a></li>";
             }
         ?>
-    </ul>
-
-    <nav class="navbar">
-        <B><div class="brand-title">OPATOV</div></B>
-
-        <a href="#" class="toggle-button">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-
-        </a>
-        <div class="navbar-links">
-            <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
-        </div>
-    </nav>
+        </ul>

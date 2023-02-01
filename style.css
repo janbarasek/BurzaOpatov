@@ -297,12 +297,13 @@ body {
 
 }
 
-.menu-logo {
+.opatak {
   color: white;
   font-size: 40px;
+  margin-left: 2%;
 }
 
-.menu-logo:hover {
+.opatak:hover {
 	color: white;
 }
 .menu-container  {
@@ -323,27 +324,29 @@ body {
   float: left;
   position: absolute;
   cursor: pointer;
-  opacity: 0; /* hide this */
-  z-index: 2; /* and place it over the hamburger */
+  opacity: 0; 
+  z-index: 2; 
   -webkit-touch-callout: none;
 }
 
-/* Burger menu */
+
 .menu-container span {
   display: block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: #cdcdcd;
+  background: white;
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-              opacity 0.55s ease;
+  transition: transform 0.5s cubic-bezier(0.5,0.1,0.04,1.0),
+              background 0.5s cubic-bezier(0.5,0.1,0.04,1.0),
+              opacity 0.2s ease;
 }
-
+span:hover {
+	background-color: gray;
+}
 .menu-container span:first-child {
   transform-origin: 0% 0%;
 }
@@ -376,25 +379,23 @@ body {
   font-size: 22px;
 }
 
-/* mobile styles */
+
 @media only screen and (max-width: 767px) { 
   .menu-container {
     flex-direction: column;
     align-items: flex-end;
   }
-  .menu-logo:hover {
+  .opatak:hover {
 	color: white;
 }
-  .menu-logo {
+  .opatak {
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  .menu-logo img {
-    max-height: 30px;
-  }
+ 
 
   .menu {
     position: absolute;
@@ -407,7 +408,7 @@ body {
     padding: 75px 50px 50px;
     
     -webkit-font-smoothing: antialiased;
-    /* to stop flickering of text in safari */
+  
     transform-origin: 0% 0%;
     transform: translateX(0%);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
@@ -425,7 +426,7 @@ a {
 	color: white;
 	font-family: Poppins, sans-serif;
 }
-/* desktop styles */
+
 @media only screen and (min-width: 768px) { 
   .menu-container {
     width: 100%;
@@ -440,7 +441,6 @@ a {
     display: none;
   }
 
-  /* Burger menu */
   .menu-container span {
     display: none;
   }
@@ -458,6 +458,138 @@ a {
   }
 
   .menu li {
-    padding: 0 20px;
+    padding: 0 30px;
+
+  }
+  li {
+  	margin-left: 50px;
+  }
+
+  a:hover {
+  	color: red;
   }
 }
+
+
+
+.shape:first-child{
+    background: linear-gradient(
+        green,
+        green
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        green,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+.bobr {
+    width: 430px;
+    height: 725px;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+     background-color: #080710;
+    position: absolute;
+    
+}
+.bobr.shape {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+form {
+    height: 800px;
+    width: 400px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+}
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.baf {
+	font-family: Poppins, sans-serif;
+	font-weight: 600;
+	font-size: 40px;
+	margin-top: -5%;
+}
+
+option {
+	color: black;
+	background-color: black;
+}
+input{
+    
+    height: 50px;
+    color: black;
+    border: 3px solid black;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    display: block;
+    font-weight: 300;
+    width: 100%;
+    
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+     font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 3px solid black;
+    transition: 0.2s;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+   
+}
+
+button:hover {
+	transition: 0.2s;
+	 background: #f44336;
+	 color: white;
+}
+
