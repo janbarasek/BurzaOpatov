@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,15 @@
 
      
       
+=======
+<?php
+include_once 'header.php';
+?>
+
+<br>
+<br>
+<br>
+>>>>>>> 1962f726e97943219f5fc084399230195b9ad90f
 
 <nav class="menu-container">
   <!-- burger menu -->
@@ -26,6 +36,7 @@
   <a href="index.php" class="menu-logo">
     OPATOV</a>
 
+<<<<<<< HEAD
   <!-- menu items -->
   <div class="menu">
     <ul>
@@ -67,6 +78,8 @@
 <?php
     include_once 'header.php';
 ?>
+=======
+>>>>>>> 1962f726e97943219f5fc084399230195b9ad90f
 
 <?php
 if (isset($_SESSION["id"])){
@@ -77,16 +90,7 @@ if (isset($_SESSION["id"])){
     This is the index page.
 </p>
 
-<?php
-    if(isset($_SESSION["id"])){
-        echo '<p style="font-family:Arial;"> You are logged in!</p>';
-    }
-    else{
-        echo '<p style="font-family:Arial;"> You are logged out!</p>';
-    }
 
-    print_r($_SESSION);
-?>
 
 <?php
     include_once 'footer.php';
