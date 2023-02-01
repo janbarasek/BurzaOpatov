@@ -35,9 +35,6 @@ include_once 'header.php';
   <br>
   <br>
 
-</body>
-</html>
-
 
 <?php
 if (isset($_SESSION["id"])){
