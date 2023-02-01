@@ -11,63 +11,59 @@
 	<title></title>
 </head>
 <body>
- <nav class="navbar">
-        <B><div class="brand-title">OPATOV</div></B>
-        
-        <a href="#" class="toggle-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-         
-        </a>
-        <div class="navbar-links">
-          <ul>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-            <li><a href="#"></a></li>
-          </ul>
-        </div>
-      </nav>
-     
- </div>
+
      
       
-</div>
-<br>
-<br>
-<br>
 
-<div class="buttons">
-  <b><a class="ej">PRODEJ</a></b>
-   <b><a class="bi">KVARTA</a></b>
-  </div> 
-<br>
-<br>
-   <div class="buttons">
-  <b><a class="ej">KVINTA</a></b>
-   <b><a class="bi">SEXTA</a></b>
-  </div>  
-<br>
-<br>
-<div class="buttons">
-  <b><a class="ej">SEPTIMA</a></b>
-   <b><a class="bi">OKTÁVA</a></b>
-  </div> 
-  <br>
-  <br>
-<div class="buttons">
-  <b><a class="ej">PROFILE</a></b>
-   <b><a class="bi">TOPS</a></b>
-  </div> 
+<nav class="menu-container">
+  <!-- burger menu -->
+  <input type="checkbox" aria-label="Toggle menu" />
+  <span></span>
+  <span></span>
+  <span></span>
 
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <!-- logo -->
+  <a href="index.php" class="menu-logo">
+    OPATOV</a>
 
-</body>
-</html>
+  <!-- menu items -->
+  <div class="menu">
+    <ul>
+      <li>
+        <a href="#home">
+          Something
+        </a>
+      </li>
+      <li>
+        <a href="#pricing">
+          Buy
+        </a>
+      </li>
+      <li>
+        <a href="#blog">
+          Sell
+        </a>
+      </li>
+      <li>
+        <a href="#docs">
+          Profile
+        </a>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <a class="signup" href="signup.php">
+          Sign-up
+        </a>
+      </li>
+      <li>
+        <a class="login" href="login.php">
+          Login
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <?php
     include_once 'header.php';
 ?>
