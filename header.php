@@ -33,7 +33,7 @@
 
 
   <a href="index.php" class="opatak">
-    OPATOV</a>
+    BURZA</a>
 
 
   
@@ -55,7 +55,7 @@
         </a>
       </li>
       <li>
-        <a href="#docs">
+        <a href="profile.php">
           Profile
         </a>
       </li>

@@ -88,7 +88,7 @@ body{
     background-color: #080710;
 }
 .background{
-    width: 430px;
+   
     height: 520px;
     position: absolute;
     transform: translate(-50%,-50%);
@@ -103,8 +103,8 @@ body{
 }
 .ball:first-child{
     background: linear-gradient(
-        orange,
-        orange
+        red,
+        red
     );
     left: -80px;
     top: -80px;
@@ -112,8 +112,8 @@ body{
 .ball:last-child{
     background: linear-gradient(
         to right,
-        green,
-        green
+        blue,
+        blue
     );
     right: -10px;
     bottom: -80px;

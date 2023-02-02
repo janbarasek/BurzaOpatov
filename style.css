@@ -6,7 +6,7 @@
 	padding: 0;
 }
 li {
-    font-size: 35px;
+    font-size: 45px;
 }
 
 html {
@@ -180,6 +180,7 @@ p {
     display: flex;
     margin: 0;
     padding: 0;
+
 }
 
 .navbar-links li {
@@ -308,6 +309,7 @@ body {
 }
 .menu-container  {
   text-decoration: none;
+
   
   transition: color 0.3s ease;
 }
@@ -405,14 +407,19 @@ span:hover {
     top: 0;
     margin: -20px;
     background: #f44336;
-    padding: 75px 50px 50px;
-    
+    padding: 30px 80px 80px;
+    height: 800px;
     -webkit-font-smoothing: antialiased;
   
     transform-origin: 0% 0%;
     transform: translateX(0%);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
   }
+  html, body {
+  overflow-x: hidden;
+}
+
+
 
   .menu-container input:checked ~ .menu {
     transform: translateX(-100%);
@@ -458,7 +465,7 @@ a {
   }
 
   .menu li {
-    padding: 0 30px;
+    padding: 0 15px;
 
   }
   li {
