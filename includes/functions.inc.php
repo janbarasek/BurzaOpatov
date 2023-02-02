@@ -123,7 +123,7 @@ function emptyInput($value){
 
 function invalidUid($uid){
     $result;
-    if(!preg_match("/^[a-zA-Z0-9 ěščřžýáíé]*$/", $uid)){
+    if(!preg_match("/^[a-zA-Z ěščřžýáíé]*$/", $uid)){
         $result = true;
     }else{
         $result = false;
@@ -151,6 +151,8 @@ function pwdMatch($pwd, $pwdrepeat){
     return $result;
 }
 
+//Returns the row if email exists in database
+//Returns false if email does not exist in database
 function uidExists($conn, $name, $surname, $class, $email){
     $sql = "SELECT * FROM users WHERE email = ?;";
     if(empty($email)){
