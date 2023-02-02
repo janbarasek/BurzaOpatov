@@ -1,30 +1,20 @@
 <?php
 include_once 'header.php'
 ?>
-<h1>Profile page</h1>
 
 <?php
-if (isset($_SESSION['id'])) {
-    echo "<p> Hello " . $_SESSION['id'] . "!</p>";
+if(!isset($_SESSION['id'])){
+    header("Location: index.php");
+    exit();
 }
 ?>
-
-<?php
-include_once 'footer.php'
-?>
-<?php
-include_once 'header.php';
-?>
-
-    <p>
-        This is the login page.
-    </p>
 
     <div class="background">
         <div class="ball"></div>
         <div class="ball"></div>
     </div>
-    <form action="includes/login.inc.php" method="post">
+
+    <div class="mainPartProfile">
         <br>
         <br>
         <br>
@@ -37,31 +27,65 @@ include_once 'header.php';
         <b><h3 class="baf">Profile</h3></b>
         
         <br>
-        <img class="profilepicture" src="FRAJER.png"></img>
+        <?php
+            if(isset($_SESSION['imgStatus'])){
+                if($_SESSION['imgStatus'] == 1){
+                    $id = $_SESSION['id'];
+                    $filename = "uploads/profile".$id."*";
+                    $fileinfo = glob($filename);
+                    $fileext = explode(".", $fileinfo[0]);
+                    $fileactualext = $fileext[1];
+                    echo "<img class='profilepicture' src='uploads/profile" . $id . "." .$fileactualext."?'".mt_rand().">";
+                }else{
+                    echo "<img class='profilepicture' src='Photos/FRAJER.png'></img>";
+                }
+            }
+        ?>
         <br>
-          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">Change profile picture</b></a></button>
+        <?php
+        if(isset($_SESSION['id'])){
+
+            echo "<form action='includes/uploadRestriction.inc.php' method='post' enctype='multipart/form-data'>
+        <input type='file' name='file' required>
+        <button class='smallbtn'  type='submit' name='submit'><b class='svoby'>Confirm profile picture change</b></button>
+    </form>";
+
+            if (isset($_SESSION['imgStatus'])) {
+                if ($_SESSION['imgStatus'] == 1) {
+                    echo "<form action='includes/deleteprofile.inc.php' method='post'>
+            <button class='smallbtn' type='submit' name='submit'><b class='svoby'>Delete profile picture</b></button>
+            </form>";
+                }
+            }
+
+        }
+        ?>
+        <br>
+<!--          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">Change profile picture</b></a></button>-->
              <hr>
            <b class="reputacehoub">Profile Info</b>
          <br>
-          <b>Name:</b>
-           <br>
-          <b>Surname:</b>
-          <br>
-          <b>Class:</b>
-           <br>
-          <b>Password:</b>
-          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby2">Change password</b></a></button>
-          <br>
-          <b>Email:</b>
-           <br>
-           
+        <?php
+        if (isset($_SESSION['id'])) {
+            echo "<b>Name:</b> <b>" . $_SESSION['name'] . "</b><br>";
+            echo "<b>Surname:</b> <b>" . $_SESSION['surname'] . "</b><br>";
+            echo "<b>Class:</b> <b>" . $_SESSION['class'] . "</b><br>";
+            echo "<b>Email:</b> <b>" . $_SESSION['mail'] . "</b><br>";
+        }
+        ?>
+        <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby2">Change password</b></a></button>
+        <br>
+        <button class="smallbtn"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby3">Logout</b></a></button>
+        <br>
+
           <br>
           <hr>
           <b class="reputacehoub">Market</b>
 <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">My orders</b></a></button>
 <br>
 <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">My sells</b></a></button>
-        
+
+    </div>
 
         
 
@@ -134,6 +158,7 @@ body{
 
 .profilepicture {
 	width: 50px;
+    height: 50px;
 	justify-content: center;
 	display: flex;
 	margin-left: 150px;
@@ -145,8 +170,8 @@ body{
 	opacity: 0.5;
 	transition: 0.2s;
 }
-form{
-    height: 800px;
+.mainPartProfile{
+    height: auto;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -159,14 +184,14 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-form *{
+.mainPartProfile *{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-form h3{
+.mainPartProfile h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;

@@ -11,7 +11,7 @@
         <div class="ball"></div>
     </div>
     <link rel="stylesheet" href="style.css"></link>
-    <form class="container" action="includes/signup.inc.php" method="post">
+    <form  class="container form" action="includes/signup.inc.php" method="post">
         <br>
         <br>
         <br>
@@ -126,7 +126,7 @@ h3 {
     justify-content: center;
     display: flex;  
 }
-form{
+.form{
     height: 800px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
@@ -140,7 +140,7 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-form *{
+.form *{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;

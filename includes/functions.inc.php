@@ -193,6 +193,30 @@ function createUser($conn, $name, $surname, $class, $email, $pwd){
 
     mysqli_stmt_bind_param($stmt, "sssss", $name, $surname, $class, $email, $hashedPwd); // s = string
     mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+
+    $sql = "SELECT * FROM users WHERE email = ? AND password=?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ss",  $email, $hashedPwd); // s = string
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if(mysqli_num_rows($resultData) > 0){
+        while($row = mysqli_fetch_assoc($resultData)){
+            $userid = $row['id'];
+            $sql = "INSERT INTO profileImg (userid,status)
+        VALUES ('$userid',0)";
+            mysqli_query($conn, $sql);
+            header("Location: upload.php?signup=success");
+        }
+    }else{
+        echo "Location: ../signup.php?error=wronglogin";
+    }
 
     mysqli_stmt_close($stmt);
 
@@ -232,6 +256,15 @@ function loginUser($conn, $name, $surname, $class, $email, $pwd){
         $_SESSION["surname"] = $uidExists["surname"];
         $_SESSION["class"] = $uidExists["class"];
         $_SESSION["mail"] = $uidExists["email"];
+
+        $sql = "SELECT * FROM profileimg WHERE userid = ".$_SESSION['id'].";";
+        $result = mysqli_query($conn, $sql);
+
+        while($row = mysqli_fetch_assoc($result)){
+            $_SESSION["imgStatus"] = $row['status'];
+        }
+
+
         header("location: ../index.php?error=none");
         exit();
     }

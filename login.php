@@ -10,7 +10,7 @@ include_once 'header.php';
         <div class="ball"></div>
         <div class="ball"></div>
     </div>
-    <form action="includes/login.inc.php" method="post">
+    <form class="form" action="includes/login.inc.php" method="post">
         <br>
         <br>
 
@@ -96,7 +96,7 @@ body{
     right: -10px;
     bottom: -80px;
 }
-form{
+.form{
     height: 600px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
@@ -110,14 +110,14 @@ form{
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-form *{
+.form *{
     font-family: 'Poppins',sans-serif;
     color: #ffffff;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-form h3{
+.form h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
