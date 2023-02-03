@@ -102,8 +102,8 @@ if(!isset($_SESSION['id'])){
 
 <?php
     if (isset($_GET["error"])) {
-        if ($_GET["error"] == "emptyinput") {
-            echo "<p>Fill in all fields!</p>";
+        if ($_GET["error"] == "wrongfiletype") {
+            echo "<p>Wrong file type</p>";
         }
         else if ($_GET["error"] == "wronglogin") {
             echo "<p>Incorrect login credentials</p>";
