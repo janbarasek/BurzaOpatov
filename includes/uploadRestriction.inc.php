@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
                         header("Location: ../profile.php?error=delete");
                     }else{
                         echo "File deleted";
-                        header("Location: ../profile.php?error=none");
+                        header("Location: ../profile.php?deletesuccess");
                     }
 
                     $sql = "UPDATE profileImg SET status=0 WHERE userid='$id';";
@@ -50,15 +50,15 @@ if(isset($_POST['submit'])){
                 $sql = "UPDATE profileImg SET status=1 WHERE userid='$id';";
                 $_SESSION['imgStatus'] = 1;
                 $result = mysqli_query($conn, $sql);
-                header("Location: ../profile.php?");
+                header("Location: ../profile.php?uploadsuccess");
 
             }else{
-                echo "Your file is too big";
+                header("Location: ../profile.php?error=filetoobig");
             }
         }else{
-            echo 'There was an error uploading';
+            header("Location: ../profile.php?error=uploaderror");
         }
     }else{
-        echo 'You cannot upload files of this type!';
+        header("Location: ../profile.php?error=wrongfiletype");
     }
 }
