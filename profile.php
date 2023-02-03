@@ -33,9 +33,8 @@ if(!isset($_SESSION['id'])){
                     $id = $_SESSION['id'];
                     $filename = "uploads/profile".$id."*";
                     $fileinfo = glob($filename);
-                    $fileext = explode(".", $fileinfo[0]);
-                    $fileactualext = $fileext[1];
-                    echo "<img class='profilepicture' src='uploads/profile" . $id . "." .$fileactualext."?'".mt_rand().">";
+
+                    echo "<img class='profilepicture' src=" . $fileinfo[0] ."?'".mt_rand().">";
                 }else{
                     echo "<img class='profilepicture' src='Photos/FRAJER.png'></img>";
                 }
