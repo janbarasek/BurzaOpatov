@@ -397,7 +397,9 @@ span:hover {
     transform: translateY(-50%);
   }
 
- 
+ html, body {
+ 	height: 100%;
+ }
 
   .menu {
     position: absolute;
@@ -408,15 +410,16 @@ span:hover {
     margin: -20px;
     background: #f44336;
     padding: 30px 80px 80px;
-    height: 295px;
+    height: auto;
     -webkit-font-smoothing: antialiased;
-  
+  height: 295px;
     transform-origin: 0% 0%;
     transform: translateX(0%);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
   }
   html, body {
   overflow-x: hidden;
+
 }
 
 
