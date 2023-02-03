@@ -34,7 +34,16 @@ include_once 'header.php';
         <input type="text" name="email" placeholder="Email..." >
         <br>
         <input type="password" name="pwd" placeholder="Password..." required>
-
+<h1><?php
+    if (isset($_GET["error"])) {
+        if ($_GET["error"] == "emptyinput") {
+            echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Fill in all fields!</p>";
+        }
+        else if ($_GET["error"] == "wronglogin") {
+            echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Incorrect login credentials</p>";
+        }
+    }
+?></h1>
         <button class="alficek" type="submit" name="submit">Log in</button>
     </form>
 

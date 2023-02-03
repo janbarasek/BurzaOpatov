@@ -38,40 +38,72 @@
         <br>
         <input class="B" type="password" name="pwd" placeholder="Password..." required><br>
         <input class="C" type="password" name="pwdrepeat" placeholder="Repeat password..." required><br>
+          <h1><?php if (isset($_GET["error"])) {
+        if ($_GET["error"] == "emptyinput") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Fill in all fields!</p>";
+        }
+        else if ($_GET["error"] == "invalidname") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Choose a proper name!</p>";
+        }
+        else if ($_GET["error"] == "invalidsurname") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Choose a proper surname!</p>";
+        }
+        else if ($_GET["error"] == "invalidemail") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Choose a proper email!</p>";
+        }
+        else if ($_GET["error"] == "passwordsdontmatch") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Passwords don't match!</p>";
+        }
+        else if ($_GET["error"] == "stmtfailed") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Something went wrong, try again!</p>";
+        }
+        else if ($_GET["error"] == "emailtaken") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Username is already taken!</p>";
+        }
+        else if ($_GET["error"] == "emptyclassoremail"){
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>Choose a class or an email!</p>";
+        }
+        else if ($_GET["error"] == "none") {
+            echo "<p style='color: red;font-size:20px;justify-content: center;display: flex;'>You have signed up!</p>";
+        }
+    } ?></h1>
         <button class="D" type="submit" name="submit">Sign up</button>
+
     </form>
 
 <?php
+/*
     if (isset($_GET["error"])) {
         if ($_GET["error"] == "emptyinput") {
-            echo "<p>Fill in all fields!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Fill in all fields!</p>";
         }
         else if ($_GET["error"] == "invalidname") {
-            echo "<p>Choose a proper name!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Choose a proper name!</p>";
         }
         else if ($_GET["error"] == "invalidsurname") {
-            echo "<p>Choose a proper surname!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Choose a proper surname!</p>";
         }
         else if ($_GET["error"] == "invalidemail") {
-            echo "<p>Choose a proper email!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Choose a proper email!</p>";
         }
         else if ($_GET["error"] == "passwordsdontmatch") {
-            echo "<p>Passwords don't match!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Passwords don't match!</p>";
         }
         else if ($_GET["error"] == "stmtfailed") {
-            echo "<p>Something went wrong, try again!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Something went wrong, try again!</p>";
         }
         else if ($_GET["error"] == "emailtaken") {
-            echo "<p>Username is already taken!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Username is already taken!</p>";
         }
         else if ($_GET["error"] == "emptyclassoremail"){
-            echo "<p>Choose a class or an email!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>Choose a class or an email!</p>";
         }
         else if ($_GET["error"] == "none") {
-            echo "<p class='success'>You have signed up!</p>";
+            echo "<p style='color: red;justify-content: center;display: flex;'>You have signed up!</p>";
         }
-    }
+    }*/
 ?>
+
 
 <?php
     include_once 'footer.php';
