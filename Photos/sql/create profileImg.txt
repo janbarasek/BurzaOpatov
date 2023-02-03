@@ -1,0 +1,5 @@
+CREATE TABLE profileimg(
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    userid int(11) NOT NULL,
+    status int(1) NOT NULL DEFAULT 0
+);
