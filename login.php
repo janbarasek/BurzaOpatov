@@ -15,7 +15,7 @@ include_once 'header.php';
         <br>
 
        
-        <b><h3 class="baf">Log in</h3></b>
+        <h3>Log in</h3>
         <input type="text" name="name" placeholder="Name..." >
         <br>
         <link rel="stylesheet" href="style.css"></link>
@@ -35,7 +35,7 @@ include_once 'header.php';
         <br>
         <input type="password" name="pwd" placeholder="Password..." required>
 
-        <button type="submit" name="submit">Log in</button>
+        <button class="alficek" type="submit" name="submit">Log in</button>
     </form>
 
 <?php
@@ -67,7 +67,7 @@ body{
 }
 .background{
    
-    height: 520px;
+    height: 480px;
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
@@ -98,7 +98,7 @@ body{
 }
 .form{
     height: 600px;
-    width: 400px;
+    width: 375px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -119,7 +119,7 @@ body{
 }
 .form h3{
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 42px;
     text-align: center;
 }

@@ -21,10 +21,21 @@ if(!isset($_SESSION['id'])){
         <br>
         <br>
         <br>
-        
+        <br>
+        <br>
+        <br>
+         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
 
        
-        <b><h3 class="baf">Profile</h3></b>
+        <h3>Profile</h3>
         
         <br>
         <?php
@@ -45,7 +56,8 @@ if(!isset($_SESSION['id'])){
         if(isset($_SESSION['id'])){
 
             echo "<form action='includes/uploadRestriction.inc.php' method='post' enctype='multipart/form-data'>
-        <input type='file' name='file' required>
+        <input style='color: white;background-color:black;'class='xag' type='file' name='file' required>
+
         <button class='smallbtn'  type='submit' name='submit'><b class='svoby'>Confirm profile picture change</b></button>
     </form>";
 
@@ -120,7 +132,7 @@ body{
     background-color: #080710;
 }
 .background{
-    width: 430px;
+   
     height: 520px;
     position: absolute;
     transform: translate(-50%,-50%);
@@ -128,6 +140,26 @@ body{
     top: 50%;
 }
 .svoby {
+	transition: 0.2s;
+}
+
+input {
+    margin-top: 1rem;
+}
+
+input::file-selector-button {
+    font-weight: bold;
+    color: white;
+    padding: 0.5em;
+    border: thin solid grey;
+    border-radius: 3px;
+    background-color: #FF8000;
+    margin-top: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+input::file-selector-button:hover {
+opacity: 0.7;
 	transition: 0.2s;
 }
 
@@ -160,7 +192,7 @@ body{
     height: 50px;
 	justify-content: center;
 	display: flex;
-	margin-left: 150px;
+	margin-left: 125px;
 	transition: 0.2s;
 	cursor: pointer;
 }
@@ -171,7 +203,7 @@ body{
 }
 .mainPartProfile{
     height: auto;
-    width: 400px;
+    width: 375px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
@@ -192,7 +224,7 @@ body{
 }
 .mainPartProfile h3{
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 42px;
     text-align: center;
 }

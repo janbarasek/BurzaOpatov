@@ -1,3 +1,4 @@
+
 <?php
     include_once 'header.php';
 ?>
@@ -27,9 +28,9 @@
         <br>
         <b>Class...</b>
         <select name="class">
-            <option name="class" value="" selected="selected">Class...</option>
-            <option name="class" value="U">U</option>
-            <option name="class" value="T">T</option>
+            <option class="black" name="class" value="" selected="selected">Class...</option>
+            <option class="black" name="class" value="U">U</option>
+            <option class="black" name="class" value="T">T</option>
         </select>
         <br>
         <br>
@@ -128,7 +129,7 @@ h3 {
 }
 .form{
     height: 800px;
-    width: 400px;
+    width: 375px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);

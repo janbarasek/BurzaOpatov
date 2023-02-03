@@ -408,7 +408,7 @@ span:hover {
     margin: -20px;
     background: #f44336;
     padding: 30px 80px 80px;
-    height: 800px;
+    height: 295px;
     -webkit-font-smoothing: antialiased;
   
     transform-origin: 0% 0%;
@@ -561,6 +561,17 @@ option {
 	color: black;
 	background-color: black;
 }
+
+.black {
+	color: black;
+}
+
+h3 {
+	font-family: Poppins, sans-serif;
+	font-weight: 600;
+	font-size: 40px;
+	margin-top: -5%;
+}
 input{
     
     height: 50px;
@@ -587,7 +598,7 @@ button{
     cursor: pointer;
     border: 3px solid black;
     transition: 0.2s;
-    background-color: #ffffff;
+    background-color: black;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
@@ -600,3 +611,15 @@ button:hover {
 	 color: white;
 }
 
+select {
+	background-color: black;
+	color: black;
+}
+
+.D {
+	background-color: black;
+}
+
+.alficek {
+	background-color: black;
+}
