@@ -70,15 +70,4 @@
   </div>
 </nav>
 <ul>
-        <?php
-            //debugging
-            if (isset($_SESSION["id"])){
-                echo "<li><a href='profile.php'>Profile page</a></li>";
-                echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
-            }
-            else{
-                echo "<li><a href='signup.php'>Sign Up</a></li>";
-                echo "<li><a href='login.php'>Log In</a></li>";
-            }
-        ?>
         </ul>
