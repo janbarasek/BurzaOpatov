@@ -42,7 +42,7 @@
         </a>
       </li>
       <li>
-        <a href="#buy">
+        <a href="item.php">
           Buy
         </a>
       </li>

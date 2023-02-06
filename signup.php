@@ -128,6 +128,13 @@ body{
     left: 50%;
     top: 50%;
 }
+
+@media (max-width: 900px) {
+    .form  {
+        width: 100%x;
+    }
+
+    }
 .background .ball{
     height: 200px;
     width: 200px;
@@ -139,7 +146,7 @@ body{
         red,
         red
     );
-    left: -80px;
+    left:-10px;
     top: -80px;
 }
 .ball:last-child{
