@@ -284,8 +284,8 @@ function getProductsList($conn){
 }
 
 //gets product from database
-function getProduct($conn, $id){
-    $sql = "SELECT * FROM productslist WHERE id = ?;";
+function getProductByID($conn, $id){
+    $sql = "SELECT * FROM products WHERE id = ?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../index.php?error=stmtfailed");
@@ -295,6 +295,13 @@ function getProduct($conn, $id){
     mysqli_stmt_execute($stmt);
     $result = mysqli_query($conn, $sql);
     $product = mysqli_fetch_assoc($result);
+    return $product;
+}
+
+function getAllProducts($conn){
+    $sql = "SELECT * FROM products;";
+    $result = mysqli_query($conn, $sql);
+    $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $product;
 }
 
@@ -313,14 +320,14 @@ function getProductsByCategory($conn, $category){
 }
 
 function getProductsBySearch($conn, $search){
-    $sql = "SELECT * FROM productslist WHERE name LIKE '%$search%' OR description LIKE '%$search%';";
+    $sql = "SELECT * FROM products WHERE name LIKE '%$search%' OR description LIKE '%$search%';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
 }
 
 function getProductsByPrice($conn, $price){
-    $sql = "SELECT * FROM productslist WHERE price <= $price;";
+    $sql = "SELECT * FROM products WHERE price <= $price;";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css"></link>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,7 +43,7 @@
         </a>
       </li>
       <li>
-        <a href="item.php">
+        <a href="buy.php">
           Buy
         </a>
       </li>

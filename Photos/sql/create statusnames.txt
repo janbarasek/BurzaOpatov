@@ -1,0 +1,6 @@
+INSERT INTO status (name)
+	VALUES ("AVAILABLE");
+INSERT INTO status (name)
+	VALUES ("ON HOLD");
+INSERT INTO status (name)
+	VALUES ("SOLD");

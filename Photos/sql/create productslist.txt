@@ -1,0 +1,4 @@
+INSERT INTO productslist (name, subjectid, year, publishYear)
+    VALUES ("biologie pro gymnazia", 2, 6, 1995);
+INSERT INTO productslist (name, subjectid, year, publishYear)
+    VALUES ("matika rovnice", 1, 6, 1986);

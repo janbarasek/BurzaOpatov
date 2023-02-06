@@ -1,0 +1,10 @@
+INSERT INTO rank (name)
+	VALUES ("BEST");
+INSERT INTO rank (name)
+	VALUES ("BETTER");
+INSERT INTO rank (name)
+	VALUES ("MID");
+INSERT INTO rank (name)
+	VALUES ("BAD");
+INSERT INTO rank (name)
+	VALUES ("WORST");

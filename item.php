@@ -1,7 +1,6 @@
 <?php
 include_once 'header.php';
 ?>
- <link rel="stylesheet" href="style.css"></link>
     <div class="background">
         <div class="ball"></div>
         <div class="ball"></div>
@@ -11,7 +10,7 @@ include_once 'header.php';
         <hr>
         <br>
        
-        <img class="image" src="Photos/biologie.png"></img>
+        <img class="image" src="Photos/1.png"></img>
          <div class="booktext">
          <h3>Biologie</h3>
         <br>
