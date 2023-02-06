@@ -47,7 +47,7 @@ if(!isset($_SESSION['id'])){
 
                     echo "<img class='profilepicture' src=" . $fileinfo[0] ."?'".mt_rand().">";
                 }else{
-                    echo "<img class='profilepicture' src='Photos/FRAJER.png'></img>";
+                    echo "<img class='profilepicture' src='uploads/FRAJER.png'></img>";
                 }
             }
         ?>

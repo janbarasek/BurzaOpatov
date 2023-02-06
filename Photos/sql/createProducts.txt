@@ -1,0 +1,8 @@
+CREATE TABLE Products(
+    id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    userid int(11) NOT NULL,
+    productslistid int(11) NOT NULL,
+    rankid int(11) NOT NULL,
+    statusid int(11) NOT NULL,
+    price int(11) NOT NULL
+);

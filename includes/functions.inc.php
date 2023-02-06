@@ -269,3 +269,90 @@ function loginUser($conn, $name, $surname, $class, $email, $pwd){
         exit();
     }
 }
+
+
+
+//PRODUCTS
+
+//gets productslist from database
+
+function getProductsList($conn){
+    $sql = "SELECT * FROM productslist;";
+    $result = mysqli_query($conn, $sql);
+    $productsLists = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $productsLists;
+}
+
+//gets product from database
+function getProduct($conn, $id){
+    $sql = "SELECT * FROM productslist WHERE id = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s",  $id); // s = string
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_query($conn, $sql);
+    $product = mysqli_fetch_assoc($result);
+    return $product;
+}
+
+function getProductsByCategory($conn, $category){
+    $sql = "SELECT * FROM productslist WHERE category = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s",  $category); // s = string
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsBySearch($conn, $search){
+    $sql = "SELECT * FROM productslist WHERE name LIKE '%$search%' OR description LIKE '%$search%';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsByPrice($conn, $price){
+    $sql = "SELECT * FROM productslist WHERE price <= $price;";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getRanks($conn){
+    $sql = "SELECT * FROM rank;";
+    $result = mysqli_query($conn, $sql);
+    $ranks = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $ranks;
+}
+function emptyInputSell($userid, $productslistid, $rankid, $price){
+    $result;
+    if(empty($userid) || empty($productslistid) || empty($rankid) || empty($price)){
+        $result = true;
+    }else{
+        $result = false;
+    }
+    return $result;
+}
+
+function createItem($conn, $userid, $productslistid, $rankid, $price){
+    $sql = "INSERT INTO products (userid, productslistid, rankid, price)
+        VALUES (?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../sell.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "ssss",  $userid, $productslistid,$rankid, $price); // s = string
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../sell.php?error=none");
+    exit();
+}

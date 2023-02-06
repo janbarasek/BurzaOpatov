@@ -1,26 +1,17 @@
 <?php
 include_once 'header.php';
 ?>
-
-    <p>
-        This is the login page.
-    </p>
  <link rel="stylesheet" href="style.css"></link>
     <div class="background">
         <div class="ball"></div>
         <div class="ball"></div>
     </div>
     <form class="form" action="includes/login.inc.php" method="post">
-        
-
-       
-       
-       
         <h3 class="specialh3">Učebnice</h3>
         <hr>
         <br>
        
-        <img class="image" src="foto.png"></img>
+        <img class="image" src="Photos/biologie.png"></img>
          <div class="booktext">
          <h3>Biologie</h3>
         <br>

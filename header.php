@@ -47,7 +47,7 @@
         </a>
       </li>
       <li>
-        <a href="#sell">
+        <a href="sell.php">
           Sell
         </a>
       </li>

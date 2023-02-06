@@ -7,9 +7,9 @@ else{
     echo '<p> You are logged out!</p>';
 }
 
-
-print_r($_SESSION);
 */
+print_r($_SESSION);
+
 ?>
 
 </body>
