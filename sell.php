@@ -20,7 +20,7 @@
         <?php
             $productslist = getProductslist($conn);
             foreach($productslist as $product){
-                echo "<option name='productslistid' value='".$product['id']."'>".$product['name']."</option>";
+                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['name']." - ". $product['publishYear']."</option>";
             }
         ?>
         <option name="productslistid" value="new">ID is not here</option>
@@ -44,8 +44,12 @@
             if ($_GET["error"] == "emptyinput") {
                 echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Fill in all fields!</p>";
             }
-            else if ($_GET["error"] == "wronglogin") {
-                echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Incorrect login credentials</p>";
+            else if ($_GET["error"] == "price") {
+                echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Price is invalid</p>";
+            } else if ($_GET["error"] == "stmtfailed") {
+                echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Something went wrong, try again!</p>";
+            } else if ($_GET["error"] == "none") {
+                echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:green;'>Your product is waiting for a customer, good job</p>";
             }
         }
         ?></h1>

@@ -363,3 +363,13 @@ function createItem($conn, $userid, $productslistid, $rankid, $price){
     header("location: ../sell.php?error=none");
     exit();
 }
+
+function minmax($conn, $value, $min, $max){
+    if($value < $min){
+        return false;
+    }else if($value > $max){
+        return false;
+    }else{
+        return true;
+    }
+}

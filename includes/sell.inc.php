@@ -20,6 +20,15 @@ if(isset($_POST['submit'])){
         exit();
     }
 
+    if(minmax($conn, $price, 0, 100000) !== true){
+        header("location: ../sell.php?error=price");
+        exit();
+    }
+
+    if($productslistid == "new"){
+        header("location: ../addproduct.php");
+        exit();
+    }
     createItem($conn, $userid, $productslistid, $rankid, $price);
 }
 

@@ -25,15 +25,17 @@ if(isset($_POST['submit'])){
     <hr>
     <br>
 
-    <img class='image' src='Photos/".$product['id'].".png'></img>
+    <img class='image' src='Photos/".$product['productslistid'].".png'></img>
     <div class='booktext'>
-        <h3>Biologie</h3>
+        <h3>SUBJECT NAME</h3>
         <br>
         <h3>".$product['rankid']."</h3>
         <br>
-        <h3>Name</h3>
+        <h3>BOOK NAME</h3>
         <br>
-        <h3>Name</h3>
+        <h3>AUTHORS NAME</h3>
+        <br>
+        <h3>TRUSTWORTH</h3>
         <br>
         <h3>".$product['price']."</h3>
     </div>
