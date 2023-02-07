@@ -284,19 +284,6 @@ function getProductsList($conn){
 }
 
 //gets product from database
-function getProductByID($conn, $id){
-    $sql = "SELECT * FROM products WHERE id = ?;";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../index.php?error=stmtfailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt, "s",  $id); // s = string
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_query($conn, $sql);
-    $product = mysqli_fetch_assoc($result);
-    return $product;
-}
 
 function getAllProducts($conn){
     $sql = "SELECT * FROM products;";
@@ -306,7 +293,7 @@ function getAllProducts($conn){
 }
 
 function getProductsByCategory($conn, $category){
-    $sql = "SELECT * FROM productslist WHERE category = ?;";
+    $sql = "SELECT * FROM products p JOIN productslist pl ON p.productslistid = pl.id WHERE pl.subjectid = ?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../index.php?error=stmtfailed");
@@ -314,18 +301,33 @@ function getProductsByCategory($conn, $category){
     }
     mysqli_stmt_bind_param($stmt, "s",  $category); // s = string
     mysqli_stmt_execute($stmt);
-    $result = mysqli_query($conn, $sql);
-    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
     return $products;
 }
 
 function getProductsBySearch($conn, $search){
-    $sql = "SELECT * FROM products WHERE name LIKE '%$search%' OR description LIKE '%$search%';";
-    $result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM products
+        JOIN users  ON products.userid = users.id
+        WHERE users.name LIKE ? OR users.surname LIKE ? OR users.class LIKE ? OR users.email LIKE ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+    $search = "%".$search."%";
+    mysqli_stmt_bind_param($stmt, "ssss", $search, $search, $search, $search);// s = string
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
     return $products;
 }
 
+// JOIN productslist pl ON p.productslistid = pl.id
+//$sql = "SELECT * FROM products p JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+         //WHERE pl.name LIKE ? OR pl.year LIKE ? OR s.name LIKE ?;";
 function getProductsByPrice($conn, $price){
     $sql = "SELECT * FROM products WHERE price <= $price;";
     $result = mysqli_query($conn, $sql);

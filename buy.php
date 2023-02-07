@@ -17,8 +17,9 @@ include_once 'includes/dbh.inc.php';
 include_once 'includes/functions.inc.php';
 
 if(isset($_POST['submit'])){
-    $products =  getAllProducts($conn);
+    $products =  getProductsBySearch($conn, $_POST['search']);
 
+    print_r($products);
     foreach ($products as $product){
         echo "<form class='' action='' method='post'>
     <h3 class='specialh3'>Učebnice</h3>
