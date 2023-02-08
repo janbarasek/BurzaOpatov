@@ -285,26 +285,6 @@ function getProductsList($conn){
 
 //gets product from database
 
-function getAllProducts($conn){
-    $sql = "SELECT * FROM products;";
-    $result = mysqli_query($conn, $sql);
-    $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $product;
-}
-
-function getProductsByCategory($conn, $category){
-    $sql = "SELECT * FROM products p JOIN productslist pl ON p.productslistid = pl.id WHERE pl.subjectid = ?;";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../index.php?error=stmtfailed");
-        exit();
-    }
-    mysqli_stmt_bind_param($stmt, "s",  $category); // s = string
-    mysqli_stmt_execute($stmt);
-
-    return $products;
-}
-
 function getProductsBySearch($conn, $search){
     $sql = "SELECT * FROM products p
         JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
@@ -344,12 +324,54 @@ function getProductsBySearch($conn, $search){
 // JOIN productslist pl ON p.productslistid = pl.id
 //$sql = "SELECT * FROM products p JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
          //WHERE pl.name LIKE ? OR pl.year LIKE ? OR s.name LIKE ?;";
-function getProductsByPrice($conn, $price){
-    $sql = "SELECT * FROM products WHERE price <= $price;";
+function getProductsByPrice($conn, $fromPrice, $toPrice){
+    $sql = "SELECT * FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+        WHERE price >= ". $fromPrice ." AND price <= ".$toPrice.";";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
 }
+
+function getProductsByRank($conn, $rankid){
+    $sql = "SELECT * FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+        WHERE p.rankid = '".$rankid."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsByYear($conn, $year){
+    $sql = "SELECT * FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+        WHERE pl.year = '".$year."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsBySubjectID($conn, $subjectid){
+    $sql = "SELECT * FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+        WHERE pl.subjectid = '".$subjectid."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function checkArrayEquality($array1, $array2){
+    $result = array();
+    foreach($array1 as $product1){
+        Foreach($array2 as $product2){
+            if($product1['id'] == $product2['id']){
+                array_push($result, $product1);
+            }
+        }
+    }
+    return $result;
+}
+
 
 function getRanks($conn){
     $sql = "SELECT * FROM rank;";
@@ -357,6 +379,21 @@ function getRanks($conn){
     $ranks = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $ranks;
 }
+
+function getRankByID($conn, $rankid){
+    $sql = "SELECT * FROM rank WHERE id = '".$rankid."';";
+    $result = mysqli_query($conn, $sql);
+    $rank = mysqli_fetch_assoc($result);
+    return $rank;
+}
+
+function getSubjects($conn){
+    $sql = "SELECT * FROM subject;";
+    $result = mysqli_query($conn, $sql);
+    $ranks = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $ranks;
+}
+
 function emptyInputSell($userid, $productslistid, $rankid, $price){
     $result;
     if(empty($userid) || empty($productslistid) || empty($rankid) || empty($price)){
