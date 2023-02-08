@@ -18,21 +18,7 @@ if(!isset($_SESSION['id'])){
         <br>
         <br>
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+     
 
        
         <h3>Profile</h3>
