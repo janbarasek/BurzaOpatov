@@ -306,9 +306,25 @@ function getProductsByCategory($conn, $category){
 }
 
 function getProductsBySearch($conn, $search){
-    $sql = "SELECT * FROM products
-        JOIN users  ON products.userid = users.id
-        WHERE users.name LIKE ? OR users.surname LIKE ? OR users.class LIKE ? OR users.email LIKE ?;";
+    $sql = "SELECT * FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+        WHERE u.name LIKE ? OR u.surname LIKE ? OR u.class LIKE ? OR u.email LIKE ? OR pl.itemName LIKE ? OR pl.year LIKE ? OR pl.publishYear LIKE ? OR s.subjectName LIKE ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+    $search = "%".$search."%";
+    mysqli_stmt_bind_param($stmt, "ssssssss", $search, $search, $search, $search, $search, $search, $search, $search);// s = string
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_stmt_close($stmt);
+
+    /*$sql = "SELECT * FROM products p
+         WHERE pl.name LIKE ? OR pl.year LIKE ? OR pl.publishYear LIKE ? OR s.name LIKE ?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../index.php?error=stmtfailed");
@@ -317,11 +333,11 @@ function getProductsBySearch($conn, $search){
     $search = "%".$search."%";
     mysqli_stmt_bind_param($stmt, "ssss", $search, $search, $search, $search);// s = string
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_store_result($stmt);
-    mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
-    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $products2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_stmt_close($stmt);
+
+    $products = array_merge($products, $products2);*/
     return $products;
 }
 

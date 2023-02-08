@@ -18,25 +18,22 @@ include_once 'includes/functions.inc.php';
 
 if(isset($_POST['submit'])){
     $products =  getProductsBySearch($conn, $_POST['search']);
-
-    print_r($products);
+    echo "    <h3 class='specialh3'>Učebnice</h3>
+    <hr>
+    <br>";
     foreach ($products as $product){
         echo "<form class='' action='' method='post'>
-    <h3 class='specialh3'>Učebnice</h3>
-    <hr>
-    <br>
+
 
     <img class='image' src='Photos/".$product['productslistid'].".png'></img>
     <div class='booktext'>
-        <h3>SUBJECT NAME</h3>
-        <br>
         <h3>".$product['rankid']."</h3>
         <br>
-        <h3>BOOK NAME</h3>
+        <h3>".$product['itemName']."</h3>
         <br>
-        <h3>AUTHORS NAME</h3>
+        <h3>".$product['name']."</h3>
         <br>
-        <h3>TRUSTWORTH</h3>
+        <h3>".$product['year']."</h3>
         <br>
         <h3>".$product['price']."</h3>
     </div>

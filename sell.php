@@ -38,7 +38,7 @@
         ?>
     </select>
     <br>
-    <input type="number" name="price" placeholder="Price..." required>
+    <input type="number" name="price" placeholder="Price..." required min="0" max="10000">
     <h1><?php
         if (isset($_GET["error"])) {
             if ($_GET["error"] == "emptyinput") {
