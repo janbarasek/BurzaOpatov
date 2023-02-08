@@ -20,7 +20,7 @@
         <?php
             $productslist = getProductslist($conn);
             foreach($productslist as $product){
-                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['name']." - ". $product['publishYear']."</option>";
+                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['itemName']." - ". $product['publishYear']."</option>";
             }
         ?>
         <option name="productslistid" value="new">ID is not here</option>
