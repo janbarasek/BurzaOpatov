@@ -1,2 +1,2 @@
-INSERT INTO subject (name) VALUES ("matika");
-INSERT INTO subject (name) VALUES ("biologie");
+INSERT INTO subject (subjectName) VALUES ("matika");
+INSERT INTO subject (subjectName) VALUES ("biologie");
