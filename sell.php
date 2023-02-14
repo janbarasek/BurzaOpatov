@@ -11,19 +11,28 @@
 
 <form class="form" action="includes/sell.inc.php" method="POST">
     <br>
-    <br>
-    <h3>Sell</h3>
-    <select name="productslistid" required>
 
-        <option name="productslistid" value="" selected="selected">Choose an id...</option>
+    <h3>Sell</h3>
+    <select name="year">
+
+        <option name="year" value="" selected="selected">Choose a class..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>
+    <select name="subjectid">
+
+        <option name="subjectid" value="" selected="selected">Choose a subject..</option>
 
         <?php
-            $productslist = getProductslist($conn);
-            foreach($productslist as $product){
-                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['itemName']." - ". $product['publishYear']."</option>";
-            }
+        $subjects = getSubjects($conn);
+        foreach($subjects as $subject){
+            echo "<option name='subjectid' value='".$subject['id']."'>".$subject['subjectName']."</option>";
+        }
         ?>
-        <option name="productslistid" value="new">ID is not here</option>
     </select>
     <br>
     <select name="rankid" required>
@@ -36,6 +45,19 @@
                 echo "<option name='rankid' value='".$rank['id']."'>".$rank['name']."</option>";
             }
         ?>
+    </select>
+    <br>
+    <select name="productslistid" required>
+
+        <option name="productslistid" value="" selected="selected">Choose an id...</option>
+
+        <?php
+            $productslist = getProductslist($conn);
+            foreach($productslist as $product){
+                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['itemName']." - ". $product['publishYear']."</option>";
+            }
+        ?>
+        <option name="productslistid" value="new">ID is not here</option>
     </select>
     <br>
     <input type="number" name="price" placeholder="Price..." required min="0" max="10000">

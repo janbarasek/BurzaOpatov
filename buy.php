@@ -135,184 +135,7 @@ include_once 'includes/functions.inc.php';
   document.querySelector('.searchbox [type="reset"]').addEventListener('click', function() {  this.parentNode.querySelector('input').focus();});
 </script>
 
-<style type="text/css">
-	.sbx-custom {
-  display: inline-block;
-  position: relative;
-  width: 500px;
-  height: 41px;
-  white-space: nowrap;
-  box-sizing: border-box;
-  font-size: 14px;
-}
 
-.sbx-custom__wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-.sbx-custom__input {
-  display: inline-block;
-  -webkit-transition: box-shadow .4s ease, background .4s ease;
-  transition: box-shadow .4s ease, background .4s ease;
-  border: 0;
-  border-radius: 4px;
-  box-shadow: inset 0 0 0 3px #000000;
-  background: #FFFFFF;
-  padding: 7px;
-  padding-right: 0px;
-  padding-left: 11px;
-  width: 150px;
-  height: 45px;
-  
-  vertical-align: middle;
-  white-space: normal;
-  font-size: inherit;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-}
-
-.sbx-custom__input::-webkit-search-decoration, .sbx-custom__input::-webkit-search-cancel-button, .sbx-custom__input::-webkit-search-results-button, .sbx-custom__input::-webkit-search-results-decoration {
-  display: none;
-}
-
-.sbx-custom__input:hover {
-  box-shadow: inset 0 0 0 3px black;
-}
-
-.sbx-custom__input:focus, .sbx-custom__input:active {
-  outline: 0;
-  box-shadow: inset 0 0 0 3px #000000;
-  background: #FFFFFF;
-}
-
-.sbx-custom__input::-webkit-input-placeholder {
-  color: #AAAAAA;
-}
-
-.sbx-custom__input::-moz-placeholder {
-  color: #AAAAAA;
-}
-
-.sbx-custom__input:-ms-input-placeholder {
-  color: #AAAAAA;
-}
-
-.sbx-custom__input::placeholder {
-  color: #AAAAAA;
-}
-
-.sbx-custom__submit {
-  position: absolute;
-  top: 10px;
-  
-  right: 301px;
-  margin: 0;
-  border: 0;
-  border-radius: 0 3px 3px 0;
-  background-color: #3e82f7;
-  padding: 6px;
-  width: 49px;
-  height: 100%;
-  vertical-align: middle;
-  text-align: center;
-  font-size: inherit;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-
-.sbx-custom__submit::before {
-  display: inline-block;
-  margin-right: -4px;
-  height: 100%;
-  vertical-align: middle;
-  content: '';
-}
-
-.sbx-custom__submit:hover, .sbx-custom__submit:active {
-  cursor: pointer;
-}
-
-.sbx-custom__submit:focus {
-  outline: 0;
-}
-
-.sbx-custom__submit svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-  fill: #FFFFFF;
-}
-
-.sbx-custom__reset {
-  display: none;
-  position: absolute;
-  top: 10px;
-  right: 56px;
-  margin: 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  font-size: inherit;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  fill: rgba(0, 0, 0, 0.5);
-}
-
-.sbx-custom__reset:focus {
-  outline: 0;
-}
-
-.sbx-custom__reset svg {
-  display: block;
-  margin-left: -125px;
-  margin-top: 8px;
-  width: 25px;
-  height: 25px;
-
-
-}
-
-.sbx-custom__input:valid ~ .sbx-custom__reset {
-  display: block;
-  -webkit-animation-name: sbx-reset-in;
-          animation-name: sbx-reset-in;
-  -webkit-animation-duration: .15s;
-          animation-duration: .15s;
-}
-
-@-webkit-keyframes sbx-reset-in {
-  0% {
-    -webkit-transform: translate3d(-20%, 0, 0);
-            transform: translate3d(-20%, 0, 0);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: none;
-            transform: none;
-    opacity: 1;
-  }
-}
-
-@keyframes sbx-reset-in {
-  0% {
-    -webkit-transform: translate3d(-20%, 0, 0);
-            transform: translate3d(-20%, 0, 0);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: none;
-            transform: none;
-    opacity: 1;
-  }
-}
-</style>
 
 
 <form class="form2" action="includes/login.inc.php" method="post">
@@ -348,7 +171,6 @@ if(isset($_POST['submit'])){
 
     echo "    <h3 class='specialh3'>Učebnice</h3>
     <hr>
->>>>>>> 6fc5f5654f58a228b9cb2579a89b82b2845aa790
     <br>";
 
     if($products == null && $products2 == null && $products3 == null && $products4 == null && $products5 == null){
@@ -439,3 +261,182 @@ if (isset($_GET["error"])) {
 <?php
 include_once 'footer.php';
 ?>
+
+<style type="text/css">
+    .sbx-custom {
+        display: inline-block;
+        position: relative;
+        width: 500px;
+        height: 41px;
+        white-space: nowrap;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .sbx-custom__wrapper {
+        width: 100%;
+        height: 100%;
+    }
+
+    .sbx-custom__input {
+        display: inline-block;
+        -webkit-transition: box-shadow .4s ease, background .4s ease;
+        transition: box-shadow .4s ease, background .4s ease;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: inset 0 0 0 3px #000000;
+        background: #FFFFFF;
+        padding: 7px;
+        padding-right: 0px;
+        padding-left: 11px;
+        width: 150px;
+        height: 45px;
+
+        vertical-align: middle;
+        white-space: normal;
+        font-size: inherit;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .sbx-custom__input::-webkit-search-decoration, .sbx-custom__input::-webkit-search-cancel-button, .sbx-custom__input::-webkit-search-results-button, .sbx-custom__input::-webkit-search-results-decoration {
+        display: none;
+    }
+
+    .sbx-custom__input:hover {
+        box-shadow: inset 0 0 0 3px black;
+    }
+
+    .sbx-custom__input:focus, .sbx-custom__input:active {
+        outline: 0;
+        box-shadow: inset 0 0 0 3px #000000;
+        background: #FFFFFF;
+    }
+
+    .sbx-custom__input::-webkit-input-placeholder {
+        color: #AAAAAA;
+    }
+
+    .sbx-custom__input::-moz-placeholder {
+        color: #AAAAAA;
+    }
+
+    .sbx-custom__input:-ms-input-placeholder {
+        color: #AAAAAA;
+    }
+
+    .sbx-custom__input::placeholder {
+        color: #AAAAAA;
+    }
+
+    .sbx-custom__submit {
+        position: absolute;
+        top: 10px;
+
+        right: 301px;
+        margin: 0;
+        border: 0;
+        border-radius: 0 3px 3px 0;
+        background-color: #3e82f7;
+        padding: 6px;
+        width: 49px;
+        height: 100%;
+        vertical-align: middle;
+        text-align: center;
+        font-size: inherit;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .sbx-custom__submit::before {
+        display: inline-block;
+        margin-right: -4px;
+        height: 100%;
+        vertical-align: middle;
+        content: '';
+    }
+
+    .sbx-custom__submit:hover, .sbx-custom__submit:active {
+        cursor: pointer;
+    }
+
+    .sbx-custom__submit:focus {
+        outline: 0;
+    }
+
+    .sbx-custom__submit svg {
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+        fill: #FFFFFF;
+    }
+
+    .sbx-custom__reset {
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 56px;
+        margin: 0;
+        border: 0;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: inherit;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        fill: rgba(0, 0, 0, 0.5);
+    }
+
+    .sbx-custom__reset:focus {
+        outline: 0;
+    }
+
+    .sbx-custom__reset svg {
+        display: block;
+        margin-left: -125px;
+        margin-top: 8px;
+        width: 25px;
+        height: 25px;
+
+
+    }
+
+    .sbx-custom__input:valid ~ .sbx-custom__reset {
+        display: block;
+        -webkit-animation-name: sbx-reset-in;
+        animation-name: sbx-reset-in;
+        -webkit-animation-duration: .15s;
+        animation-duration: .15s;
+    }
+
+    @-webkit-keyframes sbx-reset-in {
+        0% {
+            -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+    }
+
+    @keyframes sbx-reset-in {
+        0% {
+            -webkit-transform: translate3d(-20%, 0, 0);
+            transform: translate3d(-20%, 0, 0);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: none;
+            transform: none;
+            opacity: 1;
+        }
+    }
+</style>
