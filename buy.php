@@ -337,10 +337,6 @@ if(isset($_POST['submit'])){
         die("Please enter a valid number");
 
     $products =  getProductsBySearch($conn, $_POST['search']);
-<<<<<<< HEAD
-    echo "   
-   
-=======
 
     $products2 = getProductsByPrice($conn, $fromSlider, $toSlider);
 
@@ -401,24 +397,17 @@ if(isset($_POST['submit'])){
   
         
          <img style='height: 130px;margin-top:-100px;'class='image' src='Photos/".$product['productslistid'].".png'></img>
-
-<<<<<<< HEAD
          <h3 style='margin-right:50px;margin-top:10px;float:right;font-size:25px;color: white;'>".$product['rankid']."</h3>
     <div class='booktext'>
-=======
     <img class='image' src='".$fileinfo[0]."'></img>
     
     <div class='booktext'>
         <h3>". getRankByID($conn, $product['rankid'])['name'] ."</h3>
->>>>>>> 6fc5f5654f58a228b9cb2579a89b82b2845aa790
         <br>
         
         <br>
-<<<<<<< HEAD
         <h3 style='margin-top:-30px;font-size:20px;color:white;'>".$product['name']."</h3>
-=======
         <h3>".$product['name']." ". $product['surname']."</h3>
->>>>>>> 6fc5f5654f58a228b9cb2579a89b82b2845aa790
         <br>
         <h3 style='font-size:20px;color:white;'>".$product['year']."</h3>
         <br>
