@@ -19,6 +19,8 @@ foreach ($users as $users){
     if($users['id'] == $_SESSION['id']){
         if($users['rights'] == 1){
 
+            //make another login to check if the user is an admin (to protect from session hijacking)
+
             echo "<h2>USERS</h2> <br>";
             $sql = "SELECT * FROM users;";
             $result = mysqli_query($conn, $sql);
@@ -43,7 +45,7 @@ foreach ($users as $users){
             $profileimg = mysqli_fetch_all($result, MYSQLI_ASSOC);
             print_r($profileimg);
 
-            echo "<h2>STATUS</h2> <br>";
+            echo "<h2>RANK</h2> <br>";
             $sql = "SELECT * FROM rank;";
             $result = mysqli_query($conn, $sql);
             $rank = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -60,6 +62,18 @@ foreach ($users as $users){
             $result = mysqli_query($conn, $sql);
             $userrank = mysqli_fetch_all($result, MYSQLI_ASSOC);
             print_r($userrank);*/
+
+            echo "<h2>SUBJECT</h2> <br>";
+            $sql = "SELECT * FROM subject;";
+            $result = mysqli_query($conn, $sql);
+            $subject = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            print_r($subject);
+
+            echo "<h2>CLASS</h2> <br>";
+            $sql = "SELECT * FROM class;";
+            $result = mysqli_query($conn, $sql);
+            $class = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            print_r($class);
 
         } else {
             header("location: index.php");

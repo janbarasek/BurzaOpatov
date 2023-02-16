@@ -1,0 +1,4 @@
+INSERT INTO class (class, classYear)
+	VALUES ("T",4);
+INSERT INTO class (class, classYear)
+	VALUES ("U",4);

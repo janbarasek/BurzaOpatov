@@ -4,26 +4,87 @@
     include_once 'includes/dbh.inc.php';
 
     if(!isset($_SESSION['id'])){
-        header("Location: index.php");
+        header("Location: login.php");
         exit();
     }
 ?>
-
-<form class="form" action="includes/sell.inc.php" method="POST">
+<form class="" action="sell.php" method="get">
     <br>
 
     <h3>Sell</h3>
-    <select name="year">
+    <?php
 
-        <option name="year" value="" selected="selected">Choose a class..</option>
+if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
+    echo '<select name="year" required>
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4" selected> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+}else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 5){
+    echo '<select name="year" required>
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5" selected> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+} else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 6){
+    echo '<select name="year" required>
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6" selected> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+} else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 7){
+    echo '<select name="year" required>
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7" selected> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+} else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 8){
+    echo '<select name="year" required>
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8" selected> 8. </option>
+    </select>';
+} else {
+    echo '<select name="year" required>
+
+        <option name="year" value="" selected>Choose a year..</option>
 
         <option name="year" value="4"> 4. </option>
         <option name="year" value="5"> 5. </option>
         <option name="year" value="6"> 6. </option>
         <option name="year" value="7"> 7. </option>
         <option name="year" value="8"> 8. </option>
-    </select>
-    <select name="subjectid">
+    </select>';
+}
+
+    ?>
+
+    <select name="subjectid" required>
 
         <option name="subjectid" value="" selected="selected">Choose a subject..</option>
 
@@ -34,32 +95,55 @@
         }
         ?>
     </select>
+
+    <button class="alficek" type="submit" name="submit">Search</button>
+</form>
+
+
+<form class="" action="includes/sell.inc.php" method="POST">
     <br>
+    <?php
+    if(isset($_GET['year']) && isset($_GET['subjectid'])){
+        $year = $_GET['year'];
+        $subjectid = $_GET['subjectid'];
+
+        $productsid = getProductsListYearSubjectid($conn, $year, $subjectid);
+
+        if(empty($productsid)){
+            echo "No suitable products found";
+        }
+
+        foreach($productsid as $productid){
+            $product = getProductsListByID($conn, $productid['id']);
+            echo "<input type='radio' name='productslistid' value='".$product[0]['id']."' required >".$product[0]['itemName']." - ". $product[0]['publishYear']."<br>";
+        }
+    }
+    ?>
+    <!--<select name="productslistid" required>
+
+        <option name="productslistid" value="" selected="selected">Choose an id...</option>
+
+        <?php
+/*            $productslist = getProductslist($conn);
+            foreach($productslist as $product){
+                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['itemName']." - ". $product['publishYear']."</option>";
+            }
+        */?>
+        <option name="productslistid" value="new">ID is not here</option>
+    </select>-->
+    <br>
+
     <select name="rankid" required>
 
         <option name="rankid" value="" selected="selected">Choose a rank..</option>
 
         <?php
-            $ranks = getRanks($conn);
-            foreach($ranks as $rank){
-                echo "<option name='rankid' value='".$rank['id']."'>".$rank['name']."</option>";
-            }
+        $ranks = getRanks($conn);
+        foreach($ranks as $rank){
+            echo "<option name='rankid' value='".$rank['id']."'>".$rank['name']."</option>";
+        }
         ?>
     </select>
-    <br>
-    <select name="productslistid" required>
-
-        <option name="productslistid" value="" selected="selected">Choose an id...</option>
-
-        <?php
-            $productslist = getProductslist($conn);
-            foreach($productslist as $product){
-                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['itemName']." - ". $product['publishYear']."</option>";
-            }
-        ?>
-        <option name="productslistid" value="new">ID is not here</option>
-    </select>
-    <br>
     <input type="number" name="price" placeholder="Price..." required min="0" max="10000">
     <h1><?php
         if (isset($_GET["error"])) {

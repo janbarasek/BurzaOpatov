@@ -1,0 +1,4 @@
+CREATE TABLE class (
+	class varchar(2) NOT NULL PRIMARY KEY,
+    classYear int(2) NOT NULL
+);

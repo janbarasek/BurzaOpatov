@@ -11,6 +11,7 @@ include_once 'includes/functions.inc.php';
     <hr>
     <br>
     <input class='search' type='text' name='search' placeholder='Search...'>
+    <button class='alficek' type='submit' name='submit'>Search</button>
     <br>
     <!--<div class="pricerangebox">
         <h3>PRICE</h3>
@@ -73,17 +74,75 @@ include_once 'includes/functions.inc.php';
         }
         ?>
     </select>
+    <?php
+    /*if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
+        echo '<select name="year">
 
-    <select name="year">
+        <option name="year" value="">Choose a year..</option>
 
-        <option name="year" value="" selected="selected">Choose a class..</option>
+        <option name="year" value="4" selected> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+    }else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 5){
+        echo '<select name="year">
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5" selected> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+    } else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 6){
+        echo '<select name="year">
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6" selected> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+    } else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 7){
+        echo '<select name="year">
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7" selected> 7. </option>
+        <option name="year" value="8"> 8. </option>
+    </select>';
+    } else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 8){
+        echo '<select name="year">
+
+        <option name="year" value="">Choose a year..</option>
+
+        <option name="year" value="4"> 4. </option>
+        <option name="year" value="5"> 5. </option>
+        <option name="year" value="6"> 6. </option>
+        <option name="year" value="7"> 7. </option>
+        <option name="year" value="8" selected> 8. </option>
+    </select>';
+    } else {*/
+        echo '<select name="year">
+
+        <option name="year" value="" selected>Choose a year..</option>
 
         <option name="year" value="4"> 4. </option>
         <option name="year" value="5"> 5. </option>
         <option name="year" value="6"> 6. </option>
         <option name="year" value="7"> 7. </option>
         <option name="year" value="8"> 8. </option>
-    </select>
+    </select>';
+    /*}*/
+    ?>
     <select name="subjectid">
 
         <option name="subjectid" value="" selected="selected">Choose a subject..</option>
@@ -95,17 +154,9 @@ include_once 'includes/functions.inc.php';
         }
         ?>
     </select>
-    <button class='alficek' type='submit' name='submit'>Search</button>
+
 </form>
-<div class="sb-example-1">
-         <div class="search">
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-           </button>
-         </div>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+      <!--<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-9" viewBox="0 0 40 41">
     <path d="M25.25 32.2c-2.417 1.307-5.184 2.05-8.126 2.05C7.667 34.25 0 26.58 0 17.123 0 7.667 7.667 0 17.124 0 26.582 0 34.25 7.667 34.25 17.124c0 3.277-.92 6.338-2.517 8.94.29.18.563.397.814.65l6.105 6.103c1.8 1.8 1.795 4.722 0 6.52-1.8 1.8-4.72 1.798-6.52 0l-6.104-6.105c-.314-.313-.572-.66-.777-1.03zm-8.126-4.116c6.053 0 10.96-4.907 10.96-10.96 0-6.052-4.907-10.96-10.96-10.96-6.052 0-10.96 4.908-10.96 10.96 0 6.053 4.908 10.96 10.96 10.96z"
     fill-rule="evenodd" />
@@ -133,7 +184,7 @@ include_once 'includes/functions.inc.php';
 </form>
 <script type="text/javascript">
   document.querySelector('.searchbox [type="reset"]').addEventListener('click', function() {  this.parentNode.querySelector('input').focus();});
-</script>
+</script>-->
 
 
 
@@ -208,7 +259,6 @@ if(isset($_POST['submit'])){
     }
 
     $products =  checkArrayEquality($products, $products2);
-
 
     foreach ($products as $product){
         $filename = 'Photos/'.$product['productslistid'].'*';

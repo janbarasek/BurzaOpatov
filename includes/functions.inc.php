@@ -270,6 +270,45 @@ function loginUser($conn, $name, $surname, $class, $email, $pwd){
     }
 }
 
+function getUserByID($conn, $id){
+    $sql = "SELECT * FROM users WHERE id = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s",  $id); // s = string
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
+function getClassByUserID($conn, $id){
+    $sql = "SELECT class.classYear, class.class FROM class 
+         JOIN users ON users.class = class.class
+         WHERE users.id = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../signup.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s",  $id); // s = string
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($resultData)) {
+        return $row;
+    }
+
+    mysqli_stmt_close($stmt);
+}
 
 
 //PRODUCTS
@@ -351,12 +390,48 @@ function getProductsByYear($conn, $year){
     return $products;
 }
 
+function getproductsListByYear($conn, $year){
+    $sql = "SELECT id FROM productslist pl
+        WHERE pl.year = '".$year."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
 function getProductsBySubjectID($conn, $subjectid){
     $sql = "SELECT * FROM products p
         JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
         WHERE pl.subjectid = '".$subjectid."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsListBySubjectID($conn, $subjectid){
+    $sql = "SELECT id FROM productslist pl
+        WHERE pl.subjectid = '".$subjectid."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsListByID($conn, $id){
+    $sql = "SELECT * FROM productslist pl
+        WHERE pl.id = '".$id."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
+function getProductsListYearSubjectid($conn, $year, $subjectid){
+    $products = array();
+    if($year != 0){
+        $products = getProductsListByYear($conn, $year);
+    }
+    if($subjectid != 0){
+        $products2 = getProductsListBySubjectID($conn, $subjectid);
+        $products = checkArrayEquality($products, $products2);
+    }
     return $products;
 }
 
@@ -419,7 +494,7 @@ function createItem($conn, $userid, $productslistid, $rankid, $price){
     exit();
 }
 
-function minmax($conn, $value, $min, $max){
+function minmax($value, $min, $max){
     if($value < $min){
         return false;
     }else if($value > $max){
