@@ -216,9 +216,6 @@ if(isset($_POST['submit'])){
         echo "<form class='' action='' method='post'>
 
 <h3 style='font-size:25px;float:right;margin-left:250px;margin-top:-50px;text-align:center;color: white;'>".$product['itemName']."</h3>
-  
-        
-         <img style='height: 130px;margin-top:-100px;'class='image' src='Photos/".$product['productslistid'].".png'></img>
          <h3 style='margin-right:50px;margin-top:10px;float:right;font-size:25px;color: white;'>".$product['rankid']."</h3>
     <div class='booktext'>
     <img class='image' src='".$fileinfo[0]."'></img>
