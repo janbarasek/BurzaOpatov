@@ -1,5 +1,5 @@
 CREATE TABLE productsList (
-    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    productslistid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     subjectid int(11) NOT NULL,
     itemName varchar(256) NOT NULL,
     year int(2) NOT NULL,

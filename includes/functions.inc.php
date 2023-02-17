@@ -1,14 +1,20 @@
 <?php
-//function emptyInputSignup($name, $surname, $pwd, $pwdrepeat){
-//    $result;
-//    if(empty($name) || empty($surname) || empty($pwd) || empty($pwdrepeat)){
-//        $result = true;
-//    }else{
-//        $result = false;
-//    }
-//    return $result;
-//}
 
+//no category stuff
+function checkArrayEquality($array1, $array2, $key1, $key2){
+    //returns an array of products that are in both arrays
+    $result = array();
+    foreach($array1 as $product1){
+        foreach($array2 as $product2){
+            if($product1[$key1] == $product2[$key2]){
+                array_push($result, $product1);
+            }
+        }
+    }
+    return $result;
+}
+
+//User stuff
 function constructEmail($name, $surname, $class){
 
     $changeTable = Array(
@@ -325,16 +331,16 @@ function getProductsList($conn){
 //gets product from database
 
 function getProductsBySearch($conn, $search){
-    $sql = "SELECT * FROM products p
-        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
-        WHERE u.name LIKE ? OR u.surname LIKE ? OR u.class LIKE ? OR u.email LIKE ? OR pl.itemName LIKE ? OR pl.year LIKE ? OR pl.publishYear LIKE ? OR s.subjectName LIKE ?;";
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
+        WHERE u.name LIKE ? OR u.surname LIKE ? OR u.class LIKE ? OR pl.itemName LIKE ? OR pl.year LIKE ? OR pl.publishYear LIKE ? OR s.subjectName LIKE ?;";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../index.php?error=stmtfailed");
         exit();
     }
     $search = "%".$search."%";
-    mysqli_stmt_bind_param($stmt, "ssssssss", $search, $search, $search, $search, $search, $search, $search, $search);// s = string
+    mysqli_stmt_bind_param($stmt, "sssssss", $search, $search, $search, $search, $search, $search, $search);// s = string
     mysqli_stmt_execute($stmt);
     mysqli_stmt_store_result($stmt);
     mysqli_stmt_execute($stmt);
@@ -364,8 +370,8 @@ function getProductsBySearch($conn, $search){
 //$sql = "SELECT * FROM products p JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
          //WHERE pl.name LIKE ? OR pl.year LIKE ? OR s.name LIKE ?;";
 function getProductsByPrice($conn, $fromPrice, $toPrice){
-    $sql = "SELECT * FROM products p
-        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
         WHERE price >= ". $fromPrice ." AND price <= ".$toPrice.";";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -373,8 +379,8 @@ function getProductsByPrice($conn, $fromPrice, $toPrice){
 }
 
 function getProductsByRank($conn, $rankid){
-    $sql = "SELECT * FROM products p
-        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
         WHERE p.rankid = '".$rankid."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -382,8 +388,8 @@ function getProductsByRank($conn, $rankid){
 }
 
 function getProductsByYear($conn, $year){
-    $sql = "SELECT * FROM products p
-        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
         WHERE pl.year = '".$year."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -391,7 +397,7 @@ function getProductsByYear($conn, $year){
 }
 
 function getproductsListByYear($conn, $year){
-    $sql = "SELECT id FROM productslist pl
+    $sql = "SELECT productslistid FROM productslist pl
         WHERE pl.year = '".$year."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -399,8 +405,8 @@ function getproductsListByYear($conn, $year){
 }
 
 function getProductsBySubjectID($conn, $subjectid){
-    $sql = "SELECT * FROM products p
-        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
         WHERE pl.subjectid = '".$subjectid."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -408,7 +414,7 @@ function getProductsBySubjectID($conn, $subjectid){
 }
 
 function getProductsListBySubjectID($conn, $subjectid){
-    $sql = "SELECT id FROM productslist pl
+    $sql = "SELECT productslistid FROM productslist pl
         WHERE pl.subjectid = '".$subjectid."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -417,7 +423,7 @@ function getProductsListBySubjectID($conn, $subjectid){
 
 function getProductsListByID($conn, $id){
     $sql = "SELECT * FROM productslist pl
-        WHERE pl.id = '".$id."';";
+        WHERE pl.productslistid = '".$id."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
@@ -430,22 +436,12 @@ function getProductsListYearSubjectid($conn, $year, $subjectid){
     }
     if($subjectid != 0){
         $products2 = getProductsListBySubjectID($conn, $subjectid);
-        $products = checkArrayEquality($products, $products2);
+        $products = checkArrayEquality($products, $products2, "productslistid", "productslistid");
     }
     return $products;
 }
 
-function checkArrayEquality($array1, $array2){
-    $result = array();
-    foreach($array1 as $product1){
-        Foreach($array2 as $product2){
-            if($product1['id'] == $product2['id']){
-                array_push($result, $product1);
-            }
-        }
-    }
-    return $result;
-}
+
 
 
 function getRanks($conn){

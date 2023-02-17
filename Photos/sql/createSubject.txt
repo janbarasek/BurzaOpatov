@@ -1,4 +1,4 @@
 CREATE TABLE subject (
-    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    subjectid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     subjectName varchar(256) NOT NULL
 );

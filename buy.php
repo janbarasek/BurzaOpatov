@@ -224,41 +224,67 @@ if(isset($_POST['submit'])){
     <hr>
     <br>";
 
+    /*
+    Debugging
+    print_r($products);
+    print_r($products2);
+    print_r($products3);
+    print_r($products4);
+    print_r($products5);*/
+
     if($products == null && $products2 == null && $products3 == null && $products4 == null && $products5 == null){
         echo "<h3 class='specialh3'>No results found</h3>";
     }
 
 
     if ($rankid != null && $year != null && $subjectid != null){
-        $products =  checkArrayEquality($products3, $products4);
-        $products =  checkArrayEquality($products, $products5);
+        $products =  checkArrayEquality($products3, $products4, "id", "id");
+        $products =  checkArrayEquality($products, $products5, "id", "id");
     }
 
     if ($rankid != null && $year != null){
-        $products =  checkArrayEquality($products3, $products4);
+        $products =  checkArrayEquality($products3, $products4, "id", "id");
     }
 
     if ($rankid != null && $subjectid != null){
-        $products =  checkArrayEquality($products3, $products5);
+        $products =  checkArrayEquality($products3, $products5, "id", "id");
     }
 
     if ($year != null && $subjectid != null){
-        $products =  checkArrayEquality($products4, $products5);
+        $products =  checkArrayEquality($products4, $products5, "id", "id");
     }
 
     if ($rankid != null){
-        $products =  checkArrayEquality($products, $products3);
+        $products =  checkArrayEquality($products, $products3, "id", "id");
     }
 
     if ($year != null){
-        $products =  checkArrayEquality($products, $products4);
+        $products =  checkArrayEquality($products, $products4, "id", "id");
     }
 
     if ($subjectid != null){
-        $products =  checkArrayEquality($products, $products5);
+        $products =  checkArrayEquality($products, $products5, "id", "id");
     }
 
-    $products =  checkArrayEquality($products, $products2);
+    $products =  checkArrayEquality($products, $products2, "id", "id");
+
+    /*
+     Not currently used
+     print_r($products);
+
+    if($products == null){
+        echo "<h3 class='specialh3'>No results found</h3>";
+    }
+
+    $newProducts = array();
+
+    foreach ($products as $product){
+        if (!in_array($product, $newProducts)){
+            array_push($newProducts, $product);
+        }
+    }*/
+
+
 
     foreach ($products as $product){
         $filename = 'Photos/'.$product['productslistid'].'*';

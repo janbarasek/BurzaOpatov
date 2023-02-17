@@ -91,7 +91,7 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         <?php
         $subjects = getSubjects($conn);
         foreach($subjects as $subject){
-            echo "<option name='subjectid' value='".$subject['id']."'>".$subject['subjectName']."</option>";
+            echo "<option name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
         }
         ?>
     </select>
@@ -114,8 +114,8 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         }
 
         foreach($productsid as $productid){
-            $product = getProductsListByID($conn, $productid['id']);
-            echo "<input type='radio' name='productslistid' value='".$product[0]['id']."' required >".$product[0]['itemName']." - ". $product[0]['publishYear']."<br>";
+            $product = getProductsListByID($conn, $productid['productslistid']);
+            echo "<input type='radio' name='productslistid' value='".$product[0]['productslistid']."' required >".$product[0]['itemName']." - ". $product[0]['publishYear']."<br>";
         }
     }
     ?>
