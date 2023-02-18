@@ -14,6 +14,16 @@ function checkArrayEquality($array1, $array2, $key1, $key2){
     return $result;
 }
 
+function minmax($value, $min, $max){
+    if($value < $min){
+        return false;
+    }else if($value > $max){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 //User stuff
 function constructEmail($name, $surname, $class){
 
@@ -396,6 +406,15 @@ function getProductsByYear($conn, $year){
     return $products;
 }
 
+function getProductsByID($conn, $id){
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
+        WHERE p.id = '".$id."';";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
 function getproductsListByYear($conn, $year){
     $sql = "SELECT productslistid FROM productslist pl
         WHERE pl.year = '".$year."';";
@@ -490,12 +509,3 @@ function createItem($conn, $userid, $productslistid, $rankid, $price){
     exit();
 }
 
-function minmax($value, $min, $max){
-    if($value < $min){
-        return false;
-    }else if($value > $max){
-        return false;
-    }else{
-        return true;
-    }
-}

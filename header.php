@@ -1,5 +1,7 @@
 <?php
     session_start();
+include_once 'includes/dbh.inc.php';
+include_once 'includes/functions.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -43,11 +45,6 @@
         </a>
       </li>
       <li>
-        <a href="buy.php">
-          Buy
-        </a>
-      </li>
-      <li>
         <a href="sell.php">
           Sell
         </a>
@@ -70,5 +67,3 @@
     </ul>
   </div>
 </nav>
-<ul>
-        </ul>
