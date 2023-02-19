@@ -14,6 +14,8 @@ include_once 'header.php';
         <br>
         <input class='search' type='text' name='search' placeholder='Search...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search']?>>
 
+        <input type="checkbox" name="moreBooks" value="moreBooks">
+        <label for="morebooks">More books</label>
         <br>
         <!--<div class="pricerangebox">
             <h3>PRICE</h3>
@@ -142,6 +144,13 @@ include_once 'header.php';
 
             if (!is_int($fromSlider) && is_int($toSlider))
                 die("Please enter a valid number");
+
+
+            if(isset($_POST['moreBooks'])){
+                $moreBooks = true;
+            }else{
+                $moreBooks = false;
+            }
 
             $products =  getProductsBySearch($conn, $_POST['search']);
 
