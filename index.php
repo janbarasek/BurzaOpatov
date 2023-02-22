@@ -28,16 +28,18 @@ include_once 'header.php';
         <div class='radioIndex'>
         <input type='radio' name='year' value='' <?php if (!isset($_POST['year']))echo "checked"?>>
         <label for='year'>Select a year</label>
-        <input type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
-        <label for='year'>4.</label>
-        <input type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
-        <label for='year'>5.</label>
-        <input type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
-        <label for='year'>6.</label>
-        <input type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
-        <label for='year'>7.</label>
-        <input type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
-        <label for='year'>8.</label>
+        <br>
+        <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>4.</label>
+        <input style='width: 35px;margin-left: 10px;' type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
+         <label style='font-family: Poppins, sans-serif;' for='year'>5.</label>
+        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
+       <label style='font-family: Poppins, sans-serif;' for='year'>6.</label>
+        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
+         <label style='font-family: Poppins, sans-serif;' for='year'>7.</label>
+        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
+         <label style='font-family: Poppins, sans-serif;' for='year'>8.</label>
+        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
+      
         </div>
 
 
@@ -329,8 +331,15 @@ include_once 'footer.php';
     margin-left: 275px;
 }
 
+
+
 label {
     color: black;
+        display: inline-block;
+}
+
+input {
+     display: inline-block;
 }
 ::placeholder {
     font-weight: 600;
