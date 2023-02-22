@@ -57,13 +57,13 @@ if(!isset($_SESSION['id'])){
       
 <!--          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">Change profile picture</b></a></button>-->
              <hr>
-           <b class="reputacehoub">Profile Info</b>
+           <b class="reputacehoub">Profil Info</b>
          <br>
         <?php
         if (isset($_SESSION['id'])) {
-            echo "<b>Name:</b> <b>" . $_SESSION['name'] . "</b><br>";
-            echo "<b>Surname:</b> <b>" . $_SESSION['surname'] . "</b><br>";
-            echo "<b>Class:</b> <b>" . $_SESSION['class'] . "</b><br>";
+            echo "<b>Jméno:</b> <b>" . $_SESSION['name'] . "</b><br>";
+            echo "<b>Příjmení:</b> <b>" . $_SESSION['surname'] . "</b><br>";
+            echo "<b>Třída:</b> <b>" . $_SESSION['class'] . "</b><br>";
             echo "<b>Email:</b> <b>" . $_SESSION['mail'] . "</b><br>";
         }
         ?>
@@ -122,12 +122,17 @@ li {
 }
 body{
     background-color: white;
+    position: relative;
 }
 
 .houbiczlobi {
     height: 25px;
    margin-left: 10px;
 position: absolute;
+}
+
+@media (max-width: 900px) {
+
 }
 .houbiczlobi2 {
     height: 32px;
