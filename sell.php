@@ -144,7 +144,7 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         }
         ?>
     </select>
-    <input type="number" name="price" placeholder="Price..." required min="0" max="10000">
+    <input class="ou" style="border:2px solid black;width: 150px;"type="number" name="price" placeholder="Price..." required min="0" max="10000">
     <h1><?php
         if (isset($_GET["error"])) {
             if ($_GET["error"] == "emptyinput") {
@@ -165,3 +165,20 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
 <?php
     include_once 'footer.php';
 ?>
+
+
+<style>
+
+select {
+    color: white;
+
+}
+.ou {
+    width: 150px;
+    border: 2px solid;
+}
+
+option {
+    color: white;
+}
+</style>

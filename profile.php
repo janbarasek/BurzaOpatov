@@ -117,6 +117,9 @@ include_once 'footer.php';
     box-sizing: border-box;
 }
 
+
+}
+
 li {
 	font-size: 35px;
 }
@@ -259,15 +262,15 @@ img.profilepicture {
 	transition: 0.2s;
 }
 .mainPartProfile{
-    height: auto;
-    width: 100%;
+    height: 100%;
+    width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: relative;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
-   margin-top: -80px;
+   margin-top: -50px;
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
