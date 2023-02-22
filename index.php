@@ -14,7 +14,7 @@ include_once 'header.php';
         <br>
         <input class='search' type='text' name='search' placeholder='Search...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search']?>>
 
-        <input type="checkbox" name="moreBooks" value="moreBooks">
+        <input type="checkbox" name="moreBooks" value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked"?>>
         <label for="morebooks">More books</label>
         <br>
         <!--<div class="pricerangebox">
@@ -286,7 +286,7 @@ include_once 'header.php';
         <br>
         <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>".$product['price']."</h3>
         <input type='number' name='productid' hidden='hidden' value=". $product['id'].">
-         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
+         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
     </div>
   
 ";
