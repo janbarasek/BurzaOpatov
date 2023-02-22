@@ -15,13 +15,10 @@ if(!isset($_SESSION['id'])){
     </div>
 
     <div class="mainPartProfile">
-        <br>
-        <br>
-        <br>
-     
+        
 
        
-        <h3>Profile</h3>
+        <h3>Profil</h3>
         
         <br>
         <?php
@@ -38,26 +35,26 @@ if(!isset($_SESSION['id'])){
             }
         ?>
         <br>
+        <b><h2>Změnit profilovku</h2></b>
         <?php
         if(isset($_SESSION['id'])){
 
             echo "<form action='includes/uploadRestriction.inc.php' method='post' enctype='multipart/form-data'>
         <input style='color: white;background-color:black;'class='xag' type='file' name='file' required>
 
-        <button class='smallbtn'  type='submit' name='submit'><b class='svoby'>Confirm profile picture change</b></button>
+        <button class='smallbtn2'  type='submit' name='submit'><b class='svoby'>Potvrdit</b></button>
     </form>";
 
             if (isset($_SESSION['imgStatus'])) {
                 if ($_SESSION['imgStatus'] == 1) {
                     echo "<form action='includes/deleteprofile.inc.php' method='post'>
-            <button class='smallbtn' type='submit' name='submit'><b class='svoby'>Delete profile picture</b></button>
             </form>";
                 }
             }
 
         }
         ?>
-        <br>
+      
 <!--          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">Change profile picture</b></a></button>-->
              <hr>
            <b class="reputacehoub">Profile Info</b>
@@ -70,18 +67,27 @@ if(!isset($_SESSION['id'])){
             echo "<b>Email:</b> <b>" . $_SESSION['mail'] . "</b><br>";
         }
         ?>
-        <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby2">Change password</b></a></button>
+
+
+          <button class="smallbtn3"><a class="profilebtn" href="#"><b class="svoby3">Změnit heslo</b>
+      
         <br>
-        <button class="smallbtn"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby3">Logout</b></a></button>
+        <button class="smallbtn4"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby3">Změnit údaje</b></a></button>
         <br>
 
           <br>
+          <br>
+          <br>
+          <br>
+          
           <hr>
-          <b class="reputacehoub">Market</b>
-<button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">My orders</b></a></button>
+         
+<button class="smallbtn7"><a class="profilebtn" href="#"><b class="svoby2">Moje objednávky<img class="houbiczlobi" src="cart2.png"></img></b></a></button>
 <br>
-<button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">My sells</b></a></button>
-
+<button class="smallbtn75"><a class="profilebtn" href="#"><b class="svoby24">Moje nabídky<img class="houbiczlobi2" src="buch2.png"></img></b></a></button>
+<br>
+<hr>
+<button class="smallbtn5"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby32">Logout<img class="houbiczlobi3" src="logout.png"></img></b>
     </div>
 
         
@@ -115,7 +121,38 @@ li {
 	font-size: 35px;
 }
 body{
-    background-color: #080710;
+    background-color: white;
+}
+
+.houbiczlobi {
+    height: 25px;
+   margin-left: 10px;
+position: absolute;
+}
+.houbiczlobi2 {
+    height: 32px;
+    margin-top: -5px;
+   margin-left: 5px;
+position: absolute;
+}
+
+.houbiczlobi3 {
+    height: 25px;
+    margin-top: -5px;
+   margin-left: 30px;
+position: absolute;
+}
+.svoby32 {
+
+   
+
+   margin-left: -50px;
+
+}
+
+.svoby3 {
+
+    margin-top: -2.5px;
 }
 .background{
    
@@ -125,8 +162,28 @@ body{
     left: 50%;
     top: 50%;
 }
+
+h2 {
+    margin-top: -135px;
+    margin-left: 175px;
+    position: absolute;
+    font-size: 15px;
+ 
+    font-family: Poppins, sans-serif;
+}
 .svoby {
 	transition: 0.2s;
+}
+.svoby2 {
+   margin-left: -40px;
+}
+.svoby24 {
+   margin-left: -42px;
+}
+.svoby23 {
+    font-size: 15px;
+    margin-top: -5px;
+    margin-left: 0px;
 }
 
 input {
@@ -135,12 +192,12 @@ input {
 
 input::file-selector-button {
     font-weight: bold;
-    color: white;
+    color: black;
     padding: 0.5em;
     border: thin solid grey;
     border-radius: 3px;
-    background-color: #FF8000;
-    margin-top: 10px;
+    background-color: white;
+    margin-top: 12px;
     transition: 0.2s;
     cursor: pointer;
 }
@@ -154,33 +211,42 @@ opacity: 0.7;
     width: 200px;
     position: absolute;
     border-radius: 50%;
+     backdrop-filter: blur(10px);
 }
 .ball:first-child{
     background: linear-gradient(
-        orange,
-        orange
+         green,
+         green
+
     );
-    left: -80px;
-    top: -80px;
+    left: 70px;
+    top: 20%;
+     backdrop-filter: blur(10px);
 }
 .ball:last-child{
     background: linear-gradient(
         to right,
-        green,
-        green
+        #00FFFF,
+       #00FFFF
     );
     right: -10px;
     bottom: -80px;
+     backdrop-filter: blur(10px);
 }
 
 .profilepicture {
-	width: 50px;
-    height: 50px;
+	width: 125px;
+    height: 125px;
 	justify-content: center;
 	display: flex;
-	margin-left: 125px;
+	border-radius: 50%;
 	transition: 0.2s;
 	cursor: pointer;
+    border: 2px solid black;
+}
+
+img.profilepicture {
+    border: 2px solid;
 }
 
 .profilepicture:hover {
@@ -189,21 +255,21 @@ opacity: 0.7;
 }
 .mainPartProfile{
     height: auto;
-    width: 375px;
+    width: 100%;
     background-color: rgba(255,255,255,0.13);
-    position: absolute;
+    position: relative;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+   margin-top: -80px;
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
 .mainPartProfile *{
     font-family: 'Poppins',sans-serif;
-    color: #ffffff;
+    color: black;
     letter-spacing: 0.5px;
     outline: none;
     border: none;
@@ -234,13 +300,16 @@ label{
 input{
     display: block;
     height: 50px;
-    width: 100%;
+    width: 190px;
     background-color: rgba(255,255,255,0.07);
     border-radius: 3px;
     padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
+   
+    font-size: 12px;
     font-weight: 300;
+    position: absolute;
+    margin-top: -115px;
+    margin-left: 135px;
 }
 ::placeholder{
     color: #e5e5e5;
@@ -257,11 +326,13 @@ button{
     cursor: pointer;
 }
 
+
 .smallbtn {
-	 margin-top: 12px;
-	  margin-bottom: 12px;
+     margin-top: 12px;
+      margin-bottom: 12px;
     width: 100%;
-    background-color: black;
+    background-color: white;
+    border: 5px solid black;
     color: #080710;
     padding: 8px 0;
     font-size: 18px;
@@ -270,9 +341,127 @@ button{
     cursor: pointer;
 }
 
+.smallbtn7 {
+     margin-top: 12px;
+      margin-bottom: 12px;
+    width: 225px;
+    background-color: white;
+    border: 5px solid black;
+    color: #080710;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.smallbtn75 {
+     margin-top: -20px;
+      margin-bottom: 12px;
+    width: 195px;
+    background-color: white;
+    border: 5px solid black;
+    color: #080710;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.smallbtn2 {
+     margin-top: -50px;
+      margin-bottom: 12px;
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    border: 5px solid black;
+    color: #080710;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 170px;
+    position: absolute;
+
+
+}
+
+.smallbtn3 {
+     
+      margin-top: 20px;
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    border: 5px solid black;
+    color: #080710;
+    padding: 6px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 0px;
+    
+    position: absolute;
+   
+
+
+}
+
+.smallbtn4 {
+     
+      margin-top: 2px;
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    border: 5px solid black;
+    color: #080710;
+    padding: 6px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 155px;
+    
+    position: absolute;
+   
+
+
+
+}
+
+.smallbtn5 {
+     justify-content: center;
+     display: flex;
+      margin-top: 0px;
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    border: 5px solid black;
+    color: #080710;
+    padding: 6px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+  margin-left: 20%;
+    
+    position: absolute;
+   
+
+
+}
+
+
+
+.svoby {
+    margin-top: -2.5px;
+
+}
+
 hr {
 	
-background-color: white;
+background-color: black;
 height: 5px;
 margin-bottom: 12px;
 }

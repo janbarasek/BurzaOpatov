@@ -486,7 +486,7 @@ input[type="range"] {
   }
 
  html, body {
- 	height: 100%;
+  height: 100%;
  }
 
   .menu {
@@ -597,6 +597,9 @@ a {
     position: absolute;
     
 }
+html, body {
+  height: 100%;
+ }
 .bobr.shape {
     height: 150px;
     width: 150px;
@@ -706,7 +709,7 @@ button{
     cursor: pointer;
     border: 3px solid black;
     transition: 0.2s;
-    background-color: black;
+    background-color: white;
     color: #080710;
     padding: 15px 0;
     font-size: 18px;
