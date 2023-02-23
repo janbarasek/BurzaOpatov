@@ -57,13 +57,13 @@ if(!isset($_SESSION['id'])){
       
 <!--          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">Change profile picture</b></a></button>-->
              <hr>
-           <b class="reputacehoub">Profile Info</b>
+           <b class="reputacehoub">Profil Info</b>
          <br>
         <?php
         if (isset($_SESSION['id'])) {
-            echo "<b>Name:</b> <b>" . $_SESSION['name'] . "</b><br>";
-            echo "<b>Surname:</b> <b>" . $_SESSION['surname'] . "</b><br>";
-            echo "<b>Class:</b> <b>" . $_SESSION['class'] . "</b><br>";
+            echo "<b>Jméno:</b> <b>" . $_SESSION['name'] . "</b><br>";
+            echo "<b>Příjmení:</b> <b>" . $_SESSION['surname'] . "</b><br>";
+            echo "<b>Třída:</b> <b>" . $_SESSION['class'] . "</b><br>";
             echo "<b>Email:</b> <b>" . $_SESSION['mail'] . "</b><br>";
         }
         ?>
@@ -117,17 +117,25 @@ include_once 'footer.php';
     box-sizing: border-box;
 }
 
+
+}
+
 li {
 	font-size: 35px;
 }
 body{
     background-color: white;
+    position: relative;
 }
 
 .houbiczlobi {
     height: 25px;
    margin-left: 10px;
 position: absolute;
+}
+
+@media (max-width: 900px) {
+
 }
 .houbiczlobi2 {
     height: 32px;
@@ -254,15 +262,15 @@ img.profilepicture {
 	transition: 0.2s;
 }
 .mainPartProfile{
-    height: auto;
-    width: 100%;
+    height: 100%;
+    width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: relative;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
-   margin-top: -80px;
+   margin-top: -50px;
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;

@@ -12,10 +12,10 @@ include_once 'header.php';
         <h3 class='specialh3'>SEARCH</h3>
         <hr>
         <br>
-        <input class='search' type='text' name='search' placeholder='Search...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search']?>>
-
+        <input class='search' type='text' name='search' placeholder='Hledat...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search']?>>
+ <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse" src="searchlogo.png"></img></button>
         <input type="checkbox" name="moreBooks" value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked"?>>
-        <label for="morebooks">More books</label>
+        <label for="morebooks">Další knihy</label>
         <br>
         <!--<div class="pricerangebox">
             <h3>PRICE</h3>
@@ -28,16 +28,18 @@ include_once 'header.php';
         <div class='radioIndex'>
         <input type='radio' name='year' value='' <?php if (!isset($_POST['year']))echo "checked"?>>
         <label for='year'>Select a year</label>
-        <input type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
-        <label for='year'>4.</label>
-        <input type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
-        <label for='year'>5.</label>
-        <input type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
-        <label for='year'>6.</label>
-        <input type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
-        <label for='year'>7.</label>
-        <input type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
-        <label for='year'>8.</label>
+        <br>
+        <label style='display: inline-block;font-family: Poppins, sans-serif;margin-left:25%;margin-top: -2500px;' for='year'>4.</label>
+        <input class="houbic1" style='display: inline-block;width:20px;' type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
+         <label style='font-family: Poppins, sans-serif;' for='year'>5.</label>
+        <input style='display: inline-block;width: 20px; ;' type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
+       <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>6.</label>
+        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
+         <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>7.</label>
+        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
+         <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>8.</label>
+        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
+      
         </div>
 
 
@@ -119,7 +121,7 @@ include_once 'header.php';
             </div>
         </div>
 
-        <button class='alficek' type='submit' name='submitsearch'>Search</button>
+       
     </form>
 
     <form action="index.php" method="post">
@@ -229,22 +231,20 @@ include_once 'header.php';
                 $filename = 'Photos/'.$product['productslistid'].'*';
                 $fileinfo = glob($filename);
                 echo "
-<h3 style='font-size:25px;float:right;margin-left:250px;margin-top:-50px;text-align:center;color: white;'>".$product['itemName']."</h3>
-         <h3 style='margin-right:50px;margin-top:10px;float:right;font-size:25px;color: white;'>".$product['rankid']."</h3>
+<h3 style='float: right;font-size: 30px;margin-top:50px;position:absolute;'>".$product['itemName']."</h3>
+         <h3 style='' class='image' src='".$fileinfo[0]."'></img>
+    <br>
     <div class='booktext'>
-    <img class='image' src='".$fileinfo[0]."'></img>
-    
-    <div class='booktext'>
-        <h3>". getRankByID($conn, $product['rankid'])['name'] ."</h3>
+        <h3 style='margin-top:50px;font-size:20px;margin-left:90px;'>". getRankByID($conn, $product['rankid'])['name'] ."</h3>
         <br>
         
         <br>
-        <h3 style='margin-top:-30px;font-size:20px;color:white;'>".$product['name']."</h3>
+        <h3 style=''>".$product['name']."</h3>
         <h3>".$product['name']." ". $product['surname']."</h3>
         <br>
-        <h3 style='font-size:20px;color:white;'>".$product['year']."</h3>
+        <h3 style=''>".$product['year']."</h3>
         <br>
-        <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>".$product['price']."</h3>
+        <h3 style=''>".$product['price']."</h3>
         <input type='number' name='productid' hidden='hidden' value=". $product['id'].">
          <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
     </div>
@@ -269,7 +269,13 @@ include_once 'header.php';
                 $filename = 'Photos/'.$product['productslistid'].'*';
                 $fileinfo = glob($filename);
                 echo "
-<h3 style='font-size:25px;float:right;margin-left:250px;margin-top:-50px;text-align:center;color: white;'>".$product['itemName']."</h3>
+<h3 style='color: white;
+margin-left: 20%;
+    margin-top: -35%;
+    font-size: 35px;
+color: red;
+    margin-right: 15px;
+     font-family: Poppins, sans-serif;'>".$product['itemName']."</h3>
          <h3 style='margin-right:50px;margin-top:10px;float:right;font-size:25px;color: white;'>".$product['rankid']."</h3>
     <div class='booktext'>
     <img class='image' src='".$fileinfo[0]."'></img>
@@ -313,6 +319,120 @@ include_once 'footer.php';
 ?>
 
     <style type="text/css">
+        select {
+            height: 50px;
+            margin-left: 8px;
+            display: inline-block;
+            width: 180px;
+        }
+        input[type="radio"] {
+      vertical-align:middle;
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 2px) solid currentColor;
+  outline-offset: max(2px, 2px);
+}
+        input {
+
+            color: black;
+        }
+.alficek {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    margin-top: -50px;
+    margin-left: 275px;
+}
+
+
+
+label {
+    color: black;
+        display: inline-block;
+}
+
+input {
+     display: inline-block;
+}
+::placeholder {
+    font-weight: 600;
+    font-size: 17px;
+    color: grey;
+
+
+}
+
+option {
+    color: white;
+}
+
+select {
+    color: white;
+}
+
+.booktext {
+    width: 100%;
+    height: 150px;
+    background-color: #202020;
+    border-radius: 5px;
+}
+
+.form-absolute {
+     width: 100%;
+    height: 150px;
+    background-color: #202020;
+    border-radius: 5px;
+}
+.dieGasse {
+    width: 40px;
+    margin-top: -12px;
+    margin-left: 1px;
+
+
+
+}
+        .search {
+            border: 5px solid;
+            margin-left: 5px;
+            width: 275px;
+
+        }
         .sbx-custom {
             display: inline-block;
             position: relative;
@@ -349,6 +469,7 @@ include_once 'footer.php';
             -moz-appearance: none;
             appearance: none;
         }
+
 
         .sbx-custom__input::-webkit-search-decoration, .sbx-custom__input::-webkit-search-cancel-button, .sbx-custom__input::-webkit-search-results-button, .sbx-custom__input::-webkit-search-results-decoration {
             display: none;
@@ -453,6 +574,10 @@ include_once 'footer.php';
             width: 25px;
             height: 25px;
 
+
+        }
+
+        .krysa {
 
         }
 
