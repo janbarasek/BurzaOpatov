@@ -7,14 +7,17 @@ include_once 'header.php';
 /*if (isset($_SESSION["name"])){
     echo "<p style='color: red;margin-top:-25px;font-family:Poppins,sans-serif;justify-content:center;display:flex;text-align:center;font-weight:600;font-size:30px;background-color:black;'> Hello " . $_SESSION["name"] . " and welcome to BURZA OPATOV!</p>";
 }
-*/?>
+*/ ?>
     <form class='' action='index.php' method='post'>
         <h3 class='specialh3'>SEARCH</h3>
         <hr>
         <br>
-        <input class='search' type='text' name='search' placeholder='Hledat...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search']?>>
- <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse" src="searchlogo.png"></img></button>
-        <input type="checkbox" name="moreBooks" value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked"?>>
+        <input class='search' type='text' name='search'
+               placeholder='Hledat...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search'] ?>>
+        <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse"
+                                                                       src="Photos/searchlogo.png"></img></button>
+        <input type="checkbox" name="moreBooks"
+               value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked" ?>>
         <label for="morebooks">Další knihy</label>
         <br>
         <!--<div class="pricerangebox">
@@ -26,37 +29,46 @@ include_once 'header.php';
         </div>-->
 
         <div class='radioIndex'>
-        <input type='radio' name='year' value='' <?php if (!isset($_POST['year']))echo "checked"?>>
-        <label for='year'>Select a year</label>
-        <br>
-        <label style='display: inline-block;font-family: Poppins, sans-serif;margin-left:25%;margin-top: -2500px;' for='year'>4.</label>
-        <input class="houbic1" style='display: inline-block;width:20px;' type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
-         <label style='font-family: Poppins, sans-serif;' for='year'>5.</label>
-        <input style='display: inline-block;width: 20px; ;' type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
-       <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>6.</label>
-        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
-         <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>7.</label>
-        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
-         <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>8.</label>
-        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
-      
+            <input type='radio' name='year' value='' <?php if (!isset($_POST['year'])) echo "checked" ?>>
+            <label for='year'>Select a year</label>
+            <br>
+            <label style='display: inline-block;font-family: Poppins, sans-serif;margin-left:25%;margin-top: -2500px;'
+                   for='year'>4.</label>
+            <input class="houbic1" style='display: inline-block;width:20px;' type='radio' name='year'
+                   value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked" ?>>
+            <label style='font-family: Poppins, sans-serif;' for='year'>5.</label>
+            <input style='display: inline-block;width: 20px; ;' type='radio' name='year'
+                   value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked" ?>>
+            <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>6.</label>
+            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+                   value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked" ?>>
+            <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>7.</label>
+            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+                   value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked" ?>>
+            <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>8.</label>
+            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+                   value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked" ?>>
+
         </div>
 
 
         <select name="subjectid">
 
-            <option name="subjectid" value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected"?>>Choose a subject..</option>
+            <option name="subjectid"
+                    value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
+                Choose a subject..
+            </option>
 
             <?php
             $subjects = getSubjects($conn);
-            foreach($subjects as $subject){
-                if(isset($_POST['subjectid']))
-                    if($_POST['subjectid'] == $subject['subjectid'])
-                        echo "<option name='subjectid' value='".$subject['subjectid']."' selected>".$subject['subjectName']."</option>";
+            foreach ($subjects as $subject) {
+                if (isset($_POST['subjectid']))
+                    if ($_POST['subjectid'] == $subject['subjectid'])
+                        echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
                     else
-                        echo "<option name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
+                        echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
                 else
-                    echo "<option name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
+                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
 
             }
             ?>
@@ -67,14 +79,14 @@ include_once 'header.php';
 
             <?php
             $ranks = getRanks($conn);
-            foreach($ranks as $rank){
-                if(isset($_POST['rankid']))
-                    if($_POST['rankid'] == $rank['id'])
-                        echo "<option name='rankid' value='".$rank['id']."' selected>".$rank['name']."</option>";
+            foreach ($ranks as $rank) {
+                if (isset($_POST['rankid']))
+                    if ($_POST['rankid'] == $rank['id'])
+                        echo "<option name='rankid' value='" . $rank['id'] . "' selected>" . $rank['name'] . "</option>";
                     else
-                        echo "<option name='rankid' value='".$rank['id']."'>".$rank['name']."</option>";
+                        echo "<option name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
                 else
-                echo "<option name='rankid' value='".$rank['id']."'>".$rank['name']."</option>";
+                    echo "<option name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
             }
             ?>
         </select>
@@ -99,9 +111,9 @@ include_once 'header.php';
                 <div class="form_control_container">
                     <div class="form_control_container__time">Min</div>
                     <?php
-                    if(isset($_POST['fromSlider'])){
+                    if (isset($_POST['fromSlider'])) {
                         $min = $_POST['fromSlider'];
-                        echo '<input class="form_control_container__time__input" type="number" id="fromInput" value="'.$min.'" min="0" max="1000"/>';
+                        echo '<input class="form_control_container__time__input" type="number" id="fromInput" value="' . $min . '" min="0" max="1000"/>';
                     } else {
                         echo '<input class="form_control_container__time__input" type="number" id="fromInput" value="10" min="0" max="1000"/>';
                     }
@@ -110,9 +122,9 @@ include_once 'header.php';
                 <div class="form_control_container">
                     <div class="form_control_container__time">Max</div>
                     <?php
-                    if(isset($_POST['toSlider'])){
+                    if (isset($_POST['toSlider'])) {
                         $max = $_POST['toSlider'];
-                        echo '<input class="form_control_container__time__input" type="number" id="toInput" value="'.$max.'" min="0" max="1000"/>';
+                        echo '<input class="form_control_container__time__input" type="number" id="toInput" value="' . $max . '" min="0" max="1000"/>';
                     } else {
                         echo '<input class="form_control_container__time__input" type="number" id="toInput" value="900" min="0" max="1000"/>';
                     }
@@ -121,193 +133,227 @@ include_once 'header.php';
             </div>
         </div>
 
-       
+
     </form>
 
-    <form action="index.php" method="post">
-        <?php
+
+    <!--    SHOW THE BOOKS-->
+<?php
 
 
-        //SHOW THE BOOKS
+if (isset($_POST['submitsearch'])) {
 
-        if(isset($_POST['submitsearch'])){
+    $search = mysqli_real_escape_string($conn, $_POST['search']);
+    $rankid = mysqli_real_escape_string($conn, $_POST['rankid']);
+    if (isset($_POST['year'])) {
+        $year = mysqli_real_escape_string($conn, $_POST['year']);
+    } else {
+        $year = null;
+    }
+    $subjectid = mysqli_real_escape_string($conn, $_POST['subjectid']);
 
-            $search = mysqli_real_escape_string($conn, $_POST['search']);
-            $rankid = mysqli_real_escape_string($conn, $_POST['rankid']);
-            if (isset($_POST['year'])){
-                $year = mysqli_real_escape_string($conn, $_POST['year']);
-            }else{
-                $year = null;
-            }
-            $subjectid = mysqli_real_escape_string($conn, $_POST['subjectid']);
+    $fromSlider = mysqli_real_escape_string($conn, $_POST['fromSlider']);
+    $toSlider = mysqli_real_escape_string($conn, $_POST['toSlider']);
 
-            $fromSlider = mysqli_real_escape_string($conn, $_POST['fromSlider']);
-            $toSlider = mysqli_real_escape_string($conn, $_POST['toSlider']);
-
-            if (!is_int($fromSlider) && is_int($toSlider))
-                die("Please enter a valid number");
+    if (!is_int($fromSlider) && is_int($toSlider))
+        die("Please enter a valid number");
 
 
-            if(isset($_POST['moreBooks'])){
-                $moreBooks = true;
-            }else{
-                $moreBooks = false;
-            }
+    if (isset($_POST['moreBooks'])) {
+        $moreBooks = true;
+    } else {
+        $moreBooks = false;
+    }
 
-            $products =  getProductsBySearch($conn, $_POST['search']);
+    $products = getProductsBySearch($conn, $_POST['search']);
 
-            $products2 = getProductsByPrice($conn, $fromSlider, $toSlider);
+    $products2 = getProductsByPrice($conn, $fromSlider, $toSlider);
 
-            $products3 = getProductsByRank($conn, $rankid);
+    $products3 = getProductsByRank($conn, $rankid);
 
-            $products4 = getProductsByYear($conn, $year);
+    $products4 = getProductsByYear($conn, $year);
 
-            $products5 = getProductsBySubjectID($conn, $subjectid);
+    $products5 = getProductsBySubjectID($conn, $subjectid);
 
-            /*
-            Debugging
-            print_r($products);
-            print_r($products2);
-            print_r($products3);
-            print_r($products4);
-            echo mysqli_real_escape_string($conn, $_POST['subjectid']) . "dfsadasdasd";
-            print_r($products5);*/
-
-            if($products == null && $products2 == null && $products3 == null && $products4 == null && $products5 == null){
-                echo "<h3 class='specialh3'>No results found</h3>";
-            }
+    if ($products == null && $products2 == null && $products3 == null && $products4 == null && $products5 == null) {
+        echo "<h3 class='specialh3'>No results found</h3>";
+    }
 
 
-            if ($rankid != null && $year != null && $subjectid != null){
-                $products =  checkArrayEquality($products3, $products4, "id", "id");
-                $products =  checkArrayEquality($products, $products5, "id", "id");
-            }
+    if ($rankid != null && $year != null && $subjectid != null) {
+        $products = checkArrayEquality($products3, $products4, "id", "id");
+        $products = checkArrayEquality($products, $products5, "id", "id");
+    }
 
-            if ($rankid != null && $year != null){
-                $products =  checkArrayEquality($products3, $products4, "id", "id");
-            }
+    if ($rankid != null && $year != null) {
+        $products = checkArrayEquality($products3, $products4, "id", "id");
+    }
 
-            if ($rankid != null && $subjectid != null){
-                $products =  checkArrayEquality($products3, $products5, "id", "id");
-            }
+    if ($rankid != null && $subjectid != null) {
+        $products = checkArrayEquality($products3, $products5, "id", "id");
+    }
 
-            if ($year != null && $subjectid != null){
-                $products =  checkArrayEquality($products4, $products5, "id", "id");
-            }
+    if ($year != null && $subjectid != null) {
+        $products = checkArrayEquality($products4, $products5, "id", "id");
+    }
 
-            if ($rankid != null){
-                $products =  checkArrayEquality($products, $products3, "id", "id");
-            }
+    if ($rankid != null) {
+        $products = checkArrayEquality($products, $products3, "id", "id");
+    }
 
-            if ($year != null){
-                $products =  checkArrayEquality($products, $products4, "id", "id");
-            }
+    if ($year != null) {
+        $products = checkArrayEquality($products, $products4, "id", "id");
+    }
 
-            if ($subjectid != null){
-                $products =  checkArrayEquality($products, $products5, "id", "id");
-            }
+    if ($subjectid != null) {
+        $products = checkArrayEquality($products, $products5, "id", "id");
+    }
 
-            $products =  checkArrayEquality($products, $products2, "id", "id");
+    $products = checkArrayEquality($products, $products2, "id", "id");
 
-            /*
-             Not currently used
-             print_r($products);
-
-            if($products == null){
-                echo "<h3 class='specialh3'>No results found</h3>";
-            }
-
-            $newProducts = array();
-
-            foreach ($products as $product){
-                if (!in_array($product, $newProducts)){
-                    array_push($newProducts, $product);
-                }
-            }*/
-
-
-
-            foreach ($products as $product){
-                $filename = 'Photos/'.$product['productslistid'].'*';
-                $fileinfo = glob($filename);
-                echo "
-<h3 style='float: right;font-size: 30px;margin-top:50px;position:absolute;'>".$product['itemName']."</h3>
-         <h3 style='' class='image' src='".$fileinfo[0]."'></img>
+    foreach ($products as $product) {
+        $filename = 'Photos/' . $product['productslistid'] . '*';
+        $fileinfo = glob($filename);
+        echo "
+<form action='index.php' method='post'>
+     <img style='' class='image' src='" . $fileinfo[0] . "'></img>
+<h3 style='float: right;font-size: 30px;margin-top:50px;'>" . $product['itemName'] . "</h3>
     <br>
     <div class='booktext'>
-        <h3 style='margin-top:50px;font-size:20px;margin-left:90px;'>". getRankByID($conn, $product['rankid'])['name'] ."</h3>
+        <h3 style='margin-top:50px;font-size:20px;margin-left:90px;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
         <br>
-        
         <br>
-        <h3 style=''>".$product['name']."</h3>
-        <h3>".$product['name']." ". $product['surname']."</h3>
+        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
-        <h3 style=''>".$product['year']."</h3>
+        <h3 style=''>" . $product['year'] . "</h3>
         <br>
-        <h3 style=''>".$product['price']."</h3>
-        <input type='number' name='productid' hidden='hidden' value=". $product['id'].">
+        <h3 style=''>" . $product['price'] . "</h3>
+        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
          <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
     </div>
-  
+  </form>
 ";
-                print_r($product['id']);
-            }
-        }
+
+    }
+}
+?>
 
 
-        ?>
-    </form>
+<?php
+if (isset($_POST['submitbuy'])) {
+    $productid = $_POST['productid'];
 
-    <form class="form-absolute" action="includes/reserve.inc.php" method="post">
-        <?php
-            if(isset($_POST['submitbuy'])){
-                $productid = $_POST['productid'];
-                $buyerid = $_SESSION['id'];
+    if (isset($_SESSION['userid'])) {
+        $buyerid = $_SESSION['userid'];
+    } else {
+        $buyerid = null;
+    }
 
 
-                $product = getProductsByID($conn, $productid)[0];
-                $filename = 'Photos/'.$product['productslistid'].'*';
-                $fileinfo = glob($filename);
-                echo "
-<h3 style='color: white;
-margin-left: 20%;
-    margin-top: -35%;
-    font-size: 35px;
-color: red;
+    $product = getProductsByID($conn, $productid)[0];
+    $filename = 'Photos/' . $product['productslistid'] . '*';
+    $fileinfo = glob($filename);
+    echo "
+<form class='form-absolute' action='includes/reserve.inc.php' method='post'>
+<h3 style='color: white;margin-left: 20%;margin-top: -35%;font-size: 35px;color: white;
     margin-right: 15px;
-     font-family: Poppins, sans-serif;'>".$product['itemName']."</h3>
-         <h3 style='margin-right:50px;margin-top:10px;float:right;font-size:25px;color: white;'>".$product['rankid']."</h3>
+     font-family: Poppins, sans-serif;'>" . $product['itemName'] . "</h3>
+        
     <div class='booktext'>
-    <img class='image' src='".$fileinfo[0]."'></img>
+    <img class='image' src='" . $fileinfo[0] . "'></img>
     
     <div class='booktext'>
-        <h3>". getRankByID($conn, $product['rankid'])['name'] ."</h3>
+        <h3>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
         <br>
+        <br>
+        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
+        <br>
+        <h3 style='font-size:20px;color:white;'>" . $product['year'] . "</h3>
+        <br>
+        <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>" . $product['price'] . "</h3>
+        <textarea>
         
-        <br>
-        <h3 style='margin-top:-30px;font-size:20px;color:white;'>".$product['name']."</h3>
-        <h3>".$product['name']." ". $product['surname']."</h3>
-        <br>
-        <h3 style='font-size:20px;color:white;'>".$product['year']."</h3>
-        <br>
-        <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>".$product['price']."</h3>
-        <input type='number' name='productid' hidden='hidden' value=". $product['id'].">
-         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
-    </div>
-  
-";
-            }
+</textarea>
+<button onclick='generateEmailShow()'>GENERATE</button>
+<input type='date' name='date'>";
+}
         ?>
 
+    <select name="subjectid">
+
+        <option name="subjectid"
+                value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
+            Choose a subject..
+        </option>
+
+        <?php
+        $subjects = getSubjects($conn);
+        foreach ($subjects as $subject) {
+            if (isset($_POST['subjectid']))
+                if ($_POST['subjectid'] == $subject['subjectid'])
+                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
+                else
+                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+            else
+                echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+
+        }
+        ?>
+    </select>
+
+    <select name="subjectid">
+
+        <option name="subjectid"
+                value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
+            Choose a subject..
+        </option>
+
+        <?php
+        $subjects = getSubjects($conn);
+        foreach ($subjects as $subject) {
+            if (isset($_POST['subjectid']))
+                if ($_POST['subjectid'] == $subject['subjectid'])
+                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
+                else
+                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+            else
+                echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+
+        }
+        ?>
+    </select>
+
+    <?php
+
+if (isset($_POST['submitbuy'])) {
+    $productid = $_POST['productid'];
+
+    if (isset($_SESSION['userid'])) {
+        $buyerid = $_SESSION['userid'];
+    } else {
+        $buyerid = null;
+    }
+
+
+    $product = getProductsByID($conn, $productid)[0];
+    echo "
+        <button onclick='generateEmail'></button>
+        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
+         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
+    </div>
+    
     </form>
+  
+";
+}
+?>
 
 
 <?php
 if (isset($_GET["error"])) {
     if ($_GET["error"] == "emptyinput") {
         echo "<p>Fill in all fields!</p>";
-    }
-    else if ($_GET["error"] == "wronglogin") {
+    } else if ($_GET["error"] == "wronglogin") {
         echo "<p>Incorrect login credentials</p>";
     }
 }
@@ -325,114 +371,119 @@ include_once 'footer.php';
             display: inline-block;
             width: 180px;
         }
+
         input[type="radio"] {
-      vertical-align:middle;
-  /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  /* Remove most all native input styles */
-  appearance: none;
-  /* For iOS < 15 */
-  background-color: var(--form-background);
-  /* Not removed via appearance */
-  margin: 0;
+            vertical-align: middle;
+            /* Add if not using autoprefixer */
+            -webkit-appearance: none;
+            /* Remove most all native input styles */
+            appearance: none;
+            /* For iOS < 15 */
+            background-color: var(--form-background);
+            /* Not removed via appearance */
+            margin: 0;
 
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border: 0.15em solid currentColor;
-  border-radius: 50%;
-  transform: translateY(-0.075em);
+            font: inherit;
+            color: currentColor;
+            width: 1.15em;
+            height: 1.15em;
+            border: 0.15em solid currentColor;
+            border-radius: 50%;
+            transform: translateY(-0.075em);
 
-  display: grid;
-  place-content: center;
-}
+            display: grid;
+            place-content: center;
+        }
 
-input[type="radio"]::before {
-  content: "";
-  width: 0.65em;
-  height: 0.65em;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--form-control-color);
-  /* Windows High Contrast Mode */
-  background-color: CanvasText;
-}
+        input[type="radio"]::before {
+            content: "";
+            width: 0.65em;
+            height: 0.65em;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--form-control-color);
+            /* Windows High Contrast Mode */
+            background-color: CanvasText;
+        }
 
-input[type="radio"]:checked::before {
-  transform: scale(1);
-}
+        input[type="radio"]:checked::before {
+            transform: scale(1);
+        }
 
-input[type="radio"]:focus {
-  outline: max(2px, 2px) solid currentColor;
-  outline-offset: max(2px, 2px);
-}
+        input[type="radio"]:focus {
+            outline: max(2px, 2px) solid currentColor;
+            outline-offset: max(2px, 2px);
+        }
+
         input {
 
             color: black;
         }
-.alficek {
-    background-color: white;
-    width: 50px;
-    height: 50px;
-    margin-top: -50px;
-    margin-left: 275px;
-}
+
+        .alficek {
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            margin-top: -50px;
+            margin-left: 275px;
+        }
 
 
+        label {
+            color: black;
+            display: inline-block;
+        }
 
-label {
-    color: black;
-        display: inline-block;
-}
+        input {
+            display: inline-block;
+        }
 
-input {
-     display: inline-block;
-}
-::placeholder {
-    font-weight: 600;
-    font-size: 17px;
-    color: grey;
-
-
-}
-
-option {
-    color: white;
-}
-
-select {
-    color: white;
-}
-
-.booktext {
-    width: 100%;
-    height: 150px;
-    background-color: #202020;
-    border-radius: 5px;
-}
-
-.form-absolute {
-     width: 100%;
-    height: 150px;
-    background-color: #202020;
-    border-radius: 5px;
-}
-.dieGasse {
-    width: 40px;
-    margin-top: -12px;
-    margin-left: 1px;
+        ::placeholder {
+            font-weight: 600;
+            font-size: 17px;
+            color: grey;
 
 
+        }
 
-}
+        option {
+            color: white;
+        }
+
+        select {
+            color: white;
+        }
+
+        .booktext {
+            width: 100%;
+            height: auto;
+            background-color: #202020;
+            border-radius: 5px;
+        }
+
+        .form-absolute {
+            width: 100%;
+            height: 150px;
+            background-color: #202020;
+            border-radius: 5px;
+        }
+
+        .dieGasse {
+            width: 40px;
+            margin-top: -12px;
+            margin-left: 1px;
+
+
+        }
+
         .search {
             border: 5px solid;
             margin-left: 5px;
             width: 275px;
 
         }
+
         .sbx-custom {
             display: inline-block;
             position: relative;
@@ -618,5 +669,5 @@ select {
 
 
 <?php
-    include_once 'footer.php';
+include_once 'footer.php';
 ?>

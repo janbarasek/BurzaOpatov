@@ -82,9 +82,9 @@ if(!isset($_SESSION['id'])){
           
           <hr>
          
-<button class="smallbtn7"><a class="profilebtn" href="#"><b class="svoby2">Moje objednávky<img class="houbiczlobi" src="cart2.png"></img></b></a></button>
+<button class="smallbtn7"><a class="profilebtn" href="#"><b class="svoby2">Moje objednávky<img class="houbiczlobi" src="Photos/cart2.png"></img></b></a></button>
 <br>
-<button class="smallbtn75"><a class="profilebtn" href="#"><b class="svoby24">Moje nabídky<img class="houbiczlobi2" src="buch2.png"></img></b></a></button>
+<button class="smallbtn75"><a class="profilebtn" href="#"><b class="svoby24">Moje nabídky<img class="houbiczlobi2" src="Photos/buch2.png"></img></b></a></button>
 <br>
 <hr>
 <button class="smallbtn5"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby32">Logout<img class="houbiczlobi3" src="logout.png"></img></b>
