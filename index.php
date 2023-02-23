@@ -15,7 +15,7 @@ include_once 'header.php';
         <input class='search' type='text' name='search' placeholder='Hledat...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search']?>>
  <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse" src="searchlogo.png"></img></button>
         <input type="checkbox" name="moreBooks" value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked"?>>
-        <label for="morebooks">More books</label>
+        <label for="morebooks">Další knihy</label>
         <br>
         <!--<div class="pricerangebox">
             <h3>PRICE</h3>
@@ -29,16 +29,16 @@ include_once 'header.php';
         <input type='radio' name='year' value='' <?php if (!isset($_POST['year']))echo "checked"?>>
         <label for='year'>Select a year</label>
         <br>
-        <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>4.</label>
-        <input style='width: 35px;margin-left: 10px;' type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
+        <label style='display: inline-block;font-family: Poppins, sans-serif;margin-left:25%;margin-top: -2500px;' for='year'>4.</label>
+        <input class="houbic1" style='display: inline-block;width:20px;' type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
          <label style='font-family: Poppins, sans-serif;' for='year'>5.</label>
-        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
-       <label style='font-family: Poppins, sans-serif;' for='year'>6.</label>
-        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
-         <label style='font-family: Poppins, sans-serif;' for='year'>7.</label>
-        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
-         <label style='font-family: Poppins, sans-serif;' for='year'>8.</label>
-        <input style='width: 35px; margin-left: 10px;' type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
+        <input style='display: inline-block;width: 20px; ;' type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
+       <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>6.</label>
+        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
+         <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>7.</label>
+        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
+         <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>8.</label>
+        <input style='display: inline-block;width: 20px;' type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
       
         </div>
 
@@ -319,6 +319,55 @@ include_once 'footer.php';
 ?>
 
     <style type="text/css">
+        select {
+            height: 50px;
+            margin-left: 8px;
+            display: inline-block;
+            width: 180px;
+        }
+        input[type="radio"] {
+      vertical-align:middle;
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 2px) solid currentColor;
+  outline-offset: max(2px, 2px);
+}
         input {
 
             color: black;
