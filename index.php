@@ -275,56 +275,40 @@ if (isset($_POST['submitbuy'])) {
         
 </textarea>
 <button onclick='generateEmailShow()'>GENERATE</button>
-<input type='date' name='date'>";
+<input type='date' name='date'>
+
+        
+
+    <select name='subjectid'> 
+//dodelat aby to nebylo v tomhle echu
+        <option name='subjectid' value=''>
+    }";
+    ?>
+    <?php
+    if(isset($_POST['submitbuy'])){
+        if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected";
+        echo "Choose a subject..
+        </option>";
+    }
+}
+    ?>
+        <?php
+if (isset($_POST['submitbuy'])) {
+    $subjects = getSubjects($conn);
+    foreach ($subjects as $subject) {
+        if (isset($_POST['subjectid']))
+            if ($_POST['subjectid'] == $subject['subjectid'])
+                echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
+            else
+                echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+        else
+            echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+
+    }
+    echo "</select>";
 }
         ?>
-
-    <select name="subjectid">
-
-        <option name="subjectid"
-                value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
-            Choose a subject..
-        </option>
-
-        <?php
-        $subjects = getSubjects($conn);
-        foreach ($subjects as $subject) {
-            if (isset($_POST['subjectid']))
-                if ($_POST['subjectid'] == $subject['subjectid'])
-                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
-                else
-                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
-            else
-                echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
-
-        }
-        ?>
-    </select>
-
-    <select name="subjectid">
-
-        <option name="subjectid"
-                value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
-            Choose a subject..
-        </option>
-
-        <?php
-        $subjects = getSubjects($conn);
-        foreach ($subjects as $subject) {
-            if (isset($_POST['subjectid']))
-                if ($_POST['subjectid'] == $subject['subjectid'])
-                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
-                else
-                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
-            else
-                echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
-
-        }
-        ?>
-    </select>
-
-    <?php
-
+<?php
 if (isset($_POST['submitbuy'])) {
     $productid = $_POST['productid'];
 

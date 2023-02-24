@@ -1,0 +1,60 @@
+CREATE TABLE class (
+	class varchar(2) NOT NULL PRIMARY KEY,
+    classYear int(2) NOT NULL
+);
+
+CREATE TABLE Products(
+    id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    userid int(11) NOT NULL,
+    productslistid int(11) NOT NULL,
+    rankid int(11) NOT NULL,
+    statusid int(11) NOT NULL DEFAULT 1,
+    price int(11) NOT NULL
+);
+
+CREATE TABLE productsList (
+    productslistid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    subjectid int(11) NOT NULL,
+    itemName varchar(256) NOT NULL,
+    year int(2) NOT NULL,
+    publishYear int(6) NOT NULL
+);
+
+CREATE TABLE profileimg(
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    userid int(11) NOT NULL,
+    status int(1) NOT NULL DEFAULT 0
+);
+
+CREATE TABLE rank (
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(256) NOT NULL
+);
+
+CREATE TABLE status (
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(256) NOT NULL
+);
+
+CREATE TABLE subject (
+    subjectid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    subjectName varchar(256) NOT NULL
+);
+
+CREATE TABLE userrank (
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(256) NOT NULL
+);
+
+CREATE TABLE users (
+    id int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name varchar(256) NOT NULL,
+    surname varchar(256) NOT NULL,
+    class varchar(5),
+    email varchar(256),
+    password varchar(256),
+    rights int(1) NOT NULL DEFAULT 0,
+    cookies int(1) NOT NULL DEFAULT 0,
+    points int(11) NOT NULL DEFAULT 0,
+    rank int(2)
+);

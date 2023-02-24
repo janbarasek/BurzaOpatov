@@ -1,0 +1,32 @@
+INSERT INTO class (class, classYear)
+	VALUES ("T",4);
+INSERT INTO class (class, classYear)
+	VALUES ("U",4);
+
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("biologie pro gymnazia", 2, 6, 1995);
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("matika rovnice", 1, 6, 1986);
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("matika nerovnice", 1, 6, 1996);
+
+INSERT INTO rank (name)
+	VALUES ("BEST");
+INSERT INTO rank (name)
+	VALUES ("BETTER");
+INSERT INTO rank (name)
+	VALUES ("MID");
+INSERT INTO rank (name)
+	VALUES ("BAD");
+INSERT INTO rank (name)
+	VALUES ("WORST");
+
+INSERT INTO status (name)
+	VALUES ("AVAILABLE");
+INSERT INTO status (name)
+	VALUES ("ON HOLD");
+INSERT INTO status (name)
+	VALUES ("SOLD");
+
+INSERT INTO subject (subjectName) VALUES ("matika");
+INSERT INTO subject (subjectName) VALUES ("biologie");
