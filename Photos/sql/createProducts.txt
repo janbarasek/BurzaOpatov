@@ -4,5 +4,7 @@ CREATE TABLE Products(
     productslistid int(11) NOT NULL,
     rankid int(11) NOT NULL,
     statusid int(11) NOT NULL DEFAULT 1,
-    price int(11) NOT NULL
+    price int(11) NOT NULL,
+    buyerid int(11),
+    buyTime datetime
 );

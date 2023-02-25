@@ -1,3 +1,5 @@
+
+// slider
 function controlFromInput(fromSlider, fromInput, toInput, controlSlider) {
     const [from, to] = getParsed(fromInput, toInput);
     fillSlider(fromInput, toInput, '#C6C6C6', '#25daa5', controlSlider);
@@ -85,3 +87,71 @@ fromSlider.oninput = () => controlFromSlider(fromSlider, toSlider, fromInput);
 toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
 fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
 toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
+
+//generating email
+
+function ShowHideGenerateEmail(){
+    if (document.getElementById("generateEmailContainer").style.display == "none")
+        document.getElementById("generateEmailContainer").style.display = "block";
+    else
+        document.getElementById("generateEmailContainer").style.display = "none";
+}
+
+function generateEmail(name, surname, nameSeller, nameItem) {
+    var email = document.getElementById("email").value;
+    var date = document.getElementById("date").value;
+    var time = document.getElementById("time").value;
+    var place = document.getElementById("place").value;
+
+
+
+    var emailBody = "Ahoj " + nameSeller + "\n"
+    + "Mám zájem o nákup knihy " + nameItem +"\n"
+    + "Můžeme se sejít v " + GetPlaceByid(place) + " v " + GetTimeByid(time) + " dne " + GetDate(date) + "\n"
+    + "Díky moc\n"
+    + name + " " + surname;
+
+    ShowEmail(emailBody);
+
+}
+
+function GetPlaceByid(id) {
+    dict = {
+        "1": "satny",
+        "2": "Pavilon A",
+    }
+
+    if(dict[id] == undefined)
+        return "[vlozte misto]";
+    return dict[id];
+}
+
+function GetTimeByid(id){
+    dict = {
+        "1": "7:40",
+        "2": "8:45",
+        "3": "9:40",
+        "4": "10:40",
+        "5": "11:40",
+        "6": "12:35",
+        "7": "13:30",
+        "8": "14:25",
+        "9": "15:20",
+        "10": "16:10",
+        "11": "17:00",
+    }
+
+    if(dict[id] == undefined)
+        return "[vlozte cas]";
+    return dict[id];
+}
+
+function GetDate(date){
+    if(date == "")
+        return "[vlozte datum]";
+    return date;
+}
+
+function ShowEmail(email){
+    document.getElementById("email").value = email;
+}

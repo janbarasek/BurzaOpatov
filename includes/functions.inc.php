@@ -484,6 +484,12 @@ function getSubjects($conn){
     return $ranks;
 }
 
+function getPlaces($conn):array{
+    $result = mysqli_query($conn, "SELECT * FROM place;");
+    $places = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $places;
+}
+
 function emptyInputSell($userid, $productslistid, $rankid, $price){
     $result;
     if(empty($userid) || empty($productslistid) || empty($rankid) || empty($price)){

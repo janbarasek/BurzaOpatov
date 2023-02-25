@@ -2,12 +2,6 @@
 include_once 'header.php';
 ?>
 
-
-<?php
-/*if (isset($_SESSION["name"])){
-    echo "<p style='color: red;margin-top:-25px;font-family:Poppins,sans-serif;justify-content:center;display:flex;text-align:center;font-weight:600;font-size:30px;background-color:black;'> Hello " . $_SESSION["name"] . " and welcome to BURZA OPATOV!</p>";
-}
-*/ ?>
     <form class='' action='index.php' method='post'>
         <h3 class='specialh3'>SEARCH</h3>
         <hr>
@@ -137,7 +131,7 @@ include_once 'header.php';
     </form>
 
 
-    <!--    SHOW THE BOOKS-->
+    <!--SHOW THE BOOKS-->
 <?php
 
 
@@ -212,9 +206,11 @@ if (isset($_POST['submitsearch'])) {
     $products = checkArrayEquality($products, $products2, "id", "id");
 
     foreach ($products as $product) {
-        $filename = 'Photos/' . $product['productslistid'] . '*';
-        $fileinfo = glob($filename);
-        echo "
+
+        if($product['buyerid'] == null){
+            $filename = 'Photos/books/' . $product['productslistid'] . '*';
+            $fileinfo = glob($filename);
+            echo "
 <form action='index.php' method='post'>
      <img style='' class='image' src='" . $fileinfo[0] . "'></img>
 <h3 style='float: right;font-size: 30px;margin-top:50px;'>" . $product['itemName'] . "</h3>
@@ -234,7 +230,81 @@ if (isset($_POST['submitsearch'])) {
   </form>
 ";
 
+        }
     }
+}
+?>
+
+
+    <!--SHOW ONE BOOK-->
+
+<?php
+if (isset($_POST['submitbuy'])) {
+    $productid = $_POST['productid'];
+
+    if (isset($_SESSION['userid'])) {
+        $buyerid = $_SESSION['userid'];
+    } else {
+        $buyerid = null;
+    }
+
+
+    $product = getProductsByID($conn, $productid)[0];
+    $filename = 'Photos/books/' . $product['productslistid'] . '*';
+    $fileinfo = glob($filename);
+    echo "
+<form class='form-absolute' action='includes/reserve.inc.php' method='post'>
+    <img class='image' src='" . $fileinfo[0] . "'></img>
+<h3 style='color: white;margin-left: 20%;margin-top: -35%;font-size: 35px;color: white;margin-right: 15px;font-family: Poppins, sans-serif;'>" . $product['itemName'] . "</h3>
+    
+    <div class='booktext'>
+        <h3>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+        <br>
+        <br>
+        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
+        <br>
+        <h3 style='font-size:20px;color:white;'>" . $product['year'] . "</h3>
+        <br>
+        <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>" . $product['price'] . "</h3>
+        <textarea id='email'>
+        
+</textarea>
+<h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>GENERATE</h3>
+
+<div id='generateEmailContainer' style='display: none' >
+<input type='date' name='date' id='date'>
+
+    ";
+    echo "
+    <select name='placeid' id='place'> 
+        <option name='placeid' value=''>
+Choose a place..
+        </option>";
+
+
+    $places = getPlaces($conn);
+    foreach ($places as $place) {
+        echo "<option name='placeid' value='" . $place['placeid'] . "'>" . $place['placeName'] . "</option>";
+    }
+    echo "</select>";
+
+
+    echo "
+<select name='timeid' id='time'> 
+        <option name='timeid' value=''>Choose a time..</option>
+        <option name='timeid' value='1'>7:40</option>
+        <option name='timeid' value='2'>8:45</option>
+        <option name='timeid' value='3'>9:40</option>
+        <option name='timeid' value='4'>10:40</option>
+        <option name='timeid' value='5'>11:40</option>
+        <option name='timeid' value='6'>12:35</option>
+        <option name='timeid' value='7'>13:30</option>
+        <option name='timeid' value='8'>14:25</option>
+        <option name='timeid' value='9'>15:20</option>
+        <option name='timeid' value='10'>16:10</option>
+        <option name='timeid' value='11'>17:00</option>
+</select>";
+
 }
 ?>
 
@@ -251,77 +321,15 @@ if (isset($_POST['submitbuy'])) {
 
 
     $product = getProductsByID($conn, $productid)[0];
-    $filename = 'Photos/' . $product['productslistid'] . '*';
-    $fileinfo = glob($filename);
-    echo "
-<form class='form-absolute' action='includes/reserve.inc.php' method='post'>
-<h3 style='color: white;margin-left: 20%;margin-top: -35%;font-size: 35px;color: white;
-    margin-right: 15px;
-     font-family: Poppins, sans-serif;'>" . $product['itemName'] . "</h3>
-        
-    <div class='booktext'>
-    <img class='image' src='" . $fileinfo[0] . "'></img>
-    
-    <div class='booktext'>
-        <h3>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
-        <br>
-        <br>
-        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
-        <br>
-        <h3 style='font-size:20px;color:white;'>" . $product['year'] . "</h3>
-        <br>
-        <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>" . $product['price'] . "</h3>
-        <textarea>
-        
-</textarea>
-<button onclick='generateEmailShow()'>GENERATE</button>
-<input type='date' name='date'>
-
-        
-
-    <select name='subjectid'> 
-//dodelat aby to nebylo v tomhle echu
-        <option name='subjectid' value=''>
-    }";
-    ?>
-    <?php
-    if(isset($_POST['submitbuy'])){
-        if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected";
-        echo "Choose a subject..
-        </option>";
-    }
-}
-    ?>
-        <?php
-if (isset($_POST['submitbuy'])) {
-    $subjects = getSubjects($conn);
-    foreach ($subjects as $subject) {
-        if (isset($_POST['subjectid']))
-            if ($_POST['subjectid'] == $subject['subjectid'])
-                echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
-            else
-                echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
-        else
-            echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
-
-    }
-    echo "</select>";
-}
-        ?>
-<?php
-if (isset($_POST['submitbuy'])) {
-    $productid = $_POST['productid'];
-
-    if (isset($_SESSION['userid'])) {
-        $buyerid = $_SESSION['userid'];
-    } else {
-        $buyerid = null;
-    }
+    echo "<h3 class='generateEmailBut' onclick='generateEmail(";
+    echo '"' . $_SESSION['name'] . '"';
+    echo ',"' . $_SESSION['surname'] . '"';
+    echo ',"' . $product['name'] . ' ' . $product['surname'] . '"';
+    echo ',"' . $product['itemName'] . '"';
 
 
-    $product = getProductsByID($conn, $productid)[0];
-    echo "
-        <button onclick='generateEmail'></button>
+    echo ")'></h3>
+</div>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
          <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
     </div>
@@ -333,6 +341,7 @@ if (isset($_POST['submitbuy'])) {
 ?>
 
 
+    <!--ERROR HANDLING-->
 <?php
 if (isset($_GET["error"])) {
     if ($_GET["error"] == "emptyinput") {
@@ -466,6 +475,20 @@ include_once 'footer.php';
             margin-left: 5px;
             width: 275px;
 
+        }
+
+        .generateEmailBut {
+            display: inline-block;
+            width: 150px;
+            height: 50px;
+            background-color: white;
+            border-radius: 5px;
+            margin-left: 5px;
+            margin-top: -50px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 10px;
         }
 
         .sbx-custom {
@@ -612,10 +635,6 @@ include_once 'footer.php';
 
         }
 
-        .krysa {
-
-        }
-
         .sbx-custom__input:valid ~ .sbx-custom__reset {
             display: block;
             -webkit-animation-name: sbx-reset-in;
@@ -650,7 +669,6 @@ include_once 'footer.php';
             }
         }
     </style>
-
 
 <?php
 include_once 'footer.php';

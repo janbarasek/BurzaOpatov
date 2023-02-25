@@ -1,0 +1,4 @@
+CREATE TABLE place (
+    placeid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    placeName varchar(256) NOT NULL
+);

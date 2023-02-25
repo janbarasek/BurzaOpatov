@@ -1,0 +1,2 @@
+INSERT INTO place (placeName)
+	VALUES ("Lockers"),("Pavilon A");

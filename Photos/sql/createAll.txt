@@ -9,7 +9,9 @@ CREATE TABLE Products(
     productslistid int(11) NOT NULL,
     rankid int(11) NOT NULL,
     statusid int(11) NOT NULL DEFAULT 1,
-    price int(11) NOT NULL
+    price int(11) NOT NULL,
+    buyerid int(11),
+    buyTime datetime
 );
 
 CREATE TABLE productsList (
@@ -57,4 +59,9 @@ CREATE TABLE users (
     cookies int(1) NOT NULL DEFAULT 0,
     points int(11) NOT NULL DEFAULT 0,
     rank int(2)
+);
+
+CREATE TABLE place (
+    placeid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    placeName varchar(256) NOT NULL
 );
