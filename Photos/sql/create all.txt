@@ -32,4 +32,4 @@ INSERT INTO subject (subjectName) VALUES ("matika");
 INSERT INTO subject (subjectName) VALUES ("biologie");
 
 INSERT INTO place (placeName)
-	VALUES ("Lockers"),("Pavilon A");
+	VALUES ("Satny"),("Pavilon A");

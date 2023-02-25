@@ -2,6 +2,7 @@
 include_once 'header.php';
 ?>
 
+    <!--SEARCH FOR THE BOOKS-->
     <form class='' action='index.php' method='post'>
         <h3 class='specialh3'>SEARCH</h3>
         <hr>
@@ -207,7 +208,7 @@ if (isset($_POST['submitsearch'])) {
 
     foreach ($products as $product) {
 
-        if($product['buyerid'] == null){
+        if ($product['buyerid'] == null) {
             $filename = 'Photos/books/' . $product['productslistid'] . '*';
             $fileinfo = glob($filename);
             echo "
@@ -231,6 +232,36 @@ if (isset($_POST['submitsearch'])) {
 ";
 
         }
+    }
+} else {
+    if (!isset($_POST['submitbuy'])) {
+        $products = getProducts($conn);
+        foreach ($products as $product) {
+            if ($product['buyerid'] == null) {
+                $filename = 'Photos/books/' . $product['productslistid'] . '*';
+                $fileinfo = glob($filename);
+                echo "
+<form action='index.php' method='post'>
+     <img style='' class='image' src='" . $fileinfo[0] . "'></img>
+<h3 style='float: right;font-size: 30px;margin-top:50px;'>" . $product['itemName'] . "</h3>
+    <br>
+    <div class='booktext'>
+        <h3 style='margin-top:50px;font-size:20px;margin-left:90px;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+        <br>
+        <br>
+        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
+        <br>
+        <h3 style=''>" . $product['year'] . "</h3>
+        <br>
+        <h3 style=''>" . $product['price'] . "</h3>
+        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
+         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
+    </div>
+  </form>
+";
+            }
+        }
+
     }
 }
 ?>
@@ -266,7 +297,7 @@ if (isset($_POST['submitbuy'])) {
         <h3 style='font-size:20px;color:white;'>" . $product['year'] . "</h3>
         <br>
         <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>" . $product['price'] . "</h3>
-        <textarea id='email'>
+        <textarea id='email' required maxlength='500' minlength='10' name='email'>
         
 </textarea>
 <h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>GENERATE</h3>

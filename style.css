@@ -746,3 +746,13 @@ width: 110px;
 
 }
 
+.messageLeft{
+    float: left;
+    width: 100%;
+}
+
+.messageRight{
+    float: right;
+    text-align: right;
+    width: 100%;
+}

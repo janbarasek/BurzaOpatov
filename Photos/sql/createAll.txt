@@ -65,3 +65,12 @@ CREATE TABLE place (
     placeid int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     placeName varchar(256) NOT NULL
 );
+
+CREATE TABLE message(
+    id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    userid int(11) NOT NULL,
+    productid int(11) NOT NULL,
+    count int(11) NOT NULL,
+    message mediumtext NOT NULL,
+    dateTime datetime NOT NULL
+);

@@ -340,6 +340,14 @@ function getProductsList($conn){
 
 //gets product from database
 
+function getProducts($conn):array{
+    $result = mysqli_query($conn, "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
+        ;");
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
+
 function getProductsBySearch($conn, $search){
     $sql = "SELECT *, p.id FROM products p
         JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
@@ -357,28 +365,17 @@ function getProductsBySearch($conn, $search){
     $result = mysqli_stmt_get_result($stmt);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_stmt_close($stmt);
-
-    /*$sql = "SELECT * FROM products p
-         WHERE pl.name LIKE ? OR pl.year LIKE ? OR pl.publishYear LIKE ? OR s.name LIKE ?;";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../index.php?error=stmtfailed");
-        exit();
-    }
-    $search = "%".$search."%";
-    mysqli_stmt_bind_param($stmt, "ssss", $search, $search, $search, $search);// s = string
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $products2 = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    mysqli_stmt_close($stmt);
-
-    $products = array_merge($products, $products2);*/
     return $products;
 }
 
-// JOIN productslist pl ON p.productslistid = pl.id
-//$sql = "SELECT * FROM products p JOIN productslist pl ON p.productslistid = pl.id JOIN subject s ON pl.subjectid = s.id
-         //WHERE pl.name LIKE ? OR pl.year LIKE ? OR s.name LIKE ?;";
+function getProductsBySellerID($conn, $id){
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
+        WHERE p.userid = '".$id."' ORDER BY p.buyTime DESC;";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
 function getProductsByPrice($conn, $fromPrice, $toPrice){
     $sql = "SELECT *, p.id FROM products p
         JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
@@ -460,7 +457,11 @@ function getProductsListYearSubjectid($conn, $year, $subjectid){
     return $products;
 }
 
-
+function getStatusByID($conn, $statusID){
+    $result = mysqli_query($conn, "SELECT * FROM status WHERE id = '".$statusID."';");
+    $statuses = mysqli_fetch_assoc($result);
+    return $statuses;
+};
 
 
 function getRanks($conn){
@@ -515,3 +516,14 @@ function createItem($conn, $userid, $productslistid, $rankid, $price){
     exit();
 }
 
+function getMessageByProductID($conn, $productid){
+    $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."'");
+    $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $messages;
+}
+
+function getMessageByProductIDDesc($conn, $productid){
+    $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."' ORDER BY id DESC");
+    $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $messages;
+}
