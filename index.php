@@ -300,7 +300,7 @@ if (isset($_POST['submitbuy'])) {
         <textarea id='email' required maxlength='500' minlength='10' name='email'>
         
 </textarea>
-<h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>GENERATE</h3>
+<h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>auto-generate options</h3>
 
 <div id='generateEmailContainer' style='display: none' >
 <input type='date' name='date' id='date'>
@@ -359,7 +359,7 @@ if (isset($_POST['submitbuy'])) {
     echo ',"' . $product['itemName'] . '"';
 
 
-    echo ")'></h3>
+    echo ")'>Generate</h3>
 </div>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
          <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
@@ -516,7 +516,6 @@ include_once 'footer.php';
             border-radius: 5px;
             margin-left: 5px;
             margin-top: -50px;
-            color: white;
             font-size: 20px;
             text-align: center;
             padding-top: 10px;

@@ -83,6 +83,9 @@ if (!isset($_SESSION['id'])) {
             <hr>
 
             <?php
+
+            $notification = 0;
+
             echo "<button class='smallbtn7'><a class='profilebtn' href='myOrders.php'><b class='svoby2'>Moje objednávky<img
                                 class='houbiczlobi' src='Photos/cart2.png'></img></b></a>";
 
@@ -90,6 +93,7 @@ if (!isset($_SESSION['id'])) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                         echo "<div class='messageShow'></div>";
+                        $notification = 1;
                         break;
                     }
                 }
@@ -105,8 +109,10 @@ if (!isset($_SESSION['id'])) {
             foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        echo "<div class='messageShow'></div>";
-                        break;
+                        if($notification == 0){
+                            echo "<div class='messageShow'></div>";
+                            break;
+                        }
                     }
                 }
             }

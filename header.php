@@ -32,10 +32,14 @@ include_once 'includes/functions.inc.php';
   <span></span>
 
     <?php
+
+    $notification = 0;
+
     foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
         foreach (getMessagesByProductID($conn, $product['id']) as $message) {
             if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                 echo "<div class='messageShow'></div>";
+                $notification = 1;
                 break;
             }
         }
@@ -43,8 +47,10 @@ include_once 'includes/functions.inc.php';
     foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
         foreach (getMessagesByProductID($conn, $product['id']) as $message) {
             if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                echo "<div class='messageShow'></div>";
-                break;
+                if($notification == 0){
+                    echo "<div class='messageShow'></div>";
+                    break;
+                }
             }
         }
     }
@@ -79,6 +85,7 @@ include_once 'includes/functions.inc.php';
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                         echo "<div class='messageShow'></div>";
+                        $notification = 1;
                         break;
                     }
                 }
@@ -86,8 +93,10 @@ include_once 'includes/functions.inc.php';
             foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        echo "<div class='messageShow'></div>";
-                        break;
+                        if($notification == 0){
+                            echo "<div class='messageShow'></div>";
+                            break;
+                        }
                     }
                 }
             }

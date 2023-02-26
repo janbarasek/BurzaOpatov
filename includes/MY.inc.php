@@ -35,7 +35,7 @@ if(isset($_GET['submitmessage'])){
     $userid = $_SESSION['id'];
 
     if (strlen($message) < 1 || strlen($message) > 500) {
-        header("Location: ../contact.php?id=".$productid."&error=invalidmessage");
+        header("Location: ../contact.php?id=".$productid."&error=invalidmessage&return=".$_GET['return']);
         exit();
     }
 
@@ -51,6 +51,6 @@ if(isset($_GET['submitmessage'])){
     $lastMessagecount = $lastMessagecount + 1;
 
     $result = mysqli_query($conn, "INSERT INTO message (userid, productid, count, message, dateTime, recieverid) VALUES ('$userid', '$productid', '$lastMessagecount', '$message', '$dateTime', '$recieverid')");
-    header("Location: ../contact.php?id=".$productid);
+    header("Location: ../contact.php?id=".$productid."&return=".$_GET['return']);
     exit();
 }

@@ -12,6 +12,11 @@ if (!isset($_SESSION['id'])) {
 if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProductByID($conn, $_GET['id'])['buyerid'] == $_SESSION['id']) {
     $messages = getMessagesByProductID($conn, $_GET['id']);
 
+    echo "
+<div class='backBut'>
+<a href='".$_GET['return']."'> Back </a>
+</div>";
+
     mysqli_query($conn, "UPDATE message SET isViewed = 1 WHERE productid = '" . $_GET['id'] . "' AND recieverid = '" . $_SESSION['id'] . "'");
 
 
@@ -40,6 +45,7 @@ if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProduc
 
     echo "<form action='includes/MY.inc.php' method='get'>
     <input type='number' name='productid' hidden='hidden' value=" . $_GET['id'] . ">
+    <input type='text' name='return' hidden='hidden' value=" . $_GET['return'] . ">
     <input type='text' name='message' placeholder='Message'>
     <button type='submit' name='submitmessage'>Send</button>
     </form>";

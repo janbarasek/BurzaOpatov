@@ -4,6 +4,8 @@ include_once 'header.php';
 
 <h2>My orders</h2>
 
+<a href="profile.php">Back</a>
+
 <?php
 if (!isset($_SESSION['id'])) {
     header("Location: login.php");
@@ -39,8 +41,8 @@ foreach ($products as $product){
         
         ";
    if ($product['statusid'] == 2) {
-        echo"<button class='alficek2'><a href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=myOrders.php'>Mark as bought</a></button>
-        <button class='alficek2'><a href='contact.php?id=".$product['id']."&return=myOrders.php'>Contact</a>";
+        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=myOrders.php'>Mark as bought</a></button>
+        <button class='alficek2'><a  class='black' href='contact.php?id=".$product['id']."&return=myOrders.php'>Contact</a>";
 
        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
            if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
@@ -53,7 +55,7 @@ foreach ($products as $product){
   </div>
         ";
     }else{
-        echo"<button class='alficek2'><a href='contact.php?id=".$product['id']."&return=myOrders.php'>Contact</a>";
+        echo"<button class='alficek2'><a class='black' href='contact.php?id=".$product['id']."&return=myOrders.php'>Contact</a>";
 
        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
            if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
