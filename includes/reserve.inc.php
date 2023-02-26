@@ -26,8 +26,9 @@ if(isset($_POST['submitbuy'])){
     $buyerid = $_SESSION['id'];
     $productid = $_POST['productid'];
     $dateTime = date("Y-m-d H:i:s");
+    $sellerid = getProductByID($conn, $productid)['userid'];
 
-    $resultMessage = mysqli_query($conn, "INSERT INTO message (userid, productid, count, message, dateTime) VALUES ('$buyerid', '$productid', '1', '$email', '$dateTime')");
+    $resultMessage = mysqli_query($conn, "INSERT INTO message (userid, productid, count, message, dateTime, recieverid) VALUES ('$buyerid', '$productid', '1', '$email', '$dateTime','$sellerid')");
     $result = mysqli_query($conn, "UPDATE products SET buyTime = '$dateTime', buyerid = '$buyerid',statusid = 2 WHERE id = '$productid'");
 
     header("Location: ../index.php?success=buy");

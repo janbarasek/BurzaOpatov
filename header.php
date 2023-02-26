@@ -31,6 +31,24 @@ include_once 'includes/functions.inc.php';
   <span></span>
   <span></span>
 
+    <?php
+    foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
+        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+            if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                echo "<div class='messageShow'></div>";
+                break;
+            }
+        }
+    }
+    foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
+        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+            if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                echo "<div class='messageShow'></div>";
+                break;
+            }
+        }
+    }
+    ?>
 
   <a href="index.php" class="opatak">
     BURZA</a>
@@ -55,7 +73,25 @@ include_once 'includes/functions.inc.php';
             echo "<li>
                     <a href='profile.php'>
                     Profile
-                    </a>
+                    ";
+
+            foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
+                foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                        echo "<div class='messageShow'></div>";
+                        break;
+                    }
+                }
+            }
+            foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
+                foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                        echo "<div class='messageShow'></div>";
+                        break;
+                    }
+                }
+            }
+            echo "</a>
                 </li>";
             echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
         }

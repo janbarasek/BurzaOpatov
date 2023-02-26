@@ -1,8 +1,11 @@
 CREATE TABLE message(
     id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     userid int(11) NOT NULL,
+    recieverid int(11) NOT NULL,
     productid int(11) NOT NULL,
     count int(11) NOT NULL,
     message mediumtext NOT NULL,
-    dateTime datetime NOT NULL
+    dateTime datetime NOT NULL,
+    isVisible int(1) NOT NULL DEFAULT 1,
+    isViewed int(1) NOT NULL DEFAULT 0
 );

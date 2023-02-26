@@ -280,7 +280,7 @@ if (isset($_POST['submitbuy'])) {
     }
 
 
-    $product = getProductsByID($conn, $productid)[0];
+    $product = getProductByID($conn, $productid);
     $filename = 'Photos/books/' . $product['productslistid'] . '*';
     $fileinfo = glob($filename);
     echo "
@@ -351,7 +351,7 @@ if (isset($_POST['submitbuy'])) {
     }
 
 
-    $product = getProductsByID($conn, $productid)[0];
+    $product = getProductByID($conn, $productid);
     echo "<h3 class='generateEmailBut' onclick='generateEmail(";
     echo '"' . $_SESSION['name'] . '"';
     echo ',"' . $_SESSION['surname'] . '"';

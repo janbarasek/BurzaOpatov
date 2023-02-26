@@ -2,7 +2,15 @@
 include_once 'header.php';
 ?>
 
+<h2>My sells</h2>
+
 <?php
+
+if (!isset($_SESSION['id'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $userid = $_SESSION['id'];
 $products = getProductsBySellerID($conn, $userid);
 
@@ -46,18 +54,35 @@ foreach ($products as $product){
         
         ";
     if ($product['statusid'] == 1) {
-        echo"<button class='alficek2'><a href='includes/MY.inc.php?issue=markassold&id=".$product['id']."'>Mark as sold</a></button>
+        echo"<button class='alficek2'><a href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Mark as sold</a></button>
 </div>
   </div>";
     }else if ($product['statusid'] == 2) {
-        echo"<button class='alficek2'><a href='includes/MY.inc.php?issue=resell&id=".$product['id']."'>Resell</a></button>
-        <button class='alficek2'><a href='includes/MY.inc.php?issue=markassold&id=".$product['id']."'>Mark as sold</a></button>
-        <button class='alficek2'><a href='contact.php?id=".$product['id']."'>Contact</a></button>
+        echo"<button class='alficek2'><a href='includes/MY.inc.php?issue=resell&id=".$product['id']."&return=mySells.php'>Resell</a></button>
+        <button class='alficek2'><a href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Mark as sold</a></button>
+        <button class='alficek2'><a href='contact.php?id=".$product['id']."&return=mySells.php'>Contact</a>";
+
+        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+            if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
+                echo "<div class='messageShow'></div>";
+                break;
+            }
+        }
+        echo "</button>
         </div>
   </div>
         ";
     }else{
-        echo"<button class='alficek2'><a href='contact.php?id=".$product['id']."'>Contact</a></button>
+        echo"<button class='alficek2'><a href='contact.php?id=".$product['id']."&return=mySells.php'>Contact</a>";
+
+        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+            if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']){
+                echo "<div class='messageShow'></div>";
+                break;
+            }
+        }
+        echo "
+</button>
 </div>
   </div>";
     }

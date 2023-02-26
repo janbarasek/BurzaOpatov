@@ -756,3 +756,9 @@ width: 110px;
     text-align: right;
     width: 100%;
 }
+
+.messageShow{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+}

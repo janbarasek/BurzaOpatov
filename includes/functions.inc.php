@@ -376,6 +376,15 @@ function getProductsBySellerID($conn, $id){
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $products;
 }
+
+function getProductsByBuyerID($conn, $id){
+    $sql = "SELECT *, p.id FROM products p
+        JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
+        WHERE p.buyerid = '".$id."' ORDER BY p.buyTime DESC;";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $products;
+}
 function getProductsByPrice($conn, $fromPrice, $toPrice){
     $sql = "SELECT *, p.id FROM products p
         JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
@@ -403,13 +412,13 @@ function getProductsByYear($conn, $year){
     return $products;
 }
 
-function getProductsByID($conn, $id){
+function getProductByID($conn, $id){
     $sql = "SELECT *, p.id FROM products p
         JOIN users u  ON p.userid = u.id JOIN productslist pl ON p.productslistid = pl.productslistid JOIN subject s ON pl.subjectid = s.subjectid
         WHERE p.id = '".$id."';";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $products;
+    return $products[0];
 }
 
 function getproductsListByYear($conn, $year){
@@ -516,7 +525,7 @@ function createItem($conn, $userid, $productslistid, $rankid, $price){
     exit();
 }
 
-function getMessageByProductID($conn, $productid){
+function getMessagesByProductID($conn, $productid){
     $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."'");
     $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $messages;
