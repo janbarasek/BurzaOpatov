@@ -443,7 +443,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 input[type="number"] {
     color: #8a8383;
-    width: 50px;
+    width: 70px;
     height: 30px;
     font-size: 20px;
     border: none;
@@ -464,6 +464,9 @@ input[type="range"] {
     pointer-events: none;
 }
 
+.form_control_container__time {
+  margin-left: 0px;
+}
 #fromSlider {
     height: 0;
     z-index: 1;
@@ -680,6 +683,7 @@ h3 {
 	font-weight: 600;
 	font-size: 40px;
 	margin-top: -5%;
+
 }
 input{
     
