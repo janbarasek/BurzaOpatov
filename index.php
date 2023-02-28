@@ -213,20 +213,20 @@ if (isset($_POST['submitsearch'])) {
             $fileinfo = glob($filename);
             echo "
 <form action='index.php' method='post'>
-     <img style='' class='image' src='" . $fileinfo[0] . "'></img>
-<h3 style='float: right;font-size: 30px;margin-top:50px;'>" . $product['itemName'] . "</h3>
+     
+ <div class='booktext'>
+    <h3 style='float: right;font-weight:600;font-size: 25px;margin-right:25px;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
     <br>
-    <div class='booktext'>
-        <h3 style='margin-top:50px;font-size:20px;margin-left:90px;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+        <h3 style='margin-top:50px;font-size:20px;margin-left:240px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+
+         <img style='float:left;border-radius:10px;margin-top: -12%;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
+        <h3 style='color:black;font-size:20px;margin-top:-45px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
+        <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
         <br>
-        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
-        <br>
-        <h3 style=''>" . $product['year'] . "</h3>
-        <br>
-        <h3 style=''>" . $product['price'] . "</h3>
+        <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
+         <button style='margin-top:20px;width:150px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
     </div>
   </form>
 ";
@@ -241,23 +241,26 @@ if (isset($_POST['submitsearch'])) {
                 $filename = 'Photos/books/' . $product['productslistid'] . '*';
                 $fileinfo = glob($filename);
                 echo "
+
 <form action='index.php' method='post'>
-     <img style='' class='image' src='" . $fileinfo[0] . "'></img>
-<h3 style='float: right;font-size: 30px;margin-top:50px;'>" . $product['itemName'] . "</h3>
+    
+
+   <div class='booktext'>
+    <h3 style='float: right;font-weight:600;font-size: 25px;margin-right:25px;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
     <br>
-    <div class='booktext'>
-        <h3 style='margin-top:50px;font-size:20px;margin-left:90px;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+        <h3 style='margin-top:50px;font-size:20px;margin-left:240px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+
+         <img style='float:left;border-radius:10px;margin-top: -12%;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
+        <h3 style='color:black;font-size:20px;margin-top:-45px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
+        <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
         <br>
-        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
-        <br>
-        <h3 style=''>" . $product['year'] . "</h3>
-        <br>
-        <h3 style=''>" . $product['price'] . "</h3>
+        <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
+         <button style='margin-top:20px;width:150px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
     </div>
   </form>
+
 ";
             }
         }
@@ -285,26 +288,32 @@ if (isset($_POST['submitbuy'])) {
     $fileinfo = glob($filename);
     echo "
 <form class='form-absolute' action='includes/reserve.inc.php' method='post'>
-    <img class='image' src='" . $fileinfo[0] . "'></img>
-<h3 style='color: white;margin-left: 20%;margin-top: -35%;font-size: 35px;color: white;margin-right: 15px;font-family: Poppins, sans-serif;'>" . $product['itemName'] . "</h3>
+    <div class='booktext2'>
+   
+<h3 style='float: right;font-weight:600;font-size: 25px;margin-right:25px;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
+
+ <img style='border-radius:10px;float:left;margin-left:100px;
+  width: 70px;'class='image' src='" . $fileinfo[0] . "'></img>
     
-    <div class='booktext'>
-        <h3>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+
+        <h3 style='margin-top:50px;font-size:20px;margin-left:220px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
         <br>
         <br>
-        <h3>" . $product['name'] . " " . $product['surname'] . "</h3>
+        <h3 style='color:black;font-size:20px;margin-top:-40px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
-        <h3 style='font-size:20px;color:white;'>" . $product['year'] . "</h3>
+        <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
         <br>
-        <h3 style='margin-top:-30px;font-size:25px;color:red;float:right;'>" . $product['price'] . "</h3>
-        <textarea id='email' required maxlength='500' minlength='10' name='email'>
+        <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
+        <br>
+        <textarea style='margin-top:10px; margin-left:-75px;height: 100px;';'id='email' required maxlength='500' minlength='10' name='email'>
         
 </textarea>
 <h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>auto-generate options</h3>
 
-<div id='generateEmailContainer' style='display: none' >
-<input type='date' name='date' id='date'>
+<div id='generateEmailContainer' style=' margin-left:80px;margin-top:-60px;align-items:center;' >
 
+<input style='margin-top:70px;margin-left:25px;'type='date' name='date' id='date'>
+<br>
     ";
     echo "
     <select name='placeid' id='place'> 
@@ -352,7 +361,7 @@ if (isset($_POST['submitbuy'])) {
 
 
     $product = getProductByID($conn, $productid);
-    echo "<h3 class='generateEmailBut' onclick='generateEmail(";
+    echo "<h3 class='generateEmailBut2' onclick='generateEmail(";
     echo '"' . $_SESSION['name'] . '"';
     echo ',"' . $_SESSION['surname'] . '"';
     echo ',"' . $product['name'] . ' ' . $product['surname'] . '"';
@@ -362,7 +371,7 @@ if (isset($_POST['submitbuy'])) {
     echo ")'>Generate</h3>
 </div>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:-30px;width:150px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
+         <button style='margin-top:0px;width:150px;margin-left:105px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
     </div>
     
     </form>
@@ -479,11 +488,30 @@ include_once 'footer.php';
             color: white;
         }
 
+.form_control_container__time__input {
+    width: 20px;
+
+}
         .booktext {
-            width: 100%;
-            height: auto;
-            background-color: #202020;
+            width: 370.5px;
+            height: 250px;
+            background-color: white;
             border-radius: 5px;
+            border: 4px solid;
+           margin-left: 10px;
+           margin: 0 auto;
+
+           
+        }
+
+        .booktext2 {
+             width: 370.5px;
+            height: 625px;
+            background-color: white;
+            border-radius: 5px;
+            border: 4px solid;
+           margin-left: 10px;
+           margin: 0 auto;
         }
 
         .form-absolute {
@@ -508,14 +536,34 @@ include_once 'footer.php';
 
         }
 
+        .generateEmailContainer {
+            margin: 0 auto;
+        }
+
         .generateEmailBut {
+
             display: inline-block;
-            width: 150px;
+            width: 200px;
+         margin-left: 80px;
             height: 50px;
             background-color: white;
-            border-radius: 5px;
-            margin-left: 5px;
-            margin-top: -50px;
+            border-radius: 5px solid black ;
+        
+            margin-top: 0px;
+            font-size: 20px;
+            text-align: center;
+            padding-top: 10px;
+        }
+          .generateEmailBut2 {
+
+            display: inline-block;
+            width: 200px;
+         margin-left: 0px;
+            height: 50px;
+            background-color: white;
+            border-radius: 5px solid black ;
+        
+            margin-top: 0px;
             font-size: 20px;
             text-align: center;
             padding-top: 10px;
@@ -558,6 +606,14 @@ include_once 'footer.php';
             appearance: none;
         }
 
+        .sliders_control {
+            width: 300px;
+        }
+
+
+.radioIndex {
+    margin: 0 auto;
+}
 
         .sbx-custom__input::-webkit-search-decoration, .sbx-custom__input::-webkit-search-cancel-button, .sbx-custom__input::-webkit-search-results-button, .sbx-custom__input::-webkit-search-results-decoration {
             display: none;
