@@ -1,5 +1,5 @@
 <?php
-
+include_once '../Burza/phpMailer/mail.php';
 //no category stuff
 function checkArrayEquality($array1, $array2, $key1, $key2){
     //returns an array of products that are in both arrays
@@ -535,4 +535,27 @@ function getMessageByProductIDDesc($conn, $productid){
     $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."' ORDER BY id DESC");
     $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $messages;
+}
+
+
+
+function sendMessage($conn, $senderid, $productid, $count, $message, $recieverid, $subject){
+    $sql = "INSERT INTO message (userid, productid, count, message, dateTime, recieverid)
+        VALUES (?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+
+    $dateTime = date("Y-m-d H:i:s");
+
+    mysqli_stmt_bind_param($stmt, "ssssss",  $senderid, $productid, $count, $message, $dateTime, $recieverid); // s = string
+    mysqli_stmt_execute($stmt);
+
+    $address = getUserByID($conn, $recieverid)["email"];
+
+    sendMail($address, $subject, $message);
+
+    mysqli_stmt_close($stmt);
 }
