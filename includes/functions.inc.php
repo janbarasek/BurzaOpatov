@@ -1,5 +1,4 @@
 <?php
-include_once '../Burza/phpMailer/mail.php';
 //no category stuff
 function checkArrayEquality($array1, $array2, $key1, $key2){
     //returns an array of products that are in both arrays
@@ -228,7 +227,6 @@ function createUser($conn, $name, $surname, $class, $email, $pwd){
             $sql = "INSERT INTO profileImg (userid,status)
         VALUES ('$userid',0)";
             mysqli_query($conn, $sql);
-            header("Location: upload.php?signup=success");
         }
     }else{
         echo "Location: ../signup.php?error=wronglogin";
@@ -236,21 +234,11 @@ function createUser($conn, $name, $surname, $class, $email, $pwd){
 
     mysqli_stmt_close($stmt);
 
-    loginUser($conn, $name, $surname, $class, $email, $pwd);
+    loginUser($conn, $name, $surname, $class, $email, $pwd, true);
     exit();
 }
 
-//function emptyInputLogin($email, $pwd){
-//    $result;
-//    if(empty($email) || empty($pwd)){
-//        $result = true;
-//    }else{
-//        $result = false;
-//    }
-//    return $result;
-//}
-
-function loginUser($conn, $name, $surname, $class, $email, $pwd){
+function loginUser($conn, $name, $surname, $class, $email, $pwd, $firstLogin){
     $uidExists = uidExists($conn, $name, $surname, $class, $email);
 
     if($uidExists === false){
@@ -281,7 +269,13 @@ function loginUser($conn, $name, $surname, $class, $email, $pwd){
         }
 
 
-        header("location: ../index.php?error=none");
+        if($firstLogin){
+            $signeduserid = mysqli_query($conn, "SELECT id FROM users WHERE email = '$email'");
+            $signeduserid = mysqli_fetch_all($signeduserid, MYSQLI_ASSOC)[0]['id'];
+            header("location: sendMessage.inc.php?submit=submit&message=Dobrý den, <br> vítá vás Burza Opatov. <br> Zde si můžete prohlédnout nabídky a poptávky. Pokud máte nějakou nabídku nebo poptávku, můžete ji zveřejnit. <br> Pokud máte nějaké dotazy, neváhejte nás kontaktovat na email burza.ucebnic@gopat.cz. <br> Děkujeme za používání naší aplikace.&subject=Nový účet byl registrován na Burze Opatov&recieverid=". $signeduserid ."&senderid=0&count=0&productid=0&return=../index.php");
+        }else{
+            header("location: ../index.php?error=none");
+        }
         exit();
     }
 }
@@ -535,27 +529,4 @@ function getMessageByProductIDDesc($conn, $productid){
     $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."' ORDER BY id DESC");
     $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $messages;
-}
-
-
-
-function sendMessage($conn, $senderid, $productid, $count, $message, $recieverid, $subject){
-    $sql = "INSERT INTO message (userid, productid, count, message, dateTime, recieverid)
-        VALUES (?, ?, ?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("location: ../index.php?error=stmtfailed");
-        exit();
-    }
-
-    $dateTime = date("Y-m-d H:i:s");
-
-    mysqli_stmt_bind_param($stmt, "ssssss",  $senderid, $productid, $count, $message, $dateTime, $recieverid); // s = string
-    mysqli_stmt_execute($stmt);
-
-    $address = getUserByID($conn, $recieverid)["email"];
-
-    sendMail($address, $subject, $message);
-
-    mysqli_stmt_close($stmt);
 }

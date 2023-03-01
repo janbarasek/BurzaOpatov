@@ -1,7 +1,7 @@
 <?php
 include_once 'dbh.inc.php';
 include_once 'functions.inc.php';
-include_once '../../Burza/phpMailer/mail.php';
+include_once '../phpMailer/mailSecondLevel.php';
 session_start();
 
 if(isset($_GET['issue'])){
@@ -52,7 +52,7 @@ if(isset($_GET['submitmessage'])){
     $lastMessagecount = $lastMessagecount + 1;
 
 
-    sendMessage($conn, $userid, $productid, $lastMessagecount, $message, $recieverid, "New message from user ".getUserByID($conn, $userid)['name']." ".getUserByID($conn, $userid)['surname']);
+    sendMessage($conn, $userid, $productid, $lastMessagecount, $message, $recieverid, "Nová zpráva od uživatele: ".getUserByID($conn, $userid)['name']." ".getUserByID($conn, $userid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName']);
     header("Location: ../contact.php?id=".$productid."&return=".$_GET['return']);
     exit();
 }

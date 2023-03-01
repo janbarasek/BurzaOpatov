@@ -105,10 +105,10 @@ function generateEmail(name, surname, nameSeller, nameItem) {
 
 
 
-    var emailBody = "Ahoj " + nameSeller + " \n"
-    + "Mám zájem o nákup knihy " + nameItem +" \n"
-    + "Můžeme se sejít v " + GetPlaceByid(place) + " v " + GetTimeByid(time) + " dne " + GetDate(date) + "\n"
-    + "Díky moc \n"
+    var emailBody = "Ahoj " + nameSeller + ". \n"
+    + "Mám zájem o nákup knihy: " + nameItem +". \n"
+    + "Můžeme se sejít v " + GetPlaceByid(place) + " v " + GetTimeByid(time) + " dne " + GetDate(date) + ". \n"
+    + "Díky moc. \n"
     + name + " " + surname;
 
     ShowEmail(emailBody);

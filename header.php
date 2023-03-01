@@ -2,6 +2,7 @@
     session_start();
 include_once 'includes/dbh.inc.php';
 include_once 'includes/functions.inc.php';
+include_once '../Burza/phpMailer/mailFirstLevel.php';
 ?>
 
 <!DOCTYPE html>

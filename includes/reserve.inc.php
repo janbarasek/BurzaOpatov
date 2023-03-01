@@ -1,6 +1,7 @@
 <?php
 include_once 'dbh.inc.php';
 include_once 'functions.inc.php';
+include_once '../phpMailer/mailSecondLevel.php';
 session_start();
 
 if(!isset($_SESSION['id'])){
@@ -9,7 +10,8 @@ if(!isset($_SESSION['id'])){
 }
 
 if(isset($_POST['submitbuy'])){
-    $email = str_replace("\r\n","",$_POST['email']);
+    //$email = str_replace("\r\n","",$_POST['email']);
+    $email = $_POST['email'];
     if(empty($email)){
 
         header("Location: ../index.php?error=emptyfields");
@@ -31,7 +33,7 @@ if(isset($_POST['submitbuy'])){
     //$resultMessage = mysqli_query($conn, "INSERT INTO message (userid, productid, count, message, dateTime, recieverid) VALUES ('$buyerid', '$productid', '1', '$email', '$dateTime','$sellerid')");
     $result = mysqli_query($conn, "UPDATE products SET buyTime = '$dateTime', buyerid = '$buyerid',statusid = 2 WHERE id = '$productid'");
 
-    sendMessage($conn, $buyerid, $productid, 1, $email, $sellerid, "New reservation");
+    sendMessage($conn, $buyerid, $productid, 1, $email, $sellerid, "Nová rezervace od uživatele: ".getUserByID($conn, $buyerid)['name']." ".getUserByID($conn, $buyerid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName']);
 
     header("Location: ../index.php?success=buy");
 }

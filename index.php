@@ -305,7 +305,7 @@ if (isset($_POST['submitbuy'])) {
         <br>
         <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
         <br>
-        <textarea style='margin-top:10px; margin-left:-75px;height: 100px;';'id='email' required maxlength='500' minlength='10' name='email'>
+        <textarea style='margin-top:10px; margin-left:-75px;height: 100px; 'id='email' required maxlength='500' minlength='10' name='email'>
         
 </textarea>
 <h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>auto-generate options</h3>
