@@ -2,6 +2,11 @@
 include_once 'header.php';
 ?>
 
+<style>
+	body {
+		background: #555 !important;
+	}
+</style>
 
 <?php
 /*if (isset($_SESSION["name"])){
@@ -26,18 +31,15 @@ include_once 'header.php';
         </div>-->
 
         <div class='radioIndex'>
-        <input type='radio' name='year' value='' <?php if (!isset($_POST['year']))echo "checked"?>>
-        <label for='year'>Select a year</label>
-        <input type='radio' name='year' value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked"?>>
-        <label for='year'>4.</label>
-        <input type='radio' name='year' value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked"?>>
-        <label for='year'>5.</label>
-        <input type='radio' name='year' value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked"?>>
-        <label for='year'>6.</label>
-        <input type='radio' name='year' value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked"?>>
-        <label for='year'>7.</label>
-        <input type='radio' name='year' value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked"?>>
-        <label for='year'>8.</label>
+						<input type='radio' name='year' value='' <?php if (!isset($_POST['year']))echo "checked"?>>
+						<label for='year'>Select a year</label>
+						<?php
+							for ($year = 4; $year <= 8; $year++) {
+								echo '<input type=\'radio\' name=\'year\' value=\'4\' ';
+								echo (isset($_POST['year']) && $_POST['year'] === $year ? 'checked' : '') . '>';
+								echo '<label for=\'year\'>' . $year . '.</label>';
+							}
+						?>
         </div>
 
 
