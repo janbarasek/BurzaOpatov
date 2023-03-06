@@ -1,6 +1,7 @@
 <?php
 include_once 'dbh.inc.php';
 include_once 'functions.inc.php';
+include_once '../phpMailer/mailSecondLevel.php';
 session_start();
 
 if(isset($_GET['issue'])){
@@ -19,6 +20,7 @@ if(isset($_GET['issue'])){
 
     if ($issue == 'markassold') {
         $result = mysqli_query($conn, "UPDATE products SET statusid = 3 WHERE id = '$id'");
+
         header("Location: ../".$return);
         exit();
     }
@@ -45,12 +47,12 @@ if(isset($_GET['submitmessage'])){
         $recieverid = getProductByID($conn, $productid)['buyerid'];
     }
 
-    $dateTime = date("Y-m-d H:i:s");
 
     $lastMessagecount =  getMessageByProductIDDesc($conn, $productid)[0]['count'];
     $lastMessagecount = $lastMessagecount + 1;
 
-    $result = mysqli_query($conn, "INSERT INTO message (userid, productid, count, message, dateTime, recieverid) VALUES ('$userid', '$productid', '$lastMessagecount', '$message', '$dateTime', '$recieverid')");
+
+    sendMessage($conn, $userid, $productid, $lastMessagecount, $message, $recieverid, "Nová zpráva od uživatele: ".getUserByID($conn, $userid)['name']." ".getUserByID($conn, $userid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName']);
     header("Location: ../contact.php?id=".$productid."&return=".$_GET['return']);
     exit();
 }

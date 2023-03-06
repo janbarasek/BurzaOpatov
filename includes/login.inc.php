@@ -15,7 +15,7 @@
             exit();
         }
 
-        loginUser($conn, $name, $surname, $class, $email, $pwd);
+        loginUser($conn, $name, $surname, $class, $email, $pwd, false);
     }
     else{
         header("Location: ../login.php");
