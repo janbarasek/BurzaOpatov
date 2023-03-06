@@ -316,11 +316,13 @@ if (isset($_POST['submitbuy'])) {
         <br>
 
 
+
       
 <hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:150px;margin-top: -12px;'>Rezervace</h3>
 <hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
         <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 352px;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'>
+
 
 </textarea>
 
