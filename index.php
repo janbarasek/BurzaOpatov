@@ -314,7 +314,6 @@ if (isset($_POST['submitbuy'])) {
         <br>
         <h3 style='color:black;font-size:15px;margin-top:-20px;margin-left:110px;color:gray;'>" . $product['price'] . "</h3>
         <br>
-<<<<<<< HEAD
 
 
 
@@ -325,10 +324,6 @@ if (isset($_POST['submitbuy'])) {
         <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 352px;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'>
 
 
-=======
-        <textarea style='margin-top:10px; margin-left:-75px;height: 100px; 'id='email' required maxlength='500' minlength='10' name='email'>
-        
->>>>>>> 4d29a23ddfb41fdee28e6e235b0d3180450f4835
 </textarea>
 
   <hr style='padding:1px;margin-top:10px;margin-left:0px;float:left;width: 160px;background-color:black;'>
