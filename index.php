@@ -405,8 +405,7 @@ if (isset($_POST['submitbuy'])) {
 <br>
 <hr style='  border: 1px solid black;'>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-
-         <button style='background-color:white;border:2px solid gray;color:black;float:left;margin-top:15px;height:50px;width:150px;padding: 13px;margin-left:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Zpět</button>
+        
 
          <button style='background-color:black;color:white;float:right;margin-top:-50px;height:50px;width:150px;padding: 13px;margin-right:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
 
@@ -417,7 +416,7 @@ if (isset($_POST['submitbuy'])) {
 ";
 }
 ?>
-
+<!--<button style='background-color:white;border:2px solid gray;color:black;float:left;margin-top:15px;height:50px;width:150px;padding: 13px;margin-left:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Zpět</button>-->
 
     <!--ERROR HANDLING-->
 <?php

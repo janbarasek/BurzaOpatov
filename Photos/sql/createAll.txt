@@ -3,7 +3,7 @@ CREATE TABLE class (
     classYear int(2) NOT NULL
 );
 
-CREATE TABLE Products(
+CREATE TABLE products(
     id int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
     userid int(11) NOT NULL,
     productslistid int(11) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Products(
     buyTime datetime
 );
 
-CREATE TABLE productsList (
+CREATE TABLE productslist (
     productslistid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     subjectid int(11) NOT NULL,
     itemName varchar(256) NOT NULL,
