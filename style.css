@@ -30,6 +30,7 @@ html {
 
 }
 
+
 .buttons {
 	margin-top: 50px;
 	  transform: rotate(5deg);
@@ -682,9 +683,11 @@ h3 {
 	font-family: Poppins, sans-serif;
 	font-weight: 600;
 	font-size: 40px;
-	margin-top: -5%;
+	margin-top: -12px;
 
 }
+
+
 input{
     
     height: 50px;

@@ -215,11 +215,11 @@ if (isset($_POST['submitsearch'])) {
 <form action='index.php' method='post'>
      
  <div class='booktext'>
-    <h3 style='float: right;font-weight:600;font-size: 25px;margin-right:25px;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
+    <h3 style='float: right;font-weight:600;font-size: 15px;margin-right:5%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
     <br>
         <h3 style='margin-top:50px;font-size:20px;margin-left:240px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
 
-         <img style='float:left;border-radius:10px;margin-top: -12%;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
+         <img style='float:left;border-radius:10px;margin-top: -50%;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
         <h3 style='color:black;font-size:20px;margin-top:-45px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
         <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
@@ -246,19 +246,20 @@ if (isset($_POST['submitsearch'])) {
     
 
    <div class='booktext'>
-    <h3 style='float: right;font-weight:600;font-size: 25px;margin-right:25px;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
+    <h3 style='float: center;font-weight:600;font-size: 25px;margin-left:50%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
     <br>
-        <h3 style='margin-top:50px;font-size:20px;margin-left:240px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+        <h3 style='margin-top:-10px;font-size:20px;margin-left:142px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
 
-         <img style='float:left;border-radius:10px;margin-top: -12%;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
-        <h3 style='color:black;font-size:20px;margin-top:-45px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
+         <img style='float:left;border-radius:10px;margin-top: -80px;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
+        <h3 style='color:gray;font-size:15px;margin-top:40px;margin-left:142px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
-        <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
-        <br>
-        <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
+  
+        
+ 
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:20px;width:150px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
+         <button style='margin-top:-42px;float:right;border-radius:15px;height:30px;background-color:black;color:white;width:75px;margin-right:5px;padding:3px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>" . $product['price'] . " Kč</button>
     </div>
+    <br>
   </form>
 
 ";
@@ -288,61 +289,90 @@ if (isset($_POST['submitbuy'])) {
     $fileinfo = glob($filename);
     echo "
 <form class='form-absolute' action='includes/reserve.inc.php' method='post'>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <div class='booktext2'>
    
-<h3 style='float: right;font-weight:600;font-size: 25px;margin-right:25px;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
-
- <img style='border-radius:10px;float:left;margin-left:100px;
-  width: 70px;'class='image' src='" . $fileinfo[0] . "'></img>
+<h3 style='float: right;font-weight:600;font-size: 20px;margin-right:5%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
+<hr style='padding:1px;margin-top:52px;margin-left:100px;width: 100px;background-color:black;'>
+<h3 style='font-size:18px;margin-left:210px;'>Info</h3>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
+ <img style='float:left;margin-left:0px;
+  width: 100px;margin-top:-90px;'class='image' src='" . $fileinfo[0] . "'></img>
     
 
-        <h3 style='margin-top:50px;font-size:20px;margin-left:220px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+        <h3 style='margin-top:0px;font-size:15px;margin-left:110px;color:gray;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
         <br>
         <br>
-        <h3 style='color:black;font-size:20px;margin-top:-40px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
+        <h3 style='color:black;font-size:15px;margin-top:-40px;margin-left:110px;color:gray;'>" . $product['name'] . " " . $product['surname'] . "</h3>
         <br>
-        <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
+        <h3 style='color:black;font-size:15px;margin-top:-21px;margin-left:110px;color:gray;;'>" . $product['year'] . "</h3>
         <br>
-        <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
-        <br>
-        <textarea style='margin-top:10px; margin-left:-75px;height: 100px; 'id='email' required maxlength='500' minlength='10' name='email'>
+        <h3 style='color:black;font-size:15px;margin-top:-20px;margin-left:110px;color:gray;'>" . $product['price'] . "</h3>
+        <br>   
+<hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
+<h3 style='font-size:18px;margin-left:150px;margin-top: -12px;'>Rezervace</h3>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
+        <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 352px;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'>
         
 </textarea>
-<h3 class='generateEmailBut' onclick='ShowHideGenerateEmail()'>auto-generate options</h3>
 
+  <hr style='padding:1px;margin-top:10px;margin-left:0px;float:left;width: 160px;background-color:black;'>
+<h3 style='font-size:18px;margin-left:170px;margin-top: 1px;'>Údaje</h3>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 130px;background-color:black;'>
+<img style='margin-top:33px;margin-left:10px;float:left;'src='calendar.png'></img>
 <div id='generateEmailContainer' style=' margin-left:80px;margin-top:-60px;align-items:center;' >
-
-<input style='margin-top:70px;margin-left:25px;'type='date' name='date' id='date'>
 <br>
+<br>
+<br>
+<br>
+
+
+<input style='margin-left:-40px;width:175px;height:40px;border:2px solid gray;'type='date' name='date' id='date'>
+<h1 style='margin-top: 20px;font-size:15px;float:right;margin-right:5px;'>Datum předání</h1>
+<br><br>
+
     ";
+
     echo "
-    <select name='placeid' id='place'> 
-        <option name='placeid' value=''>
-Choose a place..
+     <img style='width: 28px;margin-top:5px;margin-left:-75px;float:left;'src='mainmap.png'></img>
+      <h1 style='margin-top: 10px;font-size:15px;float:right;margin-right:13px;'>Místo předání</h1>
+     <select style='margin-left:-40px;width:175px;height:40px;border:2px solid gray;background-color:white; color:black;'name='placeid' id='place'> 
+
+        <option style='background-color:white; color:black;' name='placeid' value=''>
+Vyber místo...
         </option>";
 
 
     $places = getPlaces($conn);
     foreach ($places as $place) {
-        echo "<option name='placeid' value='" . $place['placeid'] . "'>" . $place['placeName'] . "</option>";
+        echo "<option style='background-color:white; color:black;' name='placeid' value='" . $place['placeid'] . "'>" . $place['placeName'] . "</option>";
     }
     echo "</select>";
 
 
     echo "
-<select name='timeid' id='time'> 
-        <option name='timeid' value=''>Choose a time..</option>
-        <option name='timeid' value='1'>7:40</option>
-        <option name='timeid' value='2'>8:45</option>
-        <option name='timeid' value='3'>9:40</option>
-        <option name='timeid' value='4'>10:40</option>
-        <option name='timeid' value='5'>11:40</option>
-        <option name='timeid' value='6'>12:35</option>
-        <option name='timeid' value='7'>13:30</option>
-        <option name='timeid' value='8'>14:25</option>
-        <option name='timeid' value='9'>15:20</option>
-        <option name='timeid' value='10'>16:10</option>
-        <option name='timeid' value='11'>17:00</option>
+    <br><br>
+     <img style='width: 40px;margin-top:5px;margin-left:-80px;float:left;'src='clock.png'></img>
+    
+       <h1 style='margin-top: 10px;font-size:15px;float:right;margin-right:23px;'>Čas předání</h1>
+<select style='margin-left:-40px;border:2px solid gray;background-color:white; color:black;width:175px;height:40px;' name='timeid' id='time'> 
+        <option style='background-color:white; color:black; name='timeid' value=''>Vyber čas...</option>
+        <option style='background-color:white; color:black; name='timeid' value='1'>7:40</option>
+        <option style='background-color:white; color:black; name='timeid' value='2'>8:45</option>
+        <option style='background-color:white; color:black; name='timeid' value='3'>9:40</option>
+        <option style='background-color:white; color:black; name='timeid' value='4'>10:40</option>
+        <option style='background-color:white; color:black; name='timeid' value='5'>11:40</option>
+        <option style='background-color:white; color:black; name='timeid' value='6'>12:35</option>
+        <option style='background-color:white; color:black; name='timeid' value='7'>13:30</option>
+        <option style='background-color:white; color:black; name='timeid' value='8'>14:25</option>
+        <option style='background-color:white; color:black; name='timeid' value='9'>15:20</option>
+        <option style='background-color:white; color:black; name='timeid' value='10'>16:10</option>
+        <option style='background-color:white; color:black; name='timeid' value='11'>17:00</option>
 </select>";
 
 }
@@ -361,17 +391,25 @@ if (isset($_POST['submitbuy'])) {
 
 
     $product = getProductByID($conn, $productid);
-    echo "<h3 class='generateEmailBut2' onclick='generateEmail(";
+    echo "<br><br><div style='border:3px solid;width:130px;font-family: Poppins, sans-serif; font-weight:600; font-size:20px;padding: 5px;text-align:center;height:37px;float:right;margin-right:5px;' class='generateEmailBut2' onclick='generateEmail(";
     echo '"' . $_SESSION['name'] . '"';
     echo ',"' . $_SESSION['surname'] . '"';
     echo ',"' . $product['name'] . ' ' . $product['surname'] . '"';
     echo ',"' . $product['itemName'] . '"';
 
 
-    echo ")'>Generate</h3>
+    echo ")'>Generovat</div>
 </div>
+<br>
+<br>
+<br>
+<hr style='  border: 1px solid black;'>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:0px;width:150px;margin-left:105px;'class='alficek2' type='submit' name='submitbuy'>Reserve Now!</button>
+
+         <button style='background-color:white;border:2px solid gray;color:black;float:left;margin-top:15px;height:50px;width:150px;padding: 13px;margin-left:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Zpět</button>
+
+         <button style='background-color:black;color:white;float:right;margin-top:-50px;height:50px;width:150px;padding: 13px;margin-right:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
+
     </div>
     
     </form>
@@ -427,6 +465,7 @@ include_once 'footer.php';
             display: grid;
             place-content: center;
         }
+
 
         input[type="radio"]::before {
             content: "";
@@ -494,7 +533,7 @@ include_once 'footer.php';
 }
         .booktext {
             width: 370.5px;
-            height: 250px;
+            height: 200px;
             background-color: white;
             border-radius: 5px;
             border: 4px solid;
@@ -505,20 +544,23 @@ include_once 'footer.php';
         }
 
         .booktext2 {
-             width: 370.5px;
-            height: 625px;
+             width: 375px;
+            height: 675px;
             background-color: white;
             border-radius: 5px;
             border: 4px solid;
            margin-left: 10px;
            margin: 0 auto;
+
         }
 
         .form-absolute {
             width: 100%;
-            height: 150px;
-            background-color: #202020;
-            border-radius: 5px;
+           height: auto;
+            background-color: black;
+          
+
+
         }
 
         .dieGasse {
@@ -535,7 +577,10 @@ include_once 'footer.php';
             width: 275px;
 
         }
-
+textarea:focus {
+     box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+  outline: 0;
+}
         .generateEmailContainer {
             margin: 0 auto;
         }
@@ -553,6 +598,7 @@ include_once 'footer.php';
             font-size: 20px;
             text-align: center;
             padding-top: 10px;
+            z-index: 10;
         }
           .generateEmailBut2 {
 
@@ -567,7 +613,20 @@ include_once 'footer.php';
             font-size: 20px;
             text-align: center;
             padding-top: 10px;
+            transition: 0.5s;
+            cursor: pointer;
         }
+
+
+           .generateEmailBut:hover {
+color: red;
+transition: 0.5s;
+           }
+
+           .generateEmailBut2:hover {
+color: red;
+transition: 0.5s;
+           }
 
         .sbx-custom {
             display: inline-block;
@@ -759,3 +818,11 @@ include_once 'footer.php';
 <?php
 include_once 'footer.php';
 ?>
+
+
+<script>
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
+
+    </script>
