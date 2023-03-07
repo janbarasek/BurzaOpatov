@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
         exit();
     }
 
-    if(minmax($price, 0, 100000) !== true){
+    if(minmax($price, 0, 1000) !== true){
         header("location: ../sell.php?error=price");
         exit();
     }

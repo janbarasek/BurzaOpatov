@@ -1,4 +1,4 @@
-CREATE TABLE productsList (
+CREATE TABLE productslist (
     productslistid int(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     subjectid int(11) NOT NULL,
     itemName varchar(256) NOT NULL,
