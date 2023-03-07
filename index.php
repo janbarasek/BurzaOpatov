@@ -4,88 +4,109 @@ include_once 'header.php';
 
     <!--SEARCH FOR THE BOOKS-->
     <form class='' action='index.php' method='post'>
-        <h3 class='specialh3'>SEARCH</h3>
-        <hr>
-        <br>
+       
         <input class='search' type='text' name='search'
-               placeholder='Hledat...' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search'] ?>>
-        <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse"
-                                                                       src="Photos/searchlogo.png"></img></button>
-        <input type="checkbox" name="moreBooks"
-               value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked" ?>>
-        <label for="morebooks">Další knihy</label>
+               placeholder='Co hledáte?' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search'] ?>>
+        <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse"                                                                       src="Photos/searchlogo.png"></img></button>
+        
+        <div class='radioIndex'>
+            <input type='radio' name='year' value='' <?php if (!isset($_POST['year'])) echo "checked" ?>>
+            <label for='year'>Select a year</label>
+            <hr style='background-color: black;
+    padding: 1px;
+    width: 70%;
+    float: right;
+    margin-top: 70px;margin-right:10px;'>
+            <h1 style='margin-left:5px;font-size:20px;'>Třída</h1>
+                        <br>
+                        <input class="houbic1" style='    margin-left: 1%;display: inline-block;width:20px;' type='radio' name='year'
+                   value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked" ?>>
+            <label style='font-size:14px;display: inline-block;margin-left:5px;font-family: Poppins, sans-serif;'
+                   for='year'>Kvarta</label>
+                   <input style='display: inline-block;width: 20px; ;' type='radio' name='year'
+                   value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked" ?>>
+            <label style='font-size:14px;font-family: Poppins, sans-serif;' for='year'>Kvinta</label>
+            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+                   value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked" ?>>
+            <label style='font-size:14px;display: inline-block;font-family: Poppins, sans-serif;' for='year'>Sexta</label>
+            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+                   value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked" ?>>
+            <label style='font-size:14px;display: inline-block;font-family: Poppins, sans-serif;' for='year'>Septima</label>
+            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+                   value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked" ?>>
+            <label style='font-size:15px;display: inline-block;font-family: Poppins, sans-serif;' for='year'>Oktáva</label>
+            
+
+        </div>
         <br>
+        <br>
+        <br>
+        <hr style='background-color: black;
+    padding: 1px;
+
+    float: right;
+    margin-top: 25px;
+    width: 60%;
+
+    margin-right:10px;'>
+        
+            <h1 style='margin-left:5px;font-size:20px;'>Předměty</h1>
+        
         <!--<div class="pricerangebox">
             <h3>PRICE</h3>
             <div class="pricevalues">
                 <div>$<span id="first"></span></div>
             </div>
+            */
+        <input type='radio' name="subjectid">
+
+            <input type="radio" name="subjectid"
+                    value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
+                /*<input type="radio" name="rankid">*/
+            </option>
+/*
+
         https://www.instagram.com/reel/CnKBDNnhcWa/?igshid=MDJmNzVkMjY=
         </div>-->
 
-        <div class='radioIndex'>
-            <input type='radio' name='year' value='' <?php if (!isset($_POST['year'])) echo "checked" ?>>
-            <label for='year'>Select a year</label>
-            <br>
-            <label style='display: inline-block;font-family: Poppins, sans-serif;margin-left:25%;margin-top: -2500px;'
-                   for='year'>4.</label>
-            <input class="houbic1" style='display: inline-block;width:20px;' type='radio' name='year'
-                   value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked" ?>>
-            <label style='font-family: Poppins, sans-serif;' for='year'>5.</label>
-            <input style='display: inline-block;width: 20px; ;' type='radio' name='year'
-                   value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked" ?>>
-            <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>6.</label>
-            <input style='display: inline-block;width: 20px;' type='radio' name='year'
-                   value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked" ?>>
-            <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>7.</label>
-            <input style='display: inline-block;width: 20px;' type='radio' name='year'
-                   value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked" ?>>
-            <label style='display: inline-block;font-family: Poppins, sans-serif;' for='year'>8.</label>
-            <input style='display: inline-block;width: 20px;' type='radio' name='year'
-                   value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked" ?>>
 
-        </div>
-
-
-        <select name="subjectid">
-
-            <option name="subjectid"
-                    value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
-                Choose a subject..
-            </option>
 
             <?php
             $subjects = getSubjects($conn);
             foreach ($subjects as $subject) {
                 if (isset($_POST['subjectid']))
                     if ($_POST['subjectid'] == $subject['subjectid'])
-                        echo "<option name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</option>";
+                        echo "<input style='display:inline-block;margin-left:22%;'type='radio' name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</input>";
                     else
-                        echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+                        echo "<input style='display:inline-block;margin-left:22%;' type='radio' name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
                 else
-                    echo "<option name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</option>";
+                    echo "<input style='display:inline-block;margin-left:22%;' type='radio' name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
 
             }
             ?>
         </select>
-        <select name="rankid">
+        <hr style='
+    background-color: black;
+    padding: 1px;
+    width: 25%;
+    float: right;
+    margin-top: 25px;
+    margin-right: 190px;
+'>
+            <h1 style='margin-left:5px;font-size:20px;'>Cena</h1>
+         
+            <h1 style='margin-right:95px;font-size:20px;float:right;margin-top:-35px;'>Kvalita</h1>
+            <hr style='
+    background-color: black;
+    padding: 1px;
+    width: 70px;
+    float: right;
+    margin-top: -25px;
+    margin-right: -150px;
 
-            <option name="rankid" value="" selected="selected">Choose a rank..</option>
-
-            <?php
-            $ranks = getRanks($conn);
-            foreach ($ranks as $rank) {
-                if (isset($_POST['rankid']))
-                    if ($_POST['rankid'] == $rank['id'])
-                        echo "<option name='rankid' value='" . $rank['id'] . "' selected>" . $rank['name'] . "</option>";
-                    else
-                        echo "<option name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
-                else
-                    echo "<option name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
-            }
-            ?>
-        </select>
-        <div class="range_container">
+'>   
+            <br>
+                        <div style="margin-top:0px;margin-left:10px;" class="range_container">
             <div class="sliders_control">
                 <?php
 
@@ -99,35 +120,58 @@ include_once 'header.php';
                     echo '<input name="toSlider" id="toSlider" type="range" value="900" min="0" max="1000"/>';
                 }
                 ?>
+<br>
 
-
-            </div>
-            <div class="form_control">
+<div class="form_control">
                 <div class="form_control_container">
-                    <div class="form_control_container__time">Min</div>
+                    <div style="text-align:center;margin-top:8px;border: 2px solid black;font-size:15px;"class="form_control_container__time">Min cena</div>
                     <?php
                     if (isset($_POST['fromSlider'])) {
                         $min = $_POST['fromSlider'];
-                        echo '<input class="form_control_container__time__input" type="number" id="fromInput" value="' . $min . '" min="0" max="1000"/>';
+                        echo '<input style="color:black;text-align:center;border: 2px solid black;margin-top:-2px;"class="form_control_container__time__input" type="number" id="fromInput" value="' . $min . '" min="0" max="1000"/>';
                     } else {
-                        echo '<input class="form_control_container__time__input" type="number" id="fromInput" value="10" min="0" max="1000"/>';
+                        echo '<input style="color:black;text-align:center;border: 2px solid black;margin-top:-2px;" class="form_control_container__time__input" type="number" id="fromInput" value="10" min="0" max="1000"/>';
                     }
                     ?>
                 </div>
                 <div class="form_control_container">
-                    <div class="form_control_container__time">Max</div>
+                    <div style="text-align:center;margin-top:8px;border: 2px solid black;font-size:15px;" class="form_control_container__time">Max cena</div>
                     <?php
                     if (isset($_POST['toSlider'])) {
                         $max = $_POST['toSlider'];
-                        echo '<input class="form_control_container__time__input" type="number" id="toInput" value="' . $max . '" min="0" max="1000"/>';
+                        echo '<input style="color:black;text-align:center;border: 2px solid black;margin-top:-2px;" class="form_control_container__time__input" type="number" id="toInput" value="' . $max . '" min="0" max="1000"/>';
                     } else {
-                        echo '<input class="form_control_container__time__input" type="number" id="toInput" value="900" min="0" max="1000"/>';
+                        echo '<input style="color:black;text-align:center;border: 2px solid black;margin-top:-2px;" class="form_control_container__time__input" type="number" id="toInput" value="900" min="0" max="1000"></>';
                     }
                     ?>
                 </div>
             </div>
         </div>
+                </div>
+      
 
+            <select style="margin-right: 10px;height:40px;width:150px;float:right;margin-top:-200px;background-color:white;color:black;"type="radio" name="rankid" value="" selected="selected">
+            <option selected disabled>Vyber kvalitu...</option>
+
+            <?php
+            $ranks = getRanks($conn);
+            foreach ($ranks as $rank) {
+                if (isset($_POST['rankid']))
+                    if ($_POST['rankid'] == $rank['id'])
+                        echo "<option style='background-color:white;color:black;' type='radio' name='rankid' value='" . $rank['id'] . "' selected>" . $rank['name'] . "</option>";
+                    else
+                        echo "<option style='background-color:white;color:black;' type='radio' name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
+                else
+                    echo "<option style='background-color:white;color:black;' type='radio' name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
+            }
+            ?>
+        </select>
+      
+
+
+            </div>
+           
+       
 
     </form>
 
@@ -212,23 +256,25 @@ if (isset($_POST['submitsearch'])) {
             $filename = 'Photos/books/' . $product['productslistid'] . '*';
             $fileinfo = glob($filename);
             echo "
-<form action='index.php' method='post'>
-     
- <div class='booktext'>
-    <h3 style='float: right;font-weight:600;font-size: 15px;margin-right:5%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
-    <br>
-        <h3 style='margin-top:50px;font-size:20px;margin-left:240px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+            <form action='index.php' method='post'>
+    
 
-         <img style='float:left;border-radius:10px;margin-top: -50%;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
-        <h3 style='color:black;font-size:20px;margin-top:-45px;margin-left:220px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
-        <br>
-        <h3 style='color:black;font-size:20px;margin-top:-21px;margin-left:220px;'>" . $product['year'] . "</h3>
-        <br>
-        <h3 style='color:black;font-size:20px;margin-top:-20px;margin-left:220px;'>" . $product['price'] . "</h3>
-        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:20px;width:150px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>Buy Now!</button>
-    </div>
-  </form>
+            <div class='booktext'>
+             <h3 style='float: center;font-weight:600;font-size: 25px;margin-left:50%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
+             <br>
+                 <h3 style='margin-top:-10px;font-size:20px;margin-left:142px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
+         
+                  <img style='float:left;border-radius:10px;margin-top: -80px;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
+                 <h3 style='color:gray;font-size:15px;margin-top:40px;margin-left:142px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
+                 <br>
+           
+                 
+          
+                 <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
+                  <button style='margin-top:-42px;float:right;border-radius:15px;height:30px;background-color:black;color:white;width:100px;margin-right:5px;padding:3px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>" . $product['price'] . " Kč</button>
+             </div>
+             <br>
+           </form>
 ";
 
         }
@@ -257,7 +303,7 @@ if (isset($_POST['submitsearch'])) {
         
  
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:-42px;float:right;border-radius:15px;height:30px;background-color:black;color:white;width:75px;margin-right:5px;padding:3px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>" . $product['price'] . " Kč</button>
+         <button style='margin-top:-42px;float:right;border-radius:15px;height:30px;background-color:black;color:white;width:100px;margin-right:5px;padding:3px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>" . $product['price'] . " Kč</button>
     </div>
     <br>
   </form>
@@ -300,7 +346,7 @@ if (isset($_POST['submitbuy'])) {
 <h3 style='float: right;font-weight:600;font-size: 20px;margin-right:5%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
 <hr style='padding:1px;margin-top:52px;margin-left:100px;width: 100px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:210px;'>Info</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 105px;background-color:black;'>
  <img style='float:left;margin-left:0px;
   width: 100px;margin-top:-90px;'class='image' src='" . $fileinfo[0] . "'></img>
     
@@ -313,12 +359,20 @@ if (isset($_POST['submitbuy'])) {
         <h3 style='color:black;font-size:15px;margin-top:-21px;margin-left:110px;color:gray;;'>" . $product['year'] . "</h3>
         <br>
         <h3 style='color:black;font-size:15px;margin-top:-20px;margin-left:110px;color:gray;'>" . $product['price'] . "</h3>
+
+        <br>
+
+
+
+      
+
         <br>   
+
 <hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:150px;margin-top: -12px;'>Rezervace</h3>
 <hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
-        <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 352px;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'>
-        
+        <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 97.5%;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'>
+
 </textarea>
 
   <hr style='padding:1px;margin-top:10px;margin-left:0px;float:left;width: 160px;background-color:black;'>
@@ -407,16 +461,21 @@ if (isset($_POST['submitbuy'])) {
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
         
 
-         <button style='background-color:black;color:white;float:right;margin-top:-50px;height:50px;width:150px;padding: 13px;margin-right:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
+         <button style='background-color:black;color:white;float:right;margin-top:3px;justify-content:center;display:flex;height:50px;width:150px;padding: 13px;margin-right:25%;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
 
     </div>
     
     </form>
+   
   
 ";
 }
 ?>
-<!--<button style='background-color:white;border:2px solid gray;color:black;float:left;margin-top:15px;height:50px;width:150px;padding: 13px;margin-left:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Zpět</button>-->
+ 
+<!--<button style='background-color:white;border:2px solid gray;color:black;float:left;margin-top:15px;height:50px;width:150px;padding: 13px;margin-left:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Zpět</button><input type="checkbox" name="moreBooks"
+               value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked" ?>>
+        <label for="morebooks">Další knihy</label>
+        <br>-->
 
     <!--ERROR HANDLING-->
 <?php
@@ -445,12 +504,7 @@ include_once 'footer.php';
         input[type="radio"] {
             vertical-align: middle;
             /* Add if not using autoprefixer */
-            -webkit-appearance: none;
-            /* Remove most all native input styles */
-            appearance: none;
-            /* For iOS < 15 */
-            background-color: var(--form-background);
-            /* Not removed via appearance */
+           
             margin: 0;
 
             font: inherit;
@@ -531,7 +585,7 @@ include_once 'footer.php';
 
 }
         .booktext {
-            width: 370.5px;
+            width: 94%;
             height: 200px;
             background-color: white;
             border-radius: 5px;
@@ -543,7 +597,7 @@ include_once 'footer.php';
         }
 
         .booktext2 {
-             width: 375px;
+             width: 94%;
             height: 675px;
             background-color: white;
             border-radius: 5px;
@@ -627,45 +681,10 @@ color: red;
 transition: 0.5s;
            }
 
-        .sbx-custom {
-            display: inline-block;
-            position: relative;
-            width: 500px;
-            height: 41px;
-            white-space: nowrap;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-
-        .sbx-custom__wrapper {
-            width: 100%;
-            height: 100%;
-        }
-
-        .sbx-custom__input {
-            display: inline-block;
-            -webkit-transition: box-shadow .4s ease, background .4s ease;
-            transition: box-shadow .4s ease, background .4s ease;
-            border: 0;
-            border-radius: 4px;
-            box-shadow: inset 0 0 0 3px #000000;
-            background: #FFFFFF;
-            padding: 7px;
-            padding-right: 0px;
-            padding-left: 11px;
-            width: 150px;
-            height: 45px;
-
-            vertical-align: middle;
-            white-space: normal;
-            font-size: inherit;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-        }
-
+       
         .sliders_control {
-            width: 300px;
+            width: 60%;
+            
         }
 
 
@@ -673,145 +692,7 @@ transition: 0.5s;
     margin: 0 auto;
 }
 
-        .sbx-custom__input::-webkit-search-decoration, .sbx-custom__input::-webkit-search-cancel-button, .sbx-custom__input::-webkit-search-results-button, .sbx-custom__input::-webkit-search-results-decoration {
-            display: none;
-        }
-
-        .sbx-custom__input:hover {
-            box-shadow: inset 0 0 0 3px black;
-        }
-
-        .sbx-custom__input:focus, .sbx-custom__input:active {
-            outline: 0;
-            box-shadow: inset 0 0 0 3px #000000;
-            background: #FFFFFF;
-        }
-
-        .sbx-custom__input::-webkit-input-placeholder {
-            color: #AAAAAA;
-        }
-
-        .sbx-custom__input::-moz-placeholder {
-            color: #AAAAAA;
-        }
-
-        .sbx-custom__input:-ms-input-placeholder {
-            color: #AAAAAA;
-        }
-
-        .sbx-custom__input::placeholder {
-            color: #AAAAAA;
-        }
-
-        .sbx-custom__submit {
-            position: absolute;
-            top: 10px;
-
-            right: 301px;
-            margin: 0;
-            border: 0;
-            border-radius: 0 3px 3px 0;
-            background-color: #3e82f7;
-            padding: 6px;
-            width: 49px;
-            height: 100%;
-            vertical-align: middle;
-            text-align: center;
-            font-size: inherit;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        .sbx-custom__submit::before {
-            display: inline-block;
-            margin-right: -4px;
-            height: 100%;
-            vertical-align: middle;
-            content: '';
-        }
-
-        .sbx-custom__submit:hover, .sbx-custom__submit:active {
-            cursor: pointer;
-        }
-
-        .sbx-custom__submit:focus {
-            outline: 0;
-        }
-
-        .sbx-custom__submit svg {
-            width: 25px;
-            height: 25px;
-            vertical-align: middle;
-            fill: #FFFFFF;
-        }
-
-        .sbx-custom__reset {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 56px;
-            margin: 0;
-            border: 0;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-            font-size: inherit;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            fill: rgba(0, 0, 0, 0.5);
-        }
-
-        .sbx-custom__reset:focus {
-            outline: 0;
-        }
-
-        .sbx-custom__reset svg {
-            display: block;
-            margin-left: -125px;
-            margin-top: 8px;
-            width: 25px;
-            height: 25px;
-
-
-        }
-
-        .sbx-custom__input:valid ~ .sbx-custom__reset {
-            display: block;
-            -webkit-animation-name: sbx-reset-in;
-            animation-name: sbx-reset-in;
-            -webkit-animation-duration: .15s;
-            animation-duration: .15s;
-        }
-
-        @-webkit-keyframes sbx-reset-in {
-            0% {
-                -webkit-transform: translate3d(-20%, 0, 0);
-                transform: translate3d(-20%, 0, 0);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: none;
-                transform: none;
-                opacity: 1;
-            }
-        }
-
-        @keyframes sbx-reset-in {
-            0% {
-                -webkit-transform: translate3d(-20%, 0, 0);
-                transform: translate3d(-20%, 0, 0);
-                opacity: 0;
-            }
-            100% {
-                -webkit-transform: none;
-                transform: none;
-                opacity: 1;
-            }
-        }
+      
     </style>
 
 <?php
