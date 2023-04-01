@@ -27,8 +27,9 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
 
         <input style="display:inline-block;margin-left:22%;" type="radio" value="">Choose a year..</option>
 
-        <input style="margin-left:5px;" type="radio" name="year" value="4" selected><label> 4. </label></input>
-        <input style="display:inline-block;float:left;" type="radio" name="year" value="5"><label> 5. </label></input>
+        <input style="margin-left:5px;" type="radio" name="year" value="4" selected><label style="margin-top:px"> 4. </label></input>
+        <input style="display:inline-block;
+        " type="radio" name="year" value="5"><label style="margin-top: -60px;"> 5. </label></input>
         <input style="display:inline-block;float:left;" type="radio" name="year" value="6"><label> 6.  </label></input>
         <input style="display:inline-block;float:left;" type="radio" name="year" value="7"><label> 7.  </label></input>
         <input style="display:inline-block;float:left;" type="radio" name="year" value="8"><label> 8.  </label></input>
@@ -99,7 +100,7 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         <?php
         $subjects = getSubjects($conn);
         foreach($subjects as $subject){
-            echo "<input style='display:inline-block;margin-left:22%;' type='radio' name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
+            echo "<input style='display:inline-block;margin-left:0%;' type='radio' name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
         }
         ?>
     </select>
