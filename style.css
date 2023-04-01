@@ -648,12 +648,13 @@ html, body {
 }
 
 
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
+label {
+  margin-left: 50px;
+  display: block;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
 }
       *,
 *:before,

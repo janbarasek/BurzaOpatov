@@ -1,4 +1,3 @@
-
 <?php
 function getMasterEmail(): string{
     return 'burza.ucebnic@gopat.cz';
