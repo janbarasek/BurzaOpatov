@@ -10,6 +10,15 @@ if(!isset($_SESSION['id'])){
 }
 
 if(isset($_POST['submitbuy'])){
+    $result = mysqli_query($conn, "SELECT * FROM products WHERE id = '".$_POST['productid']."'");
+    $result = mysqli_fetch_assoc($result);
+    if($result['statusid'] == 2){
+        header("Location: ../index.php?error=bookalreadybought");
+        exit();
+    } else if($result['userid'] == $_SESSION['id']){
+        header("Location: ../index.php?error=yourbook");
+        exit();
+    }
     //$email = str_replace("\r\n","",$_POST['email']);
     $email = $_POST['email'];
     if(empty($email)){

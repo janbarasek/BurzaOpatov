@@ -23,79 +23,61 @@
     <?php
 
 if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
-    echo '<input type="radio" name="year" required>
-
-        <input style="display:inline-block;margin-left:22%;" type="radio" value="">Choose a year..</option>
-
-        <input style="margin-left:5px;" type="radio" name="year" value="4" selected><label style="margin-top:px"> 4. </label></input>
+    echo '
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="">Choose a year..</input>
+        <input style="margin-left:5px;" type="radio" name="year" value="4" checked><label style="margin-top:0px"> 4. </label></input>
         <input style="display:inline-block;
         " type="radio" name="year" value="5"><label style="margin-top: -60px;"> 5. </label></input>
         <input style="display:inline-block;float:left;" type="radio" name="year" value="6"><label> 6.  </label></input>
         <input style="display:inline-block;float:left;" type="radio" name="year" value="7"><label> 7.  </label></input>
-        <input style="display:inline-block;float:left;" type="radio" name="year" value="8"><label> 8.  </label></input>
-    </input>';
+        <input style="display:inline-block;float:left;" type="radio" name="year" value="8"><label> 8.  </label></input>';
 }else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 5){
-    echo '<select name="year" required>
+    echo '
 
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="">Choose a year..</option>
 
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="4"><label> 4.  </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="5" selected><label> 5.  </label></input>
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="5" checked><label> 5.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="6"><label> 6.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="7"><label> 7.  </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8.  </label></input>
-    </select>';
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8.  </label></input>';
 } else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 6){
-    echo '<select name="year" required>
-
+    echo '
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="">Choose a year..</option>
-
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="4"><label> 4.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="5"><label> 5.  </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="6" selected><label> 6.  </label></input>
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="6" checked><label> 6.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="7"><label> 7. </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8. </label></input>
-    </select>';
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8. </label></input>';
 } else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 7){
-    echo '<select name="year" required>
-
+    echo '
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="">Choose a year..</option>
-
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="4"><label> 4.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="5"><label> 5.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="6"><label> 6.  </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="7" selected><label> 7.  </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8.  </label></input>
-    </select>';
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="7" checked><label> 7.  </label></input>
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8.  </label></input>';
 } else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 8){
-    echo '<select name="year" required>
-
+    echo '
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="">Choose a year..</option>
-
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="4"><label> 4.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="5"><label> 5.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="6"><label> 6.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="7"><label> 7.  </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8" selected><label> 8.  </label></input>
-    </select>';
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8" checked><label> 8.  </label></input>';
 } else {
-    echo '<select name="year" required>
-
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="" selected>Choose a year..</option>
-
+    echo '
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="" checked>Choose a year..</option>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="4"><label> 4.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="5"><label> 5.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="6"><label> 6.  </label></input>
         <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="7"><label> 7. </label></input>
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8.  </label></input>
-    </select>';
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="8"><label> 8.  </label></input>';
 }
 
     ?>
 
-    <input style="display:inline-block;margin-left:22%;" type="radio" name="subjectid" required>
-
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="subjectid" value="" selected="selected">Choose a subject..</option>
+        <input style="display:inline-block;margin-left:22%;" type="radio" name="subjectid" value="" checked="selected">Choose a subject..</option>
 
         <?php
         $subjects = getSubjects($conn);
@@ -103,7 +85,6 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
             echo "<input style='display:inline-block;margin-left:0%;' type='radio' name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
         }
         ?>
-    </select>
     <h1 style="margin-left:5px;font-size:20px;">Cena</h1>
     <hr style="
     background-color: black;
@@ -113,8 +94,8 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
     margin-top: -25px;
     margin-right: 190px;
 ">
-         <h1 style="margin-right:95px;font-size:20px;float:right;margin-top:-35px;">Kvalita</h1>
-         <hr style="
+     <h1 style="margin-right:95px;font-size:20px;float:right;margin-top:-35px;">Kvalita</h1>
+     <hr style="
  background-color: black;
  padding: 1px;
  width: 70px;
@@ -127,19 +108,6 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
 
 <form class="" action="includes/sell.inc.php" method="POST">
     <br>
-    
-    <!--<select name="productslistid" required>
-
-        <option name="productslistid" value="" selected="selected">Choose an id...</option>
-
-        <?php
-/*            $productslist = getProductslist($conn);
-            foreach($productslist as $product){
-                echo "<option name='productslistid' value='".$product['id']."'>".$product['year'] ." - " .$product['itemName']." - ". $product['publishYear']."</option>";
-            }
-        */?>
-        <option name="productslistid" value="new">ID is not here</option>
-    </select>-->
     <br>
 
     <select style="float:right;margin-right:3%;" name="rankid" required>
@@ -184,7 +152,7 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         $productsid = getProductsListYearSubjectid($conn, $year, $subjectid);
 
         if(empty($productsid)){
-            echo "No suitable products found";
+            echo "Žádné učebnice nebyly nalezeny";
         }
 
         foreach($productsid as $productid){

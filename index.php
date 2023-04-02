@@ -11,14 +11,14 @@ include_once 'header.php';
         
         <div class='radioIndex'>
             <input type='radio' name='year' value='' <?php if (!isset($_POST['year'])) echo "checked" ?>>
-            <label for='year'>Select a year</label>
+            <label for='year'>Jakákoliv</label>
             <hr style='background-color: black;
     padding: 1px;
     width: 70%;
     float: right;
     margin-top: 70px;margin-right:10px;'>
             <h1 style='margin-left:5px;font-size:20px;'>Třída</h1>
-                        <br>
+
                         <input class="houbic1" style='    margin-left: 1%;display: inline-block;width:20px;' type='radio' name='year'
                    value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked" ?>>
             <label style='font-size:14px;display: inline-block;margin-left:5px;font-family: Poppins, sans-serif;'
@@ -39,8 +39,6 @@ include_once 'header.php';
 
         </div>
         <br>
-        <br>
-        <br>
         <hr style='background-color: black;
     padding: 1px;
 
@@ -51,32 +49,15 @@ include_once 'header.php';
     margin-right:10px;'>
         
             <h1 style='margin-left:5px;font-size:20px;'>Předměty</h1>
-        
-        <!--<div class="pricerangebox">
-            <h3>PRICE</h3>
-            <div class="pricevalues">
-                <div>$<span id="first"></span></div>
-            </div>
-            */
-        <input type='radio' name="subjectid">
-
-            <input type="radio" name="subjectid"
-                    value="" <?php if (isset($_POST['subjectid'])) if ($_POST['subjectid'] == "") echo "selected" ?>>
-                /*<input type="radio" name="rankid">*/
-            </option>
-/*
-
-        https://www.instagram.com/reel/CnKBDNnhcWa/?igshid=MDJmNzVkMjY=
-        </div>-->
-
 
 
             <?php
             $subjects = getSubjects($conn);
+            echo "<input style='display:inline-block;margin-left:22%;'type='radio' name='subjectid' value='' checked>Jakýkoliv</input>";
             foreach ($subjects as $subject) {
                 if (isset($_POST['subjectid']))
                     if ($_POST['subjectid'] == $subject['subjectid'])
-                        echo "<input style='display:inline-block;margin-left:22%;'type='radio' name='subjectid' value='" . $subject['subjectid'] . "' selected>" . $subject['subjectName'] . "</input>";
+                        echo "<input style='display:inline-block;margin-left:22%;'type='radio' name='subjectid' value='" . $subject['subjectid'] . "' checked>" . $subject['subjectName'] . "</input>";
                     else
                         echo "<input style='display:inline-block;margin-left:22%;' type='radio' name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
                 else
@@ -151,7 +132,7 @@ include_once 'header.php';
       
 
             <select style="margin-right: 10px;height:40px;width:150px;float:right;margin-top:-200px;background-color:white;color:black;"type="radio" name="rankid" value="" selected="selected">
-            <option selected disabled>Vyber kvalitu...</option>
+            <option selected>Vyber kvalitu...</option>
 
             <?php
             $ranks = getRanks($conn);
@@ -256,7 +237,7 @@ if (isset($_POST['submitsearch'])) {
             $filename = 'Photos/books/' . $product['productslistid'] . '*';
             $fileinfo = glob($filename);
             echo "
-            <form action='index.php' method='post'>
+            <form action='buyBook.php' method='post'>
     
 
             <div class='booktext'>
@@ -268,7 +249,6 @@ if (isset($_POST['submitsearch'])) {
                  <h3 style='color:gray;font-size:15px;margin-top:40px;margin-left:142px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
                  <br>
            
-                 
           
                  <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
                   <button style='margin-top:-42px;float:right;border-radius:15px;height:30px;background-color:black;color:white;width:100px;margin-right:5px;padding:3px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>" . $product['price'] . " Kč</button>
@@ -288,8 +268,7 @@ if (isset($_POST['submitsearch'])) {
                 $fileinfo = glob($filename);
                 echo "
 
-<form action='index.php' method='post'>
-    
+<form action='buyBook.php' method='post'>
 
    <div class='booktext'>
     <h3 style='float: center;font-weight:600;font-size: 25px;margin-left:50%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
@@ -315,177 +294,9 @@ if (isset($_POST['submitsearch'])) {
     }
 }
 ?>
-
-
-    <!--SHOW ONE BOOK-->
-
-<?php
-if (isset($_POST['submitbuy'])) {
-    $productid = $_POST['productid'];
-
-    if (isset($_SESSION['userid'])) {
-        $buyerid = $_SESSION['userid'];
-    } else {
-        $buyerid = null;
-    }
-
-
-    $product = getProductByID($conn, $productid);
-    $filename = 'Photos/books/' . $product['productslistid'] . '*';
-    $fileinfo = glob($filename);
-    echo "
-<form class='form-absolute' action='includes/reserve.inc.php' method='post'>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-    <div class='booktext2'>
-   
-<h3 style='float: right;font-weight:600;font-size: 20px;margin-right:5%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
-<hr style='padding:1px;margin-top:52px;margin-left:100px;width: 100px;background-color:black;'>
-<h3 style='font-size:18px;margin-left:210px;'>Info</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 105px;background-color:black;'>
- <img style='float:left;margin-left:0px;
-  width: 100px;margin-top:-90px;'class='image' src='" . $fileinfo[0] . "'></img>
-    
-
-        <h3 style='margin-top:0px;font-size:15px;margin-left:110px;color:gray;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
-        <br>
-        <br>
-        <h3 style='color:black;font-size:15px;margin-top:-40px;margin-left:110px;color:gray;'>" . $product['name'] . " " . $product['surname'] . "</h3>
-        <br>
-        <h3 style='color:black;font-size:15px;margin-top:-21px;margin-left:110px;color:gray;;'>" . $product['year'] . "</h3>
-        <br>
-        <h3 style='color:black;font-size:15px;margin-top:-20px;margin-left:110px;color:gray;'>" . $product['price'] . "</h3>
-
-        <br>
-
-
-
-      
-
-        <br>   
-
-<hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
-<h3 style='font-size:18px;margin-left:150px;margin-top: -12px;'>Rezervace</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
-        <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 97.5%;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'>
-
-</textarea>
-
-  <hr style='padding:1px;margin-top:10px;margin-left:0px;float:left;width: 160px;background-color:black;'>
-<h3 style='font-size:18px;margin-left:170px;margin-top: 1px;'>Údaje</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 130px;background-color:black;'>
-<img style='margin-top:33px;margin-left:10px;float:left;'src='calendar.png'></img>
-<div id='generateEmailContainer' style=' margin-left:80px;margin-top:-60px;align-items:center;' >
-<br>
-<br>
-<br>
-<br>
-
-
-<input style='margin-left:-40px;width:175px;height:40px;border:2px solid gray;'type='date' name='date' id='date'>
-<h1 style='margin-top: 20px;font-size:15px;float:right;margin-right:5px;'>Datum předání</h1>
-<br><br>
-
-    ";
-
-    echo "
-     <img style='width: 28px;margin-top:5px;margin-left:-75px;float:left;'src='mainmap.png'></img>
-      <h1 style='margin-top: 10px;font-size:15px;float:right;margin-right:13px;'>Místo předání</h1>
-     <select style='margin-left:-40px;width:175px;height:40px;border:2px solid gray;background-color:white; color:black;'name='placeid' id='place'> 
-
-        <option style='background-color:white; color:black;' name='placeid' value=''>
-Vyber místo...
-        </option>";
-
-
-    $places = getPlaces($conn);
-    foreach ($places as $place) {
-        echo "<option style='background-color:white; color:black;' name='placeid' value='" . $place['placeid'] . "'>" . $place['placeName'] . "</option>";
-    }
-    echo "</select>";
-
-
-    echo "
-    <br><br>
-     <img style='width: 40px;margin-top:5px;margin-left:-80px;float:left;'src='clock.png'></img>
-    
-       <h1 style='margin-top: 10px;font-size:15px;float:right;margin-right:23px;'>Čas předání</h1>
-<select style='margin-left:-40px;border:2px solid gray;background-color:white; color:black;width:175px;height:40px;' name='timeid' id='time'> 
-        <option style='background-color:white; color:black; name='timeid' value=''>Vyber čas...</option>
-        <option style='background-color:white; color:black; name='timeid' value='1'>7:40</option>
-        <option style='background-color:white; color:black; name='timeid' value='2'>8:45</option>
-        <option style='background-color:white; color:black; name='timeid' value='3'>9:40</option>
-        <option style='background-color:white; color:black; name='timeid' value='4'>10:40</option>
-        <option style='background-color:white; color:black; name='timeid' value='5'>11:40</option>
-        <option style='background-color:white; color:black; name='timeid' value='6'>12:35</option>
-        <option style='background-color:white; color:black; name='timeid' value='7'>13:30</option>
-        <option style='background-color:white; color:black; name='timeid' value='8'>14:25</option>
-        <option style='background-color:white; color:black; name='timeid' value='9'>15:20</option>
-        <option style='background-color:white; color:black; name='timeid' value='10'>16:10</option>
-        <option style='background-color:white; color:black; name='timeid' value='11'>17:00</option>
-</select>";
-
-}
-?>
-
-
-<?php
-if (isset($_POST['submitbuy'])) {
-    $productid = $_POST['productid'];
-
-    if (isset($_SESSION['userid'])) {
-        $buyerid = $_SESSION['userid'];
-    } else {
-        $buyerid = null;
-    }
-
-
-    $product = getProductByID($conn, $productid);
-    echo "<br><br><div style='border:3px solid;width:130px;font-family: Poppins, sans-serif; font-weight:600; font-size:20px;padding: 5px;text-align:center;height:37px;float:right;margin-right:5px;' class='generateEmailBut2' onclick='generateEmail(";
-    echo '"' . $_SESSION['name'] . '"';
-    echo ',"' . $_SESSION['surname'] . '"';
-    echo ',"' . $product['name'] . ' ' . $product['surname'] . '"';
-    echo ',"' . $product['itemName'] . '"';
-
-
-    echo ")'>Generovat</div>
-</div>
-<br>
-<br>
-<br>
-<hr style='  border: 1px solid black;'>
-        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-        
-
-         <button style='background-color:black;color:white;float:right;margin-top:3px;justify-content:center;display:flex;height:50px;width:150px;padding: 13px;margin-right:25%;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
-
-    </div>
-    
-    </form>
-   
-  
-";
-}
-?>
- 
-<!--<button style='background-color:white;border:2px solid gray;color:black;float:left;margin-top:15px;height:50px;width:150px;padding: 13px;margin-left:10px;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Zpět</button><input type="checkbox" name="moreBooks"
-               value="moreBooks" <?php if (isset($_POST['moreBooks'])) echo "checked" ?>>
-        <label for="morebooks">Další knihy</label>
-        <br>-->
-
     <!--ERROR HANDLING-->
 <?php
-if (isset($_GET["error"])) {
-    if ($_GET["error"] == "emptyinput") {
-        echo "<p>Fill in all fields!</p>";
-    } else if ($_GET["error"] == "wronglogin") {
-        echo "<p>Incorrect login credentials</p>";
-    }
-}
+include_once 'errorHandler.php';
 ?>
 
 

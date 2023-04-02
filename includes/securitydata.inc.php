@@ -4,5 +4,5 @@ function getMasterEmail(): string{
 }
 
 function getMasterKey(): string{
-    return 'xdmpsizlizouskjy';
+    return 'rmzalvjajikojxrv';
 }
