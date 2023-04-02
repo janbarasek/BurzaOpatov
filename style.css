@@ -774,3 +774,27 @@ width: 110px;
 .black {
     color: black;
 }
+
+.yearSellContainer {
+    display: grid;
+    grid-template-columns: 10% 25% 10% 25% 10% 25%;
+    padding: 10px;
+
+}
+
+.yearSell{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;
+}
+
+.yearSellLabel{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}

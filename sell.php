@@ -16,7 +16,7 @@
 </div>
 
 <img style='margin-left:5%;width:100px;margin-top:-80px;' src='Photos/books/2.jpg'></img>
-<h1 style='float:right;margin-right:10%;'>Matematika 6</h1>
+<h1 style='float:right;margin-right:10%;'>Vaše kniha</h1>
 <hr style='padding:1px;margin-top:23px;margin-left:0px;width: 140px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:150px;margin-top: -25px;'>Třída/Předmět</h3>
 <hr style='padding:1px;margin-top:-12px;float:right;width: 90px;background-color:black;'>
@@ -24,13 +24,13 @@
 
 if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
     echo '
-        <input style="display:inline-block;margin-left:22%;" type="radio" name="year" value="">Choose a year..</input>
-        <input style="margin-left:5px;" type="radio" name="year" value="4" checked><label style="margin-top:0px"> 4. </label></input>
-        <input style="display:inline-block;
-        " type="radio" name="year" value="5"><label style="margin-top: -60px;"> 5. </label></input>
-        <input style="display:inline-block;float:left;" type="radio" name="year" value="6"><label> 6.  </label></input>
-        <input style="display:inline-block;float:left;" type="radio" name="year" value="7"><label> 7.  </label></input>
-        <input style="display:inline-block;float:left;" type="radio" name="year" value="8"><label> 8.  </label></input>';
+        <div class="yearSellContainer">
+        <input class="yearSell" type="radio" name="year" value="4" id="year4" checked><label for="year4" class="yearSellLabel"> Kvarta </label></input>
+        <input class="yearSell" type="radio" name="year" value="5" id="year5"><label for="year5" class="yearSellLabel"> Kvinta </label></input>
+        <input class="yearSell" type="radio" name="year" value="6" id="year6"><label for="year6" class="yearSellLabel"> Sexta  </label></input>
+        <input class="yearSell" type="radio" name="year" value="7" id="year7"><label for="year7" class="yearSellLabel"> Septima  </label></input>
+        <input class="yearSell" type="radio" name="year" value="8" id="year8"><label for="year8" class="yearSellLabel"> Oktáva  </label></input>
+        </div>';
 }else if (getClassByUserID($conn, $_SESSION['id'])['classYear'] == 5){
     echo '
 
@@ -82,7 +82,7 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         <?php
         $subjects = getSubjects($conn);
         foreach($subjects as $subject){
-            echo "<input style='display:inline-block;margin-left:0%;' type='radio' name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
+            echo "<input class='subjectSell' type='radio' name='subjectid' value='".$subject['subjectid']."'>".$subject['subjectName']."</option>";
         }
         ?>
     <h1 style="margin-left:5px;font-size:20px;">Cena</h1>

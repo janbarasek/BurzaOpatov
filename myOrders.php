@@ -32,7 +32,7 @@ foreach ($products as $product){
         </h3>
           <br>
             <h3 style=''>
-            " . $product['buyTime'] . "
+            " . date("d-m-Y", strtotime($product['buyTime']))  . "
 </h3>
           <br>
             <h3 style=''>" . getStatusByID($conn, $product['statusid'])['name'] . "</h3>
