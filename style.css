@@ -798,3 +798,50 @@ width: 110px;
     justify-content: start;
     align-items: center;
 }
+
+.subjectSellContainer {
+    display: grid;
+    grid-template-columns: 10% 25% 10% 25% 10% 25%;
+    padding: 10px;
+
+}
+
+.subjectSell{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;
+}
+
+.subjectSellLabel{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.draftSellContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin-left: 10vw;
+}
+.draftSell{
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+.draftSellLabel{
+    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.decorationSell{
+    margin-bottom: 10vw;
+}
