@@ -31,6 +31,8 @@ if (!isset($_SESSION['id'])) {
         } else {
             echo "<img class='profilepicture' src='Photos/FRAJER.png'></img>";
         }
+    } else {
+        echo "<img class='profilepicture' src='Photos/FRAJER.png'></img>";
     }
     ?>
     <br>

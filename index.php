@@ -132,7 +132,7 @@ include_once 'header.php';
       
 
             <select style="margin-right: 10px;height:40px;width:150px;float:right;margin-top:-200px;background-color:white;color:black;"type="radio" name="rankid" value="" selected="selected">
-            <option selected>Vyber kvalitu...</option>
+            <option selected value="">Vyber kvalitu...</option>
 
             <?php
             $ranks = getRanks($conn);
@@ -198,7 +198,6 @@ if (isset($_POST['submitsearch'])) {
     if ($products == null && $products2 == null && $products3 == null && $products4 == null && $products5 == null) {
         echo "<h3 class='specialh3'>No results found</h3>";
     }
-
 
     if ($rankid != null && $year != null && $subjectid != null) {
         $products = checkArrayEquality($products3, $products4, "id", "id");

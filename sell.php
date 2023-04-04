@@ -126,9 +126,9 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         ?>
     </select>
     <input class="ou" style="margin-top:-10px;margin-left:5%;border:2px solid black;width: 150px;"type="number" name="price" placeholder="Cena" required min="0" max="10000">
-    <h1><?php
+    <?php
         include_once 'errorHandler.php';
-        ?></h1>
+        ?>
         <br>
         <br>
         <br>
