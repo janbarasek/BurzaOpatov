@@ -60,7 +60,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
     ?>
 
   <a href="index.php" class="opatak">
-    BURZA</a>
+    BURZA</a><p style="color: tomato">Testovací provoz</p>
 
 
   

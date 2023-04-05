@@ -11,7 +11,25 @@ require 'PHPMailer/phpmailer/src/SMTP.php';
 
 include_once 'includes/securitydata.inc.php';
 
-function sendMessage($conn, $senderid, $productid, $count, $message, $recieverid, $subject){
+function sendMessage($conn, $senderid, $productid, $count, $message, $recieverid, $subject, $return){
+    $sqlcheck = "SELECT * FROM message WHERE userid = ? AND productid = ? AND recieverid = ?;";
+    $stmtcheck = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmtcheck, $sqlcheck)){
+        header("location: ../index.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmtcheck, "sss", $senderid, $productid, $recieverid);
+    mysqli_stmt_execute($stmtcheck);
+    $result = mysqli_stmt_get_result($stmtcheck);
+    if(mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_all($result);
+        $lastMessage = $row[array_key_last($row)];
+    }
+    mysqli_stmt_close($stmtcheck);
+    if ($lastMessage[5] == $message && strtotime($lastMessage[6]) > strtotime("-10 seconds")){
+        header("location: ../contact.php?id=". $productid ."&return=".$return."&error=spam");
+    }
+
     $sql = "INSERT INTO message (userid, productid, count, message, dateTime, recieverid)
         VALUES (?, ?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);

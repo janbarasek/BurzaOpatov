@@ -42,7 +42,7 @@ if(isset($_POST['submitbuy'])){
     //$resultMessage = mysqli_query($conn, "INSERT INTO message (userid, productid, count, message, dateTime, recieverid) VALUES ('$buyerid', '$productid', '1', '$email', '$dateTime','$sellerid')");
     $result = mysqli_query($conn, "UPDATE products SET buyTime = '$dateTime', buyerid = '$buyerid',statusid = 2 WHERE id = '$productid'");
 
-    sendMessage($conn, $buyerid, $productid, 1, $email, $sellerid, "Nová rezervace od uživatele: ".getUserByID($conn, $buyerid)['name']." ".getUserByID($conn, $buyerid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName']);
+    sendMessage($conn, $buyerid, $productid, 1, $email, $sellerid, "Nová rezervace od uživatele: ".getUserByID($conn, $buyerid)['name']." ".getUserByID($conn, $buyerid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName'], "index.php");
 
     header("Location: ../index.php?success=buy");
 }

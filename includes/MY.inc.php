@@ -52,7 +52,7 @@ if(isset($_GET['submitmessage'])){
     $lastMessagecount = $lastMessagecount + 1;
 
 
-    sendMessage($conn, $userid, $productid, $lastMessagecount, $message, $recieverid, "Nová zpráva od uživatele: ".getUserByID($conn, $userid)['name']." ".getUserByID($conn, $userid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName']);
+    sendMessage($conn, $userid, $productid, $lastMessagecount, $message, $recieverid, "Nová zpráva od uživatele: ".getUserByID($conn, $userid)['name']." ".getUserByID($conn, $userid)['surname'] ." ohledně produktu: ".getProductByID($conn, $productid)['itemName'], $_GET['return']);
     header("Location: ../contact.php?id=".$productid."&return=".$_GET['return']);
     exit();
 }

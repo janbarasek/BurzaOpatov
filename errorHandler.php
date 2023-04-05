@@ -12,8 +12,8 @@ if (isset($_GET["error"])) {
         echo "<p class='error'>Neplatná cena!</p>";
     } else if ($_GET["error"] == "stmtfailed"){
         echo "<p class='error'>Něco se pokazilo!</p>";
-    } else if ($_GET["error"] == "stmtfailed"){
-        echo "<p class='error'>Něco se pokazilo!</p>";
+    } else if ($_GET["error"] == "spam"){
+        echo "<p class='error'>Zpráva byla odeslána příliš rychle, opakujte za chvíli znovu</p>";
     } else if ($_GET["error"] == "none"){
         echo "<p class='error'>Vše proběhlo v pořádku!</p>";
     }

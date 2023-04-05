@@ -49,6 +49,8 @@ if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProduc
     <input type='text' name='message' placeholder='Message'>
     <button type='submit' name='submitmessage'>Send</button>
     </form>";
+
+    include_once 'errorHandler.php';
 } else {
     header("Location: index.php");
     exit();
