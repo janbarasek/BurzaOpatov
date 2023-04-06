@@ -66,8 +66,9 @@ if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProduc
     echo "<form action='includes/MY.inc.php' method='get'>
     <input type='number' name='productid' hidden='hidden' value=" . $_GET['id'] . ">
     <input type='text' name='return' hidden='hidden' value=" . $_GET['return'] . ">
-    <input type='text' name='message' style='border: 1px solid black;
-    box-shadow: 2px 2px #888888;background-color:gray;color:black;width:94%;margin-left:10px;' placeholder='Message'>
+    <input type='text' name='message' style='border: 1px solid black;font-family: Roboto;
+    font-weight: 1000;
+    box-shadow: 2px 2px #888888;background-color:gray;color:white;width:94%;margin-left:10px;' placeholder='Napiš zprávu!'>
     <button class='submitbuttones' style='margin-top:-42px;height:0px;float:right;margin-right:40px;width:40px;border:0px solid white;background-color:gray;'type='submit' name='submitmessage'><img style='margin-top:-15px;float:right;margin-right:-20px;width:40px;' src='vlastovka.png' type='submit' name='submitmessage'></img></button>
     </form>";
 
@@ -97,7 +98,8 @@ if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProduc
     margin: 10px;
     width: 80%;
     float: right;
-  
+    font-family: Roboto;
+    font-weight: 1000;
    
     clear: both;
 }
