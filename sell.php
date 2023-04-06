@@ -153,7 +153,7 @@ include_once "errorHandler.php";
         }
         echo '
     </select>
-    <input class="ou" style="margin-top:-10px;margin-left:5%;border:2px solid black;width: 150px;"type="number" name="price" placeholder="Cena" required min="0" max="10000">
+    <input class="ou" style="margin-top:-10px;margin-left:5%;border:2px solid black;width: 150px;"type="number" name="price" placeholder="Cena" required min="0" max="999">
     
         
         <br>

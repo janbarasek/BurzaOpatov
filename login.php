@@ -1,11 +1,6 @@
 <?php
 include_once 'header.php';
 ?>
-
-    <p>
-        This is the login page.
-    </p>
-
     <div class="background">
         <div class="ball"></div>
         <div class="ball"></div>
@@ -14,18 +9,18 @@ include_once 'header.php';
         <br>
         <br>
 
-       
-        <h3>Log in</h3>
-        <input type="text" name="name" placeholder="Name..." >
+
+        <h3>Přihlásit se</h3>
+        <input type="text" name="name" placeholder="Jméno..." >
         <br>
         <link rel="stylesheet" href="style.css"></link>
 
-        <input type="text" name="surname" placeholder="Surname..." >
+        <input type="text" name="surname" placeholder="Přijmení..." >
         <br>
         <b>Class...</b>
         <select name="class">
 
-            <option name="class" value="" selected="selected">Class...</option>
+            <option name="class" value="" selected="selected">Třída...</option>
 
             <option name="class" value="U">U</option>
             <option name="class" value="T">T</option>
@@ -33,23 +28,15 @@ include_once 'header.php';
         <br>
         <input type="text" name="email" placeholder="Email..." >
         <br>
-        <input type="password" name="pwd" placeholder="Password..." required>
-<h1><?php
-    if (isset($_GET["error"])) {
-        if ($_GET["error"] == "emptyinput") {
-            echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Fill in all fields!</p>";
-        }
-        else if ($_GET["error"] == "wronglogin") {
-            echo "<p style='font-size:20px;margin-top:20px;justify-content: center;display: flex;color:red;'>Incorrect login credentials</p>";
-        }
-    }
-?></h1>
-        <button class="alficek" type="submit" name="submit">Log in</button>
+        <input type="password" name="pwd" placeholder="Heslo..." required>
+        <button class="alficek" type="submit" name="submit">Přihlásit se</button>
+        <?php
+        include_once 'errorHandler.php';
+        ?>
+
     </form>
 
-<?php
-    include_once 'errorHandler.php';
-?>
+
 
 <?php
 include_once 'footer.php';

@@ -40,7 +40,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
         foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                 if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                    echo "<img src='loser2.png' class='messageShow'></img>";
+                    echo "<img src='Photos/loser2.png' class='messageShow'></img>";
                     $notification = 1;
                     break;
                 }
@@ -50,7 +50,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                 if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                     if($notification == 0){
-                        echo "<img src='loser2.png' class='messageShow'></img>";
+                        echo "<img src='Photos/loser2.png' class='messageShow'></img>";
                         break;
                     }
                 }
@@ -68,12 +68,12 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
     <ul>
       <li>
         <a href="index.php">
-          Home
+          Domů
         </a>
       </li>
       <li>
         <a href="sell.php">
-          Sell
+          Prodat
         </a>
       </li>
         <?php
@@ -81,13 +81,13 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
         if (isset($_SESSION["id"])){
             echo "<li>
                     <a href='profile.php'>
-                    Profile
+                    Účet
                     ";
 
             foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        echo "<img src='loser2.png' style='margin-top:0px;float:right;    margin-right: 0px;'class='messageShow'></img>";
+                        echo "<img src='Photos/loser2.png' style='margin-top:0px;float:right;    margin-right: 0px;'class='messageShow'></img>";
                         $notification = 1;
                         break;
                     }
@@ -97,7 +97,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                         if($notification == 0){
-                            echo "<img style='margin-:30px;'src='loser2.png' class='messageShow'></img>";
+                            echo "<img style='margin-:30px;'src='Photos/loser2.png' class='messageShow'></img>";
                             break;
                         }
                     }
@@ -105,11 +105,11 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
             }
             echo "</a>
                 </li>";
-            echo "<li><a href='includes/logout.inc.php'>Log Out</a></li>";
+            echo "<li><a href='includes/logout.inc.php'>Odhlásit</a></li>";
         }
         else{
-            echo "<li><a href='signup.php'>Sign Up</a></li>";
-            echo "<li><a href='login.php'>Log In</a></li>";
+            echo "<li><a href='signup.php'>Registrovat</a></li>";
+            echo "<li><a href='login.php'>Přihlásit</a></li>";
         }
         ?>
     </ul>

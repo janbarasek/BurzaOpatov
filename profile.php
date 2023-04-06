@@ -17,7 +17,7 @@ if (!isset($_SESSION['id'])) {
 <div class="mainPartProfile">
 
 
-    <h3>Profil</h3>
+    <h3>Účet</h3>
 
     <br>
     <?php
@@ -58,7 +58,7 @@ if (!isset($_SESSION['id'])) {
 
     <!--          <button class="smallbtn"><a class="profilebtn" href="#"><b class="svoby">Change profile picture</b></a></button>-->
     <hr>
-    <b class="reputacehoub">Profil Info</b>
+    <b class="reputacehoub">Info</b>
     <br>
     <?php
     if (isset($_SESSION['id'])) {

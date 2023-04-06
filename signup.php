@@ -2,11 +2,6 @@
 <?php
     include_once 'header.php';
 ?>
-
-    <p>
-        This is the signup page.
-    </p>
-
      <div class="background">
         <div class="ball"></div>
         <div class="ball"></div>
@@ -21,14 +16,14 @@
         <br>
         
         
-    	<h3>Sign up</h3>
-        <input class="A" type="text" name="name" placeholder="Name..." required><br>
+    	<h3>Registrovat</h3>
+        <input class="A" type="text" name="name" placeholder="Jméno..." required><br>
 
-        <input class="A" type="text" name="surname" placeholder="Surname..." required><br>
+        <input class="A" type="text" name="surname" placeholder="Přijmení..." required><br>
         <br>
         <b>Class...</b>
         <select name="class">
-            <option class="black" name="class" value="" selected="selected">Class...</option>
+            <option class="black" name="class" value="" selected="selected">Třída...</option>
             <option class="black" name="class" value="U">U</option>
             <option class="black" name="class" value="T">T</option>
         </select>
@@ -36,10 +31,10 @@
         <br>
         <input class="A" type="email" name="email" placeholder="Email...">
         <br>
-        <input class="B" type="password" name="pwd" placeholder="Password..." required><br>
-        <input class="C" type="password" name="pwdrepeat" placeholder="Repeat password..." required><br>
+        <input class="B" type="password" name="pwd" placeholder="Heslo..." required><br>
+        <input class="C" type="password" name="pwdrepeat" placeholder="Opakovat heslo..." required><br>
           <?php include_once 'errorHandler.php';?>
-        <button class="D" type="submit" name="submit">Sign up</button>
+        <button class="D" type="submit" name="submit">Registrovat se</button>
 
     </form>
 
