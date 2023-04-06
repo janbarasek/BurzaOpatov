@@ -29,7 +29,7 @@ if (isset($_POST['submitbuy'])) {
 <h3 style='float: right;font-weight:600;font-size: 20px;margin-right:5%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
 <hr style='padding:1px;margin-top:52px;margin-left:100px;width: 100px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:210px;'>Info</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 105px;background-color:black;'>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 90px;background-color:black;'>
  <img style='float:left;margin-left:0px;
   width: 100px;margin-top:-70px;'class='image' src='" . $fileinfo[0] . "'></img>
     
@@ -53,12 +53,12 @@ if (isset($_POST['submitbuy'])) {
 
 <hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:150px;margin-top: -12px;'>Rezervace</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 90px;background-color:black;'>
         <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;padding:5px;width: 97.5%;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'></textarea>
 
   <hr style='padding:1px;margin-top:10px;margin-left:0px;float:left;width: 160px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:170px;margin-top: 1px;'>Údaje</h3>
-<hr style='padding:1px;margin-top:-12px;float:right;width: 130px;background-color:black;'>
+<hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
 <img style='margin-top:33px;margin-left:10px;float:left;'src='Photos/calendar.png'></img>
 <div id='generateEmailContainer' style=' margin-left:80px;margin-top:-60px;align-items:center;' >
 <br>

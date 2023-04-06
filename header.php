@@ -40,7 +40,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
         foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                 if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                    echo "<div class='messageShow'></div>";
+                    echo "<img src='loser2.png' class='messageShow'></img>";
                     $notification = 1;
                     break;
                 }
@@ -50,7 +50,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                 if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                     if($notification == 0){
-                        echo "<div class='messageShow'></div>";
+                        echo "<img src='loser2.png' class='messageShow'></img>";
                         break;
                     }
                 }
@@ -87,7 +87,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
             foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        echo "<div class='messageShow'></div>";
+                        echo "<img src='loser2.png' style='margin-top:0px;float:right;    margin-right: 0px;'class='messageShow'></img>";
                         $notification = 1;
                         break;
                     }
@@ -97,7 +97,7 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                         if($notification == 0){
-                            echo "<div class='messageShow'></div>";
+                            echo "<img style='margin-:30px;'src='loser2.png' class='messageShow'></img>";
                             break;
                         }
                     }

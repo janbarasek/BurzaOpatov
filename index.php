@@ -4,37 +4,85 @@ include_once 'header.php';
 
     <!--SEARCH FOR THE BOOKS-->
     <form class='' action='index.php' method='post'>
-       
+       <div>
         <input class='search' type='text' name='search'
                placeholder='Co hledáte?' <?php if (isset($_POST['search'])) echo "value=" . $_POST['search'] ?>>
         <button class='alficek' type='submit' name='submitsearch'><img class="dieGasse"                                                                       src="Photos/searchlogo.png"></img></button>
         
-        <div class='radioIndex'>
+        
             <input type='radio' name='year' value='' <?php if (!isset($_POST['year'])) echo "checked" ?>>
             <label for='year'>Jakákoliv</label>
             <hr style='background-color: black;
     padding: 1px;
-    width: 70%;
+    width: 80%;
     float: right;
-    margin-top: 70px;margin-right:10px;'>
+    margin-top: 22px;margin-right:10px;'>
             <h1 style='margin-left:5px;font-size:20px;'>Třída</h1>
-
-                        <input class="houbic1" style='    margin-left: 1%;display: inline-block;width:20px;' type='radio' name='year'
+            <div style='display: grid;
+    grid-template-columns: 10% 25% 10% 25% 10% 25%;
+    padding: 10px;'class='radioIndex'>
+                        <input class="houbic1" style='width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;' type='radio' name='year'
                    value='4' <?php if (isset($_POST['year'])) if ($_POST['year'] == 4) echo "checked" ?>>
-            <label style='font-size:14px;display: inline-block;margin-left:5px;font-family: Poppins, sans-serif;'
+            <label style='font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;'
                    for='year'>Kvarta</label>
-                   <input style='display: inline-block;width: 20px; ;' type='radio' name='year'
+                   <input style='    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;' type='radio' name='year'
                    value='5' <?php if (isset($_POST['year'])) if ($_POST['year'] == 5) echo "checked" ?>>
-            <label style='font-size:14px;font-family: Poppins, sans-serif;' for='year'>Kvinta</label>
-            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+            <label style='font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;' for='year'>Kvinta</label>
+            <input style='    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;' type='radio' name='year'
                    value='6' <?php if (isset($_POST['year'])) if ($_POST['year'] == 6) echo "checked" ?>>
-            <label style='font-size:14px;display: inline-block;font-family: Poppins, sans-serif;' for='year'>Sexta</label>
-            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+            <label style='    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;' for='year'>Sexta</label>
+   
+            <input style='width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;' type='radio' name='year'
                    value='7' <?php if (isset($_POST['year'])) if ($_POST['year'] == 7) echo "checked" ?>>
-            <label style='font-size:14px;display: inline-block;font-family: Poppins, sans-serif;' for='year'>Septima</label>
-            <input style='display: inline-block;width: 20px;' type='radio' name='year'
+            <label style='font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;' for='year'>Septima</label>
+            <input style='    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;' type='radio' name='year'
                    value='8' <?php if (isset($_POST['year'])) if ($_POST['year'] == 8) echo "checked" ?>>
-            <label style='font-size:15px;display: inline-block;font-family: Poppins, sans-serif;' for='year'>Oktáva</label>
+            <label style='    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;' for='year'>Oktáva</label>
             
 
         </div>
