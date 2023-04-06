@@ -89,7 +89,41 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
         }
         ?>
     </div>
-    <h1 style="margin-left:5px;font-size:20px;">Cena</h1>
+
+    <div class="allCenterFlexMax">
+        <button class="alficek findButtonSell" type="submit" name="submit">Hledat</button>
+    </div>
+</form>
+
+<?php
+include_once "errorHandler.php";
+?>
+
+<hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
+<h3 style='font-size:18px;margin-left:150px;margin-top: -12px;' class="decorationSell">Návrhy učebnic<hr style='padding:1px;margin-top:10px;float:right;width: 85px;background-color:black;'></h3>
+
+
+
+
+<form class="" action="includes/sell.inc.php" method="POST">
+    <?php
+    if(isset($_GET['year']) && isset($_GET['subjectid'])) {
+        $year = $_GET['year'];
+        $subjectid = $_GET['subjectid'];
+
+        $productsid = getProductsListYearSubjectid($conn, $year, $subjectid);
+
+        if (empty($productsid)) {
+            echo "<p class='draftSellLabel'>Žádné učebnice nebyly nalezeny</p>";
+        }
+
+        foreach ($productsid as $productid) {
+            $product = getProductsListByID($conn, $productid['productslistid']);
+            echo "<div class='draftSellContainer'><input class='draftSell' type='radio' name='productslistid' value='" . $product[0]['productslistid'] . "' id='draft" . $product[0]['productslistid'] . "' required ><label for='draft" . $product[0]['productslistid'] . "'class='draftSellLabel' > " . $product[0]['itemName'] . " - " . $product[0]['publishYear'] . "</label></div><br>";
+        }
+
+
+        echo '<h1 style="margin-left:5px;font-size:20px;">Cena</h1>
     <hr style="
     background-color: black;
     padding: 1px;
@@ -98,65 +132,41 @@ if(getClassByUserID($conn, $_SESSION['id'])['classYear'] == 4){
     margin-top: -25px;
     margin-right: 190px;
 ">
-     <h1 style="margin-right:95px;font-size:20px;float:right;margin-top:-35px;">Kvalita</h1>
-     <hr style="
+    <h1 style="margin-right:95px;font-size:20px;float:right;margin-top:-35px;">Kvalita</h1>
+    <hr style="
  background-color: black;
  padding: 1px;
  width: 70px;
  float: right;
  margin-top: -25px;
  margin-right: -150px;">
-    <button style="float:right;margin-right:-40%;margin-top:70px;width:150px;height:55px;padding:-1px;" class="alficek" type="submit" name="submit">Hledat</button>
-</form>
-
-
-<form class="" action="includes/sell.inc.php" method="POST">
     <br>
     <br>
 
     <select style="float:right;margin-right:3%;" name="rankid" required>
 
-        <option name="rankid" value="" selected="selected">Choose a rank..</option>
+        <option name="rankid" value="" selected="selected">Choose a rank..</option>';
 
-        <?php
         $ranks = getRanks($conn);
-        foreach($ranks as $rank){
-            echo "<option name='rankid' value='".$rank['id']."'>".$rank['name']."</option>";
+        foreach ($ranks as $rank) {
+            echo "<option name='rankid' value='" . $rank['id'] . "'>" . $rank['name'] . "</option>";
         }
-        ?>
+        echo '
     </select>
     <input class="ou" style="margin-top:-10px;margin-left:5%;border:2px solid black;width: 150px;"type="number" name="price" placeholder="Cena" required min="0" max="10000">
-    <?php
-        include_once 'errorHandler.php';
-        ?>
+    
+        
         <br>
         <br>
         <br>
         <br>
 
-<hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
-<h3 style='font-size:18px;margin-left:150px;margin-top: -12px;' class="decorationSell">Návrhy učebnic<hr style='padding:1px;margin-top:10px;float:right;width: 85px;background-color:black;'></h3>
 
 
-<?php
-    if(isset($_GET['year']) && isset($_GET['subjectid'])){
-        $year = $_GET['year'];
-        $subjectid = $_GET['subjectid'];
-
-        $productsid = getProductsListYearSubjectid($conn, $year, $subjectid);
-
-        if(empty($productsid)){
-            echo "<p class='draftSellLabel'>Žádné učebnice nebyly nalezeny</p>";
-        }
-
-        foreach($productsid as $productid){
-            $product = getProductsListByID($conn, $productid['productslistid']);
-            echo "<div class='draftSellContainer'><input class='draftSell' type='radio' name='productslistid' value='" .$product[0]['productslistid']."' id='draft" .$product[0]['productslistid']."' required ><label for='draft" .$product[0]['productslistid']."'class='draftSellLabel' > ".$product[0]['itemName']." - ". $product[0]['publishYear']."</label></div><br>";
-        }
+    <button style="margin-top:10px;margin-left:25%;border-radius:25px;"class="alficek" type="submit" name="submit">Prodat</button>';
     }
-    ?>
+        ?>
 
-    <button style="margin-top:10px;margin-left:25%;border-radius:25px;"class="alficek" type="submit" name="submit">Prodat</button>
 </form>
 
 <?php

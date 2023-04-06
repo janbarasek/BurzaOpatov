@@ -149,6 +149,7 @@ if (isset($_POST['submitbuy'])) {
    
   
 ";
+    include_once 'errorHandler.php';
 }
 ?>
 
