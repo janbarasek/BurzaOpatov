@@ -168,6 +168,7 @@ include_once 'footer.php';
         height: 25px;
         margin-left: 10px;
         position: absolute;
+        width: 25px;
     }
 
     @media (max-width: 900px) {
@@ -179,6 +180,7 @@ include_once 'footer.php';
         margin-top: -5px;
         margin-left: 5px;
         position: absolute;
+        width: 25px;
     }
 
     .houbiczlobi3 {
@@ -186,6 +188,7 @@ include_once 'footer.php';
         margin-top: -5px;
         margin-left: 30px;
         position: absolute;
+        width: 25px;
     }
 
     .svoby32 {

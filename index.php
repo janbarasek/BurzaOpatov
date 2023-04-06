@@ -408,7 +408,7 @@ include_once 'footer.php';
 
         .booktext2 {
              width: 94%;
-            height: 675px;
+            height: 690px;
             background-color: white;
             border-radius: 5px;
             border: 4px solid;

@@ -31,7 +31,7 @@ if (isset($_POST['submitbuy'])) {
 <h3 style='font-size:18px;margin-left:210px;'>Info</h3>
 <hr style='padding:1px;margin-top:-12px;float:right;width: 105px;background-color:black;'>
  <img style='float:left;margin-left:0px;
-  width: 100px;margin-top:-90px;'class='image' src='" . $fileinfo[0] . "'></img>
+  width: 100px;margin-top:-70px;'class='image' src='" . $fileinfo[0] . "'></img>
     
 
         <h3 style='margin-top:0px;font-size:15px;margin-left:110px;color:gray;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
@@ -54,7 +54,7 @@ if (isset($_POST['submitbuy'])) {
 <hr style='padding:1px;margin-top:0px;margin-left:0px;width: 140px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:150px;margin-top: -12px;'>Rezervace</h3>
 <hr style='padding:1px;margin-top:-12px;float:right;width: 110px;background-color:black;'>
-        <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;width: 97.5%;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'></textarea>
+        <textarea placeholder='Vzkaz pro prodejce...' style='resize: none;padding:5px;width: 97.5%;margin-top:10px; margin-left:5px;height: 150px;' id='email' required maxlength='500' minlength='10' name='email'></textarea>
 
   <hr style='padding:1px;margin-top:10px;margin-left:0px;float:left;width: 160px;background-color:black;'>
 <h3 style='font-size:18px;margin-left:170px;margin-top: 1px;'>Údaje</h3>
@@ -141,7 +141,7 @@ if (isset($_POST['submitbuy'])) {
 <hr style='  border: 1px solid black;'>
         <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
         
-         <button style='background-color:black;color:white;float:right;margin-top:3px;justify-content:center;display:flex;height:50px;width:150px;padding: 13px;margin-right:25%;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
+         <button style='background-color:black;color:white;float:right;margin-top:3px;justify-content:center;display:flex;height:50px;width:150px;padding: 13px;margin-right:28%;border-radius:20px;'class='alficek2' type='submit' name='submitbuy'>Rezervevovat</button>
 
     </div>
     
@@ -261,7 +261,7 @@ include_once 'footer.php';
 
     .booktext2 {
         width: 94%;
-        height: 675px;
+        height: 690px;
         background-color: white;
         border-radius: 5px;
         border: 4px solid;
