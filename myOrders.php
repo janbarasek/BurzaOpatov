@@ -15,6 +15,8 @@ if (!isset($_SESSION['id'])) {
 $userid = $_SESSION['id'];
 $products = getProductsByBuyerID($conn, $userid);
 
+include_once 'errorHandler.php';
+
 foreach ($products as $product){
     $filename = 'Photos/books/' . $product['productslistid'] . '*';
     $fileinfo = glob($filename);
@@ -41,7 +43,9 @@ foreach ($products as $product){
         
         ";
    if ($product['statusid'] == 2) {
-        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=myOrders.php'>Mark as bought</a></button>
+        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=myOrders.php'>Mark as bought</a></button>";
+}
+echo "
         <button class='alficek2'><a  class='black' href='contact.php?id=".$product['id']."&return=myOrders.php'>Contact</a>";
 
        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
@@ -54,19 +58,6 @@ foreach ($products as $product){
         </div>
   </div>
         ";
-    }else{
-        echo"<button class='alficek2'><a class='black' href='contact.php?id=".$product['id']."&return=myOrders.php'>Contact</a>";
-
-       foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-           if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
-               echo "<div class='messageShow'></div>";
-               break;
-           }
-       }
-       echo "</button>
-</div>
-  </div>";
-    }
 
 }
 ?>

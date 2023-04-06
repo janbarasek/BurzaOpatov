@@ -75,6 +75,12 @@ foreach ($users as $users){
             $class = mysqli_fetch_all($result, MYSQLI_ASSOC);
             print_r($class);
 
+            echo "<h2>MESSAGE</h2> <br>";
+            $sql = "SELECT * FROM message;";
+            $result = mysqli_query($conn, $sql);
+            $message = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            print_r($message);
+
         } else {
             header("location: index.php");
         }

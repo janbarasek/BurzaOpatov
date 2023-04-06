@@ -129,15 +129,8 @@ if (!isset($_SESSION['id'])) {
 
 
 <?php
-if (isset($_GET["error"])) {
-    if ($_GET["error"] == "wrongfiletype") {
-        echo "<p>Wrong file type</p>";
-    } else if ($_GET["error"] == "wronglogin") {
-        echo "<p>Incorrect login credentials</p>";
-    }
-}
+include_once 'errorHandler.php';
 ?>
-
 <?php
 include_once 'footer.php';
 ?>

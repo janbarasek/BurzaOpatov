@@ -16,6 +16,8 @@ if (!isset($_SESSION['id'])) {
 $userid = $_SESSION['id'];
 $products = getProductsBySellerID($conn, $userid);
 
+include_once 'errorHandler.php';
+
 foreach ($products as $product){
     $filename = 'Photos/books/' . $product['productslistid'] . '*';
     $fileinfo = glob($filename);

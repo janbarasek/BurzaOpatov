@@ -169,7 +169,7 @@ function pwdMatch($pwd, $pwdrepeat){
 //Returns the row if email exists in database
 //Returns false if email does not exist in database
 function uidExists($conn, $name, $surname, $class, $email){
-    $sql = "SELECT * FROM users WHERE email = ?;";
+    $sql = "SELECT * FROM users WHERE email = ? OR name = ? AND surname = ? AND class = ?;";
     if(empty($email)){
         $email = constructEmail($name, $surname, $class);
     }
@@ -178,7 +178,7 @@ function uidExists($conn, $name, $surname, $class, $email){
         header("location: ../signup.php?error=stmtfailed");
         exit();
     }
-    mysqli_stmt_bind_param($stmt, "s",  $email); // s = string
+    mysqli_stmt_bind_param($stmt, "ssss",  $email, $name, $surname, $class); // s = string
     mysqli_stmt_execute($stmt);
 
     $resultData = mysqli_stmt_get_result($stmt);

@@ -848,3 +848,18 @@ width: 110px;
 .decorationSell{
     margin-bottom: 10vw;
 }
+
+.findButtonSell{
+    margin: 2vh 0 3vh;
+}
+
+.allCenterFlexMax{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.profilepicture{
+    object-fit: cover;
+}
