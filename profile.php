@@ -131,7 +131,6 @@ if (!isset($_SESSION['id'])) {
 <?php
 include_once 'errorHandler.php';
 ?>
-
 <?php
 include_once 'footer.php';
 ?>
