@@ -22,8 +22,13 @@ include_once 'header.php';
 
             <option name="class" value="" selected="selected">Třída...</option>
 
-            <option name="class" value="U">U</option>
-            <option name="class" value="T">T</option>
+            <?php
+            $classes = getClasses($conn);
+            foreach($classes as $class){
+                echo "<option name='class' value='".$class['class']."'>".$class['class']."</option>";
+            }
+            
+            ?>
         </select>
         <br>
         <input type="text" name="email" placeholder="Email..." >

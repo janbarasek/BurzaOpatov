@@ -24,8 +24,13 @@
         <b>Class...</b>
         <select name="class">
             <option class="black" name="class" value="" selected="selected">Třída...</option>
-            <option class="black" name="class" value="U">U</option>
-            <option class="black" name="class" value="T">T</option>
+            <?php
+            $classes = getClasses($conn);
+            foreach($classes as $class){
+                echo "<option name='class' value='".$class['class']."'>".$class['class']."</option>";
+            }
+            
+            ?>
         </select>
         <br>
         <br>

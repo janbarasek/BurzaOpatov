@@ -488,6 +488,13 @@ function getSubjects($conn){
     return $ranks;
 }
 
+function getClasses($conn){
+    $sql = "SELECT * FROM class ORDER BY classYear;";
+    $result = mysqli_query($conn, $sql);
+    $class = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $class;
+}
+
 function getPlaces($conn):array{
     $result = mysqli_query($conn, "SELECT * FROM place;");
     $places = mysqli_fetch_all($result, MYSQLI_ASSOC);
