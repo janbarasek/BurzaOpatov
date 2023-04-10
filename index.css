@@ -1,0 +1,210 @@
+@font-face {
+    font-family: ErasDemil;
+    src: url(ErasDemiITC.ttf);
+}
+@font-face {
+    font-family: Kanit-Light;
+    src: url(Kanit-Light.ttf);
+}
+
+.body{
+    font-family: Kanit-Light;
+    margin: 0;
+    background-color:black;
+}
+/*tohle prijde pric=nema bzt ve finalovem php*/
+.hlavicka{
+    height: 15vw;
+    width: 100%;
+    background-color: black;/*
+    float: left;
+    border-bottom-left-radius: 4vw;
+    border-bottom-right-radius: 4vw;*/
+}/*
+.prekryv-hlavicky{
+    height: 10vw;
+}*/
+.objednavky{
+    background-color: white;
+    padding: 5vw;
+    border-radius: 4vw;
+    margin-bottom: 6vw;
+}
+
+/*třídy patřící nadpisu*/
+.title-div{
+    border-bottom: 4px solid black;
+    width: 100%;
+    height: 15vw;
+    padding-bottom: 4vw;
+}
+.title-text{
+    font-family: ErasDemil;
+    text-align: center;
+    font-size: 10vw;
+    margin: 0;
+    padding:4vw 0vw 5vw;
+}
+
+/*třídy patřící objednaným předmětům*/
+.item-div{
+    width: 100%;
+    height: 46vw;
+    border-bottom: 4px solid black;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: 27vw auto;
+}
+.img-div{
+    width: 24vw;
+    margin: 0;
+}
+.img{
+    padding: 4vw 3vw;
+}
+/*třídy patřící objednaným předmětům - popisující text*/
+.name-grid{
+    display: grid;
+    grid-template-columns: 55vw auto;
+}
+.name{
+    margin:3vw 0 2vw;
+    font-size: 4vw;
+}
+.img-bin{
+    padding: 2vw 2vw 0;
+}
+.owner {
+    font-size: 3vw;
+    color:gray;
+    margin:0;
+}
+.reservation {
+    font-size: 3vw;
+    color: red;
+    margin:0;
+}
+.sold{
+    font-size: 3vw;
+    color: green;
+    margin:0;
+}
+.price-grid{
+    display: grid;
+    grid-template-columns: 20vw auto;
+}
+.price{
+    font-size: 3vw;
+    color: gray;
+    margin-top: 0;
+}
+.no-reservation{
+    margin-top: 14vw;
+}
+.cancel-button{
+    margin-right: 5vw;
+    margin-left: 8vw;
+    padding: 0;
+    height: 6vw;
+    width: 30vw;
+    border-radius: 6vw;
+
+    background-color: black;
+    border:1px solid black;
+
+    font-size: 3vw;
+    color:white;
+    font-family: ErasDemil;
+}
+/*třídy patřící objednaným předmětům - tlačítka*/
+.buttons-div{
+    display: grid;
+    grid-template-columns: 47vw auto;
+
+}
+.kontakt-button{
+
+        margin-right: 6vw;
+        margin-left: 5vw;
+        padding: 0;
+        height: 8vw;
+        width: 36vw;
+        border-radius: 8vw;
+
+        background-color: white;
+        border:1px solid gray;
+
+        font-size: 4vw;
+        color:gray;
+        font-family: ErasDemil;
+
+}
+.kontakt-button-text{
+    font-size: 4vw;
+    color:gray;
+    font-family: ErasDemil;
+
+}
+.cancel-button{
+
+        margin-right: 1vw;
+        margin-left: 6vw;
+        padding: 0;
+        height: 8vw;
+        width: 33vw;
+        border-radius: 8vw;
+
+        background-color: black;
+        border:1px solid black;
+
+        font-size: 4vw;
+        color:white;
+        font-family: ErasDemil;
+}
+.cancel-button-text{
+    font-size: 4vw;
+    color:white;
+    font-family: ErasDemil;
+
+}
+/*=====tohle je ciste pro mySels*/
+
+.sold-button{
+
+    margin-right: 1vw;
+    margin-left: 6vw;
+    padding: 0;
+    height: 8vw;
+    width: 33vw;
+    border-radius: 8vw;
+
+    background-color: black;
+    border:1px solid black;
+
+    font-size: 4vw;
+    color:white;
+    font-family: ErasDemil;
+}
+
+/*pluskve tlacitko dole*/
+.add-item{
+position: fixed;
+right:    33.5vw;
+bottom:   3vw;
+}
+.add-item-btn{
+padding: 0;
+height: 12vw;
+width: 33vw;
+border-radius: 12vw;
+
+background-color: rgb(53, 51, 51);
+border:1px solid rgb(53, 51, 51);
+
+font-size: 8vw;
+color:white;
+font-family: ErasDemil;
+
+}
