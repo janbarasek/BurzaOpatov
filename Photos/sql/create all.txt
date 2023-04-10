@@ -3,13 +3,13 @@ INSERT INTO class (class, classYear)
 INSERT INTO class (class, classYear)
 	VALUES ("U",4);
 INSERT INTO class (class, classYear)
-	VALUES ("Y",1);
+	VALUES ("Y",5);
 INSERT INTO class (class, classYear)
-	VALUES ("X",2);
+	VALUES ("X",6);
 INSERT INTO class (class, classYear)
-	VALUES ("V",3);
+	VALUES ("V",7);
 INSERT INTO class (class, classYear)
-	VALUES ("Z",4);
+	VALUES ("Z",8);
 INSERT INTO class (class, classYear)
 	VALUES ("L",5);
 INSERT INTO class (class, classYear)

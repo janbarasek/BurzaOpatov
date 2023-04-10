@@ -21,7 +21,7 @@
 
         <input class="A" type="text" name="surname" placeholder="Přijmení..." required><br>
         <br>
-        <b>Class...</b>
+        <b>Třída...</b>
         <select name="class">
             <option class="black" name="class" value="" selected="selected">Třída...</option>
             <?php

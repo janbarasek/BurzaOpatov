@@ -17,7 +17,7 @@ include_once 'header.php';
 
         <input type="text" name="surname" placeholder="Přijmení..." >
         <br>
-        <b>Class...</b>
+        <b>Třída...</b>
         <select name="class">
 
             <option name="class" value="" selected="selected">Třída...</option>
