@@ -30,7 +30,7 @@ foreach ($products as $product){
 
             <div class='item-text'>
                 <div class='name-grid'>
-                    <h1 class='name'>" . $product['itemName'] . " - " . getRankByID($conn, $product['rankid'])['name'] . "</h1>
+                    <h1 class='name'>" . $product['itemName'] . " - <br>" . getRankByID($conn, $product['rankid'])['name'] . "</h1>
                 </div>
                 <p class='owner'>" . getUserByID($conn, $product['userid'])['name'] . " " . getUserByID($conn, $product['userid'])['surname'] . "</p>
                 <p class='reservation'>" . getStatusByID($conn, $product['statusid'])['name'] . "<br>-&gt; <!--chybí datum a místo předáni--></p>   
@@ -51,7 +51,7 @@ foreach ($products as $product){
 
         ";
    if ($product['statusid'] == 2) {
-        echo"<button class='kontakt-button'><a  class='kontakt-button-text' href='contact.php?id=".$product['id']."&return=myOrders.php'>Kontakt <i class='material-icons' style='font-size: 3vw;'>chat_bubble_outline</i>";
+        echo"<button class='kontakt-button'><a  class='kontakt-button-text' href='contact.php?id=".$product['id']."&return=myOrders.php'>Kontakt";
 
        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
            if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
@@ -93,6 +93,12 @@ echo "<style>
         }
         *,*:before,*:after{
             box-sizing: content-box;
+        }
+        button{
+            display: inline-block;
+        }
+        img {
+            width: 75%;
         }
         </style>";
 }

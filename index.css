@@ -49,7 +49,6 @@
 /*třídy patřící objednaným předmětům*/
 .item-div{
     width: 100%;
-    height: 46vw;
     border-bottom: 0.3vh solid black;
 }
 
@@ -77,17 +76,17 @@
     padding: 2vw 2vw 0;
 }
 .owner {
-    font-size: 3vw;
+    font-size: 4vw;
     color:gray;
     margin:0;
 }
 .reservation {
-    font-size: 3vw;
+    font-size: 4vw;
     color: red;
     margin:0;
 }
 .sold{
-    font-size: 3vw;
+    font-size: 4vw;
     color: green;
     margin:0;
 }
@@ -104,8 +103,7 @@
     margin-top: 14vw;
 }
 .cancel-button{
-    margin-right: 5vw;
-    margin-left: 8vw;
+    margin: 0 5vw 0 8vw;
     padding: 0;
     height: 6vw;
     width: 30vw;
@@ -120,14 +118,13 @@
 }
 /*třídy patřící objednaným předmětům - tlačítka*/
 .buttons-div{
+    margin: 0vw 0 3vw;
     display: grid;
     grid-template-columns: 47vw auto;
 
 }
 .kontakt-button{
-
-        margin-right: 6vw;
-        margin-left: 5vw;
+	margin: 0 6vw 0 5vw;
         padding: 0;
         height: 8vw;
         width: 36vw;
@@ -148,9 +145,7 @@
 
 }
 .cancel-button{
-
-        margin-right: 1vw;
-        margin-left: 6vw;
+        margin: 0 1vw 0 6vw;
         padding: 0;
         height: 8vw;
         width: 33vw;
