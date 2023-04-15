@@ -7,7 +7,7 @@ include_once 'header.php';
             <h1 id='title-text' class='title-text'>Moje objednávky</h1>
         </div>
 
-<a href="profile.php">Back</a>
+<!--<a href="profile.php">Back</a>-->
 
 <?php
 if (!isset($_SESSION['id'])) {
@@ -82,7 +82,19 @@ foreach ($products as $product){
 </div>
   </div>";
     }
-
+echo "<style>
+        body{
+            font-family: Kanit-Light;
+            margin: 0;
+            background-color:black;
+        }
+        .menu-container{
+            margin: 0;
+        }
+        *,*:before,*:after{
+            box-sizing: content-box;
+        }
+        </style>";
 }
 ?>
 

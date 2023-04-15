@@ -33,7 +33,7 @@
 
 /*třídy patřící nadpisu*/
 .title-div{
-    border-bottom: 4px solid black;
+    border-bottom: 0.3vh solid black;
     width: 100%;
     height: 15vw;
     padding-bottom: 4vw;
@@ -50,7 +50,7 @@
 .item-div{
     width: 100%;
     height: 46vw;
-    border-bottom: 4px solid black;
+    border-bottom: 0.3vh solid black;
 }
 
 .item-grid {
