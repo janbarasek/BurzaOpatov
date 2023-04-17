@@ -70,7 +70,11 @@ echo "
     </div>
 </div>";
 }
+echo "<div id='add-item' class='add-item'>
+<button id='add-item-btn' class='add-item-btn'><a>+</a></button>
+</div>"
 ?>
+
 <style>
         body{
             font-family: Kanit-Light;
@@ -90,6 +94,10 @@ echo "
         img {
             width: 75%;
         }
+        button:hover {
+        background: rgb(53, 51, 51);
+        color: white;
+    }
         </style>
 <?php
 include_once 'footer.php';
