@@ -65,7 +65,7 @@ foreach ($products as $product){
 </div>
         ";
     }else{
-        echo"<i class='material-icons' style='font-size: 3vw;'>chat_bubble_outline</i></a></button>
+        echo"</a></button>
         <button class='cancel-button'><a class='cancel-button-text' >Zrušit rezervaci</a></button>
     </div>
 </div>";
@@ -82,7 +82,9 @@ foreach ($products as $product){
 </div>
   </div>";
     }
-echo "<style>
+}
+?>
+<style>
         body{
             font-family: Kanit-Light;
             margin: 0;
@@ -95,15 +97,13 @@ echo "<style>
             box-sizing: content-box;
         }
         button{
+            line-height: 1;
             display: inline-block;
         }
         img {
             width: 75%;
         }
-        </style>";
-}
-?>
-
+        </style>
 <?php
 include_once 'footer.php';
 ?>

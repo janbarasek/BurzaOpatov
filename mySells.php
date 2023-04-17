@@ -2,9 +2,10 @@
 include_once 'header.php';
 ?>
 
-<h2>My sells</h2>
-
-<a href="profile.php">Back</a>
+<div id='objednavky' class='objednavky'>
+        <div id='title-div' class='title-div'>
+            <h1 id='title-text' class='title-text'>Moje inzeráty</h1>
+        </div>
 
 <?php
 
@@ -22,78 +23,74 @@ foreach ($products as $product){
     $filename = 'Photos/books/' . $product['productslistid'] . '*';
     $fileinfo = glob($filename);
     echo "
-<div>
-     <img style='' class='image' src='" . $fileinfo[0] . "'></img>
-<h3 style=''>" . $product['itemName'] . "</h3>
-    <br>
-    <div class='booktext'>
-        <h3 style=''>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
-        <br>
-        <h3 style=''>" . $product['price'] . "</h3>
-        <br>
-        <h3 style=''>";
+    
+    <div class='item-div'>
+        <div class='item-grid'>
+            <div class='img-div'>
+                <img src='" . $fileinfo[0] . "' class='img' width='75%'>
+            </div>
+
+            <div class='item-text'>
+                <div class='name-grid'>
+                    <h1 class='name'>" . $product['itemName'] . " - <br>" . getRankByID($conn, $product['rankid'])['name'] . "</h1>
+                    <img src='Photos/dust-bin.png' width='60%' class='img-bin'>
+                </div>
+                ";
 
     if ($product['buyerid'] == null) {
-        echo " None";
+        echo "<p class='owner'>Nerezervováno</p>";
     }else{
-        echo" ". getUserByID($conn, $product['buyerid'])['name'] ." ". getUserByID($conn, $product['buyerid'])['surname'];
+        echo "<p class='owner'>". getUserByID($conn, $product['buyerid'])['name'] ." ". getUserByID($conn, $product['buyerid'])['surname'] . "</p>";
     }
-
-    echo" </h3>
-          <br>
-            <h3 style=''>";
-
-    if ($product['buyTime'] == null) {
-        echo " None";
-    }else{
-        echo" ". $product['buyTime'];
-    }
-
-
-    echo " </h3>
-          <br>
-            <h3 style=''>" . getStatusByID($conn, $product['statusid'])['name'] . "</h3>
-        <br>
-        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-        
-        ";
-    if ($product['statusid'] == 1) {
-        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Mark as sold</a></button>
-</div>
-  </div>";
-    }else if ($product['statusid'] == 2) {
-        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=resell&id=".$product['id']."&return=mySells.php'>Resell</a></button>
-        <button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Mark as sold</a></button>
-        <button class='alficek2'><a class='black' href='contact.php?id=".$product['id']."&return=mySells.php'>Contact</a>";
-
-        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-            if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
-                echo "<div class='messageShow'></div>";
-                break;
-            }
-        }
-        echo "</button>
+    echo "
+                <p class='reservation'>" . getStatusByID($conn, $product['statusid'])['name'] . "<br>-&gt; <!--chybí datum a místo předáni--></p>   
+                <div class='price-grid'>
+                    <p class='price'>" . $product['price'] . " Kč</p>";
+                    if ($product['statusid'] == 2) {
+                        echo"<button class='sells-cancel-button'><a class='sells-cancel-button-text' href='includes/MY.inc.php?issue=resell&id=".$product['id']."&return=mySells.php'>Zrušit rezervaci</a></button>";
+                    }
+echo "
+                </div>
+            </div>
         </div>
-  </div>
-        ";
-    }else{
-        echo"<button class='alficek2'><a class='black' href='contact.php?id=".$product['id']."&return=mySells.php'>Contact</a>";
 
-        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-            if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']){
-                echo "<div class='messageShow'></div>";
-                break;
-            }
-        }
-        echo "
-</button>
-</div>
-  </div>";
-    }
+        <div class='buttons-div'> ";
+   if ($product['statusid'] == 2) {
+        echo"<button class='kontakt-button'><a  class='kontakt-button-text' href='contact.php?id=".$product['id']."&return=myOrders.php'>Kontakt";
 
+       foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+           if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
+               echo "<i class='material-icons' style='font-size: 3vw;'>sms_failed</i>";
+               break;
+           }
+       }
+        echo "</a></button>";
+    } else {echo "<p></p>";}
+    echo "<button class='cancel-button'><a class='cancel-button-text' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Prodáno</a></button>
+    </div>
+</div>";
 }
 ?>
-
+<style>
+        body{
+            font-family: Kanit-Light;
+            margin: 0;
+            background-color:black;
+        }
+        .menu-container{
+            margin: 0;
+        }
+        *,*:before,*:after{
+            box-sizing: content-box;
+        }
+        button{
+            line-height: 1;
+            display: inline-block;
+        }
+        img {
+            width: 75%;
+        }
+        </style>
 <?php
 include_once 'footer.php';
 ?>

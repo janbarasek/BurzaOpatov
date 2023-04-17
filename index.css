@@ -91,6 +91,7 @@
     margin:0;
 }
 .price-grid{
+    margin-bottom: 1vw;
     display: grid;
     grid-template-columns: 20vw auto;
 }
@@ -102,7 +103,7 @@
 .no-reservation{
     margin-top: 14vw;
 }
-.cancel-button{
+.sells-cancel-button{
     margin: 0 5vw 0 8vw;
     padding: 0;
     height: 6vw;
@@ -112,6 +113,11 @@
     background-color: black;
     border:1px solid black;
 
+    font-size: 3vw;
+    color:white;
+    font-family: ErasDemil;
+}
+.sells-cancel-button-text{
     font-size: 3vw;
     color:white;
     font-family: ErasDemil;
