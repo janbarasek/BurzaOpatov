@@ -67,6 +67,7 @@
 .name-grid{
     display: grid;
     grid-template-columns: 55vw auto;
+    word-wrap: break-word;
 }
 .name{
     margin:3vw 0 2vw;

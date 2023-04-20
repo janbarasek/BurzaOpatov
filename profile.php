@@ -105,7 +105,7 @@ if (!isset($_SESSION['id'])) {
 
             <br>
             <?php
-            echo "<button class='smallbtn75'><a class='profilebtn' href='mySells.php'><b class='svoby24'>Moje nabídky<img
+            echo "<button class='smallbtn75'><a class='profilebtn' href='mySells.php'><b class='svoby24'>Moje inzeráty<img
                                 class='houbiczlobi2' src='Photos/buch2.png'></img></b></a>";
 
             foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
