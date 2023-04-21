@@ -11,10 +11,7 @@ if (isset($_POST['submit'])){
     require_once 'dbh.inc.php';
     require_once 'functions.inc.php';
 
-    /*if(emptyInputSignup($name, $surname,  $pwd, $pwdrepeat) !== false){
-        header("location: ../signup.php?error=emptyinput");
-        exit();
-    }*/
+
     if (emptyInput($name) !== false || emptyInput($surname) !== false || emptyInput($pwd) !== false || emptyInput($pwdrepeat) !== false){
         header("location: ../signup.php?error=emptyinput");
         exit();

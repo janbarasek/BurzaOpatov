@@ -707,6 +707,15 @@ input{
 ::placeholder{
     color: #e5e5e5;
 }
+input[type="date" i] {
+    color: black;
+    text-decoration-color: black;
+}
+input::-webkit-date-and-time-value {
+    color: black;
+    text-decoration-color: black;
+}
+
 button{
     margin-top: 50px;
     width: 200px;

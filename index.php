@@ -17,7 +17,7 @@ include_once 'header.php';
     width: 80%;
     float: right;
     margin-top: 22px;margin-right:10px;'>
-            <h1 style='margin-left:5px;font-size:20px;'>Třída</h1>
+            <h2 style='margin-left:5px;font-size:20px;'>Třída</h2>
             <div style='display: grid;
     grid-template-columns: 10% 25% 10% 25% 10% 25%;
     padding: 10px;'class='radioIndex'>
@@ -96,7 +96,7 @@ include_once 'header.php';
 
     margin-right:10px;'>
         
-            <h1 style='margin-left:5px;font-size:20px;'>Předměty</h1>
+            <h2 style='margin-left:5px;font-size:20px;'>Předměty</h2>
 
 
             <?php
@@ -122,9 +122,9 @@ include_once 'header.php';
     margin-top: 25px;
     margin-right: 190px;
 '>
-            <h1 style='margin-left:5px;font-size:20px;'>Cena</h1>
+            <h2 style='margin-left:5px;font-size:20px;'>Cena</h2>
          
-            <h1 style='margin-right:95px;font-size:20px;float:right;margin-top:-35px;'>Kvalita</h1>
+            <h2 style='margin-right:95px;font-size:20px;float:right;margin-top:-35px;'>Kvalita</h2>
             <hr style='
     background-color: black;
     padding: 1px;

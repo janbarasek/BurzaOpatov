@@ -67,6 +67,9 @@ $product['subjectName'] = nazev predmetu
 
 print_r($product);
 
+
+
+
 include_once 'errorHandler.php';
 
 include_once 'footer.php';

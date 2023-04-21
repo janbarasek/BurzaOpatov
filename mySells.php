@@ -32,8 +32,8 @@ include_once 'header.php';
 
             <div class='item-text'>
                 <div class='name-grid'>
-                    <h1 class='name'>" . $product['itemName'] . "<br>" . getRankByID($conn, $product['rankid'])['name'] . "</h1>
-                    <img src='Photos/dust-bin.png' width='60%' class='img-bin'>
+                    <h2 class='name'>" . $product['itemName'] . "<br>" . getRankByID($conn, $product['rankid'])['name'] . "</h2>
+                     <a href='includes/MY.inc.php?issue='><img src='Photos/dust-bin.png' width='60%' class='img-bin'></a>
                 </div>
                 ";
 

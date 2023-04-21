@@ -93,7 +93,7 @@ if (!isset($_SESSION['id'])) {
 
             foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id'] && $notification == 0) {
                         echo "<div class='messageShow'></div>";
                         $notification = 1;
                         break;
@@ -110,11 +110,10 @@ if (!isset($_SESSION['id'])) {
 
             foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        if($notification == 0){
-                            echo "<div class='messageShow'></div>";
-                            break;
-                        }
+                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id'] && $notification == 0) {
+                        echo "<div class='messageShow'></div>";
+                        $notification = 1;
+                        break;
                     }
                 }
             }

@@ -56,15 +56,17 @@ include_once 'header.php';
 
 
             echo "</a></button>
-        <button class='cancel-button'><a class='cancel-button-text' >Zrušit rezervaci</a></button>
+        <button class='cancel-button'><a href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=myOrders.php' class='cancel-button-text' >Označit jako zakoupené</a></button>
         ";
 
 }
-##link to cancel product - href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=myOrders.php'
+
 
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                $notification = 0;
+                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']  && $notification == 0) {
                     echo "<div class='messageShow'></div>";
+                    $notification = 1;
                     break;
                 }
             }

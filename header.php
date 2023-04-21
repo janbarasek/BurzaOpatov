@@ -38,10 +38,10 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
 
     $notification = 0;
 
-    if(isset($_SESSION['id'])){
+    if (isset($_SESSION['id'])) {
         foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id'] && $notification == 0) {
                     echo "<img src='Photos/loser2.png' class='messageShow'></img>";
                     $notification = 1;
                     break;
@@ -50,11 +50,12 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
         }
         foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                    if($notification == 0){
-                        echo "<img src='Photos/loser2.png' class='messageShow'></img>";
-                        break;
-                    }
+                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id'] && $notification == 0) {
+
+                    echo "<img src='Photos/loser2.png' class='messageShow'></img>";
+                    $notification = 1;
+                    break;
+
                 }
             }
         }
@@ -86,9 +87,11 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
                     Účet
                     ";
 
+            $notification = 0;
+
             foreach (getProductsBySellerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id'] && $notification == 0) {
                         echo "<img src='Photos/loser2.png' style='margin-top:0px;float:right;    margin-right: 0px;'class='messageShow'></img>";
                         $notification = 1;
                         break;
@@ -97,11 +100,10 @@ include_once '../Burza/phpMailer/mailFirstLevel.php';
             }
             foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        if($notification == 0){
-                            echo "<img style='margin-:30px;'src='Photos/loser2.png' class='messageShow'></img>";
-                            break;
-                        }
+                    if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id'] && $notification == 0) {
+                        echo "<img style='margin-:30px;'src='Photos/loser2.png' class='messageShow'></img>";
+                        $notification = 1;
+                        break;
                     }
                 }
             }
