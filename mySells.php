@@ -17,8 +17,6 @@ include_once 'header.php';
     $userid = $_SESSION['id'];
     $products = getProductsBySellerID($conn, $userid);
 
-    include_once 'errorHandler.php';
-
     foreach ($products as $product) {
         $filename = 'Photos/books/' . $product['productslistid'] . '*';
         $fileinfo = glob($filename);
@@ -33,8 +31,13 @@ include_once 'header.php';
             <div class='item-text'>
                 <div class='name-grid'>
                     <h2 class='name'>" . $product['itemName'] . "<br>" . getRankByID($conn, $product['rankid'])['name'] . "</h2>
-                     <a href='includes/MY.inc.php?issue='><img src='Photos/dust-bin.png' width='60%' class='img-bin'></a>
-                </div>
+                    ";
+        if($product['statusid'] == 1 || $product['statusid'] == 2){
+            echo"
+        <a href='includes/MY.inc.php?issue='><img src='Photos/dust-bin.png' width='60%' class='img-bin'></a>
+        ";
+        }
+               echo" </div>
                 ";
 
         if ($product['buyerid'] == null) {
@@ -55,7 +58,7 @@ include_once 'header.php';
         </div>
 
         <div class='buttons-div'> ";
-        if ($product['statusid'] == 2) {
+        if ($product['statusid'] == 3) {
             echo "<button class='kontakt-button'><a  class='kontakt-button-text' href='contact.php?id=" . $product['id'] . "&return=myOrders.php'>Kontakt";
 
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {
@@ -67,18 +70,21 @@ include_once 'header.php';
             echo "</a></button>";
         } else {
             echo "<p></p>";
+            echo "<button class='cancel-button'><a class='cancel-button-text' href='includes/MY.inc.php?issue=markassold&id=" . $product['id'] . "&return=mySells.php'>Označit jako prodané</a></button>";
         }
-        echo "<button class='cancel-button'><a class='cancel-button-text' href='includes/MY.inc.php?issue=markassold&id=" . $product['id'] . "&return=mySells.php'>Prodáno</a></button>
+        echo "
     </div>
 </div>";
     }
+    include_once 'errorHandler.php';
+
     echo "<div id='add-item' class='add-item'><a href='sell.php'>
 <button id='add-item-btn' class='add-item-btn'><p>+</p></button></a>
 </div>"
     ?>
 
 </div>
-    <style>
+<style>
         body {
             font-family: Kanit-Light;
             margin: 0;
