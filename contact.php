@@ -5,17 +5,11 @@ if (!isset($_SESSION['id'])) {
     header("Location: login.php");
     exit();
 }
-?>
-
-
-
-
-<?php
-
-
 
 if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProductByID($conn, $_GET['id'])['buyerid'] == $_SESSION['id']) {
     $messages = getMessagesByProductID($conn, $_GET['id']);
+
+    readMessageByProductID($conn, $_GET['id']);
 
     $filename = 'Photos/books/' . getProductByID($conn, $_GET['id'])['productslistid'] . '*';
     $fileinfo = glob($filename);

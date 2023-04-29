@@ -58,7 +58,7 @@ include_once 'header.php';
         </div>
 
         <div class='buttons-div'> ";
-        if ($product['statusid'] == 3) {
+        if ($product['statusid'] == 2 || $product['statusid'] == 3) {
             echo "<button class='kontakt-button'><a  class='kontakt-button-text' href='contact.php?id=" . $product['id'] . "&return=myOrders.php'>Kontakt";
 
             foreach (getMessagesByProductID($conn, $product['id']) as $message) {

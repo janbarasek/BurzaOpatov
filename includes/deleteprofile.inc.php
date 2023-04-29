@@ -17,7 +17,7 @@ if(!unlink($fileinfo[0])){
     echo "File deleted";
 }
 
-$sql = "UPDATE profileImg SET status=0 WHERE userid='$sessionid';";
+$sql = "UPDATE profileimg SET status=0 WHERE userid='$sessionid';";
 mysqli_query($conn, $sql);
 $_SESSION['imgStatus'] = 0;
 
