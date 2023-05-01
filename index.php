@@ -211,6 +211,28 @@ include_once 'header.php';
 
 if (isset($_POST['submitsearch'])) {
 
+    $list = [];
+
+foreach (getProducts($conn) as $product) {
+
+
+    if ($product['statusid'] == 1) {
+    $myObj = new stdClass();
+    $myObj->img = 'Photos/books/' . $product['productslistid'];
+    $myObj->price = $product['price'];
+    $myObj->name = $product['name'];
+    $myObj->surname = $product['surname'];
+    $myObj->state = getRankByID($conn, $product['rankid'])['name'];
+
+    array_push($list, $myObj);
+    }}
+
+$myJSON = json_encode($list);
+echo  $myJSON;
+
+
+
+
     $search = mysqli_real_escape_string($conn, $_POST['search']);
     $rankid = mysqli_real_escape_string($conn, $_POST['rankid']);
     if (isset($_POST['year'])) {
