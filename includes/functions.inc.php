@@ -261,8 +261,7 @@ function loginUser($conn, $name, $surname, $class, $email, $pwd, $firstLogin){
         $_SESSION["class"] = $uidExists["class"];
         $_SESSION["mail"] = $uidExists["email"];
 
-        $sql = "SELECT * FROM profileimg WHERE userid = ".$_SESSION['id'].";";
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, "SELECT * FROM profileimg WHERE userid = ".$_SESSION['id'].";");
 
         while($row = mysqli_fetch_assoc($result)){
             $_SESSION["imgStatus"] = $row['status'];

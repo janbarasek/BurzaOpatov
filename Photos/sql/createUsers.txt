@@ -5,6 +5,7 @@ CREATE TABLE users (
     class varchar(5),
     email varchar(256),
     password varchar(256),
+    google_id varchar(150),
     rights int(1) NOT NULL DEFAULT 0,
     cookies int(1) NOT NULL DEFAULT 0,
     points int(11) NOT NULL DEFAULT 0,

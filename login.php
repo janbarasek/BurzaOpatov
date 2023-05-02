@@ -1,6 +1,113 @@
 <?php
 include_once 'header.php';
 ?>
+
+<?php
+session_regenerate_id(true);
+include_once 'includes/dbh.inc.php';
+
+if(isset($_SESSION['login_id']) || isset($_SESSION['id'])){
+    header('Location: index.php');
+    exit;
+}
+require 'google-api/vendor/autoload.php';
+// Creating new google client instance
+$client = new Google_Client();
+// Enter your Client ID
+$client->setClientId(getMasterClientID());
+// Enter your Client Secrect
+$client->setClientSecret(getMasterClientSecret());
+// Enter the Redirect URL
+$client->setRedirectUri('http://localhost/Burza/login.php');
+// Adding those scopes which we want to get (email & profile Information)
+$client->addScope("email");
+$client->addScope("profile");
+if(isset($_GET['code'])):
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    if(!isset($token["error"])){
+        $client->setAccessToken($token['access_token']);
+        // getting profile information
+        $google_oauth = new Google_Service_Oauth2($client);
+        $google_account_info = $google_oauth->userinfo->get();
+
+        // Storing data into database
+        $google_id = mysqli_real_escape_string($conn, $google_account_info->id);
+        $firstName = mysqli_real_escape_string($conn, trim($google_account_info->givenName));
+        $lastName = mysqli_real_escape_string($conn, trim($google_account_info->familyName));
+        $email = mysqli_real_escape_string($conn, $google_account_info->email);
+        $profile_pic = mysqli_real_escape_string($conn, $google_account_info->picture);
+        // checking user already exists or not
+        $get_user = mysqli_query($conn, "SELECT `google_id` FROM `users` WHERE `google_id`='$google_id'");
+        if(mysqli_num_rows($get_user) > 0){
+            $_SESSION['login_id'] = $google_id;
+
+            $expodedEmail = explode("@", $email);
+            $endMail = $expodedEmail[1];
+
+            if($endMail == "zaci.gopat.cz"){
+                $expodedFirstEmail = explode(".", $expodedEmail[0]);
+                $classEmail = end($expodedFirstEmail);
+                $classEmail = strtoupper($classEmail);
+
+            }
+
+            $uidExists = uidExists($conn, $firstName, $lastName, $classEmail, $email);
+
+            $_SESSION["id"] = $uidExists["id"];
+            $_SESSION["name"] = $uidExists["name"];
+            $_SESSION["surname"] = $uidExists["surname"];
+            $_SESSION["class"] = $uidExists["class"];
+            $_SESSION["mail"] = $uidExists["email"];
+
+            $result = mysqli_query($conn, "SELECT * FROM profileimg WHERE userid = ".$_SESSION['id'].";");
+
+            while($row = mysqli_fetch_assoc($result)){
+                $_SESSION["imgStatus"] = $row['status'];
+            }
+
+
+            header('Location: index.php');
+            exit;
+        }
+        else{
+
+            $expodedEmail = explode("@", $email);
+            $endMail = $expodedEmail[1];
+
+            if($endMail == "zaci.gopat.cz"){
+                $expodedFirstEmail = explode(".", $expodedEmail[0]);
+                $classEmail = end($expodedFirstEmail);
+                $classEmail = strtoupper($classEmail);
+
+            }
+
+            // if user not exists we will insert the user
+            $insert = mysqli_query($conn, "INSERT INTO `users`(`name`,`surname`,`class`, `email`, `google_id`) VALUES('$firstName','$lastName', '$classEmail', '$email','$google_id');");
+            if($insert){
+                $_SESSION['login_id'] = $google_id;
+                header('Location: index.php');
+                exit;
+            }
+            else{
+                echo "Sign up failed!(Something went wrong).";
+            }
+        }
+    }
+    else{
+        header('Location: login.php');
+        exit;
+    }
+
+else:
+    // Google Login Url = $client->createAuthUrl();
+    ?>
+
+
+
+
+
+<?php endif; ?>
+
     <div class="background">
         <div class="ball"></div>
         <div class="ball"></div>
@@ -34,6 +141,11 @@ include_once 'header.php';
         <input type="text" name="email" placeholder="Email..." >
         <br>
         <input type="password" name="pwd" placeholder="Heslo..." required>
+
+        <a type="button" class="login-with-google-btn" href="<?php echo $client->createAuthUrl(); ?>">
+            Sign in with Google
+        </a>
+
         <button class="alficek" type="submit" name="submit">Přihlásit se</button>
         <?php
         include_once 'errorHandler.php';

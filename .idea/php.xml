@@ -9,9 +9,31 @@
   <component name="PHPCodeSnifferOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/google-api/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/google-api/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/google-api/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/google-api/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/google-api/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/google-api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/google-api/vendor/composer" />
+      <path value="$PROJECT_DIR$/google-api/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/google-api/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/google-api/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/google-api/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/google-api/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/google-api/vendor/guzzlehttp/psr7" />
+    </include_path>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/google-api/vendor/autoload.php" />
+    </phpunit_settings>
   </component>
   <component name="PsalmOptionsConfiguration">
     <option name="transferred" value="true" />
