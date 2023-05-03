@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
                         header("Location: ../profile.php?deletesuccess");
                     }
 
-                    $sql = "UPDATE profileImg SET status=0 WHERE userid='$id';";
+                    $sql = "UPDATE profileimg SET status=0 WHERE userid='$id';";
                     mysqli_query($conn, $sql);
                     $_SESSION['imgStatus'] = 0;
                 }
@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
 
                 move_uploaded_file($fileTmpName, $fileDestination);
 
-                $sql = "UPDATE profileImg SET status=1 WHERE userid='$id';";
+                $sql = "UPDATE profileimg SET status=1 WHERE userid='$id';";
                 $_SESSION['imgStatus'] = 1;
                 $result = mysqli_query($conn, $sql);
                 header("Location: ../profile.php?uploadsuccess");

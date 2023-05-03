@@ -2,3 +2,27 @@ INSERT INTO class (class, classYear)
 	VALUES ("T",4);
 INSERT INTO class (class, classYear)
 	VALUES ("U",4);
+INSERT INTO class (class, classYear)
+	VALUES ("Y",5);
+INSERT INTO class (class, classYear)
+	VALUES ("X",6);
+INSERT INTO class (class, classYear)
+	VALUES ("V",7);
+INSERT INTO class (class, classYear)
+	VALUES ("Z",8);
+INSERT INTO class (class, classYear)
+	VALUES ("L",5);
+INSERT INTO class (class, classYear)
+	VALUES ("M",5);
+INSERT INTO class (class, classYear)
+	VALUES ("A",6);
+INSERT INTO class (class, classYear)
+	VALUES ("B",6);
+INSERT INTO class (class, classYear)
+	VALUES ("C",7);
+INSERT INTO class (class, classYear)
+	VALUES ("D",7);
+INSERT INTO class (class, classYear)
+	VALUES ("J",8);
+INSERT INTO class (class, classYear)
+	VALUES ("K",8);

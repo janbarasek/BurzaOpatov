@@ -68,14 +68,14 @@ if (isset($_POST['submitbuy'])) {
 
 
 <input style='margin-left:-40px;width:175px;height:40px;border:2px solid gray;'type='date' name='date' id='date'>
-<h1 style='margin-top: 20px;font-size:15px;float:right;margin-right:5px;'>Datum předání</h1>
+<h2 style='margin-top: 20px;font-size:15px;float:right;margin-right:5px;'>Datum předání</h2>
 <br><br>
 
     ";
 
     echo "
      <img style='width: 28px;margin-top:5px;margin-left:-75px;float:left;'src='Photos/mainmap.png'></img>
-      <h1 style='margin-top: 10px;font-size:15px;float:right;margin-right:13px;'>Místo předání</h1>
+      <h2 style='margin-top: 10px;font-size:15px;float:right;margin-right:13px;'>Místo předání</h2>
      <select style='margin-left:-40px;width:175px;height:40px;border:2px solid gray;background-color:white; color:black;'name='placeid' id='place'> 
 
         <option style='background-color:white; color:black;' name='placeid' value=''>
@@ -94,7 +94,7 @@ Vyber místo...
     <br><br>
      <img style='width: 40px;margin-top:5px;margin-left:-80px;float:left;'src='Photos/clock.png'></img>
     
-       <h1 style='margin-top: 10px;font-size:15px;float:right;margin-right:23px;'>Čas předání</h1>
+       <h2 style='margin-top: 10px;font-size:15px;float:right;margin-right:23px;'>Čas předání</h2>
 <select style='margin-left:-40px;border:2px solid gray;background-color:white; color:black;width:175px;height:40px;' name='timeid' id='time'> 
         <option style='background-color:white; color:black; name='timeid' value=''>Vyber čas...</option>
         <option style='background-color:white; color:black; name='timeid' value='1'>7:40</option>

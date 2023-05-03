@@ -17,7 +17,7 @@ include_once 'header.php';
     width: 80%;
     float: right;
     margin-top: 22px;margin-right:10px;'>
-            <h1 style='margin-left:5px;font-size:20px;'>Třída</h1>
+            <h2 style='margin-left:5px;font-size:20px;'>Třída</h2>
             <div style='display: grid;
     grid-template-columns: 10% 25% 10% 25% 10% 25%;
     padding: 10px;'class='radioIndex'>
@@ -108,7 +108,7 @@ include_once 'header.php';
 
     margin-right:10px;'>
         
-            <h1 style='margin-left:5px;font-size:20px;'>Předměty</h1>
+            <h2 style='margin-left:5px;font-size:20px;'>Předměty</h2>
 
 
             <?php
@@ -134,9 +134,9 @@ include_once 'header.php';
     margin-top: 25px;
     margin-right: 190px;
 '>
-            <h1 style='margin-left:5px;font-size:20px;'>Cena</h1>
+            <h2 style='margin-left:5px;font-size:20px;'>Cena</h2>
          
-            <h1 style='margin-right:95px;font-size:20px;float:right;margin-top:-35px;'>Kvalita</h1>
+            <h2 style='margin-right:95px;font-size:20px;float:right;margin-top:-35px;'>Kvalita</h2>
             <hr style='
     background-color: black;
     padding: 1px;
@@ -223,6 +223,28 @@ include_once 'header.php';
 
 if (isset($_POST['submitsearch'])) {
 
+    $list = [];
+
+foreach (getProducts($conn) as $product) {
+
+
+    if ($product['statusid'] == 1) {
+    $myObj = new stdClass();
+    $myObj->img = 'Photos/books/' . $product['productslistid'];
+    $myObj->price = $product['price'];
+    $myObj->name = $product['name'];
+    $myObj->surname = $product['surname'];
+    $myObj->state = getRankByID($conn, $product['rankid'])['name'];
+
+    array_push($list, $myObj);
+    }}
+
+$myJSON = json_encode($list);
+echo  $myJSON;
+
+
+
+
     $search = mysqli_real_escape_string($conn, $_POST['search']);
     $rankid = mysqli_real_escape_string($conn, $_POST['rankid']);
     if (isset($_POST['year'])) {
@@ -290,9 +312,14 @@ if (isset($_POST['submitsearch'])) {
 
     $products = checkArrayEquality($products, $products2, "id", "id");
 
+    } else {
+        $products = getProducts($conn);
+    }
+
     foreach ($products as $product) {
 
-        if ($product['buyerid'] == null) {
+        if ($product['statusid'] == '1') {
+
             $filename = 'Photos/books/' . $product['productslistid'] . '*';
             $fileinfo = glob($filename);
             echo "
@@ -317,40 +344,7 @@ if (isset($_POST['submitsearch'])) {
 ";
 
         }
-    }
-} else {
-    if (!isset($_POST['submitbuy'])) {
-        $products = getProducts($conn);
-        foreach ($products as $product) {
-            if ($product['buyerid'] == null) {
-                $filename = 'Photos/books/' . $product['productslistid'] . '*';
-                $fileinfo = glob($filename);
-                echo "
 
-<form action='buyBook.php' method='post'>
-
-   <div class='booktext'>
-    <h3 style='float: center;font-weight:600;font-size: 25px;margin-left:50%;margin-top:20px;color:black;'>" . $product['itemName'] . "</h3>
-    <br>
-        <h3 style='margin-top:-10px;font-size:20px;margin-left:142px;color:black;'>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
-
-         <img style='float:left;border-radius:10px;margin-top: -80px;width: 100px;margin-left:20px;' class='image' src='" . $fileinfo[0] . "'></img>
-        <h3 style='color:gray;font-size:15px;margin-top:40px;margin-left:142px;'>" . $product['name'] . " " . $product['surname'] . "</h3>
-        <br>
-  
-        
- 
-        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-         <button style='margin-top:-42px;float:right;border-radius:15px;height:30px;background-color:black;color:white;width:100px;margin-right:5px;padding:3px;margin-left:170px;'class='alficek2' type='submit' name='submitbuy'>" . $product['price'] . " Kč</button>
-    </div>
-    <br>
-  </form>
-
-";
-            }
-        }
-
-    }
 }
 ?>
     <!--ERROR HANDLING-->

@@ -2,98 +2,119 @@
 include_once 'header.php';
 ?>
 
-<h2>My sells</h2>
+<div id='objednavky' class='objednavky'>
+    <div id='title-div' class='title-div'>
+        <h1 id='title-text' class='title-text'>Moje inzeráty</h1>
+    </div>
 
-<a href="profile.php">Back</a>
+    <?php
 
-<?php
-
-if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$userid = $_SESSION['id'];
-$products = getProductsBySellerID($conn, $userid);
-
-include_once 'errorHandler.php';
-
-foreach ($products as $product){
-    $filename = 'Photos/books/' . $product['productslistid'] . '*';
-    $fileinfo = glob($filename);
-    echo "
-<div>
-     <img style='' class='image' src='" . $fileinfo[0] . "'></img>
-<h3 style=''>" . $product['itemName'] . "</h3>
-    <br>
-    <div class='booktext'>
-        <h3 style=''>" . getRankByID($conn, $product['rankid'])['name'] . "</h3>
-        <br>
-        <h3 style=''>" . $product['price'] . "</h3>
-        <br>
-        <h3 style=''>";
-
-    if ($product['buyerid'] == null) {
-        echo " None";
-    }else{
-        echo" ". getUserByID($conn, $product['buyerid'])['name'] ." ". getUserByID($conn, $product['buyerid'])['surname'];
+    if (!isset($_SESSION['id'])) {
+        header("Location: login.php");
+        exit();
     }
 
-    echo" </h3>
-          <br>
-            <h3 style=''>";
+    $userid = $_SESSION['id'];
+    $products = getProductsBySellerID($conn, $userid);
 
-    if ($product['buyTime'] == null) {
-        echo " None";
-    }else{
-        echo" ". $product['buyTime'];
-    }
+    foreach ($products as $product) {
+        $filename = 'Photos/books/' . $product['productslistid'] . '*';
+        $fileinfo = glob($filename);
+        echo "
+    
+    <div class='item-div'>
+        <div class='item-grid'>
+            <div class='img-div'>
+                <img src='" . $fileinfo[0] . "' class='img' width='75%'>
+            </div>
 
-
-    echo " </h3>
-          <br>
-            <h3 style=''>" . getStatusByID($conn, $product['statusid'])['name'] . "</h3>
-        <br>
-        <input type='number' name='productid' hidden='hidden' value=" . $product['id'] . ">
-        
+            <div class='item-text'>
+                <div class='name-grid'>
+                    <h2 class='name'>" . $product['itemName'] . "<br>" . getRankByID($conn, $product['rankid'])['name'] . "</h2>
+                    ";
+        if($product['statusid'] == 1 || $product['statusid'] == 2){
+            echo"
+        <a href='includes/MY.inc.php?issue='><img src='Photos/dust-bin.png' width='60%' class='img-bin'></a>
         ";
-    if ($product['statusid'] == 1) {
-        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Mark as sold</a></button>
-</div>
-  </div>";
-    }else if ($product['statusid'] == 2) {
-        echo"<button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=resell&id=".$product['id']."&return=mySells.php'>Resell</a></button>
-        <button class='alficek2'><a class='black' href='includes/MY.inc.php?issue=markassold&id=".$product['id']."&return=mySells.php'>Mark as sold</a></button>
-        <button class='alficek2'><a class='black' href='contact.php?id=".$product['id']."&return=mySells.php'>Contact</a>";
-
-        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-            if ($message['isViewed'] == 0  && $message['recieverid'] == $_SESSION['id']){
-                echo "<div class='messageShow'></div>";
-                break;
-            }
         }
-        echo "</button>
-        </div>
-  </div>
-        ";
-    }else{
-        echo"<button class='alficek2'><a class='black' href='contact.php?id=".$product['id']."&return=mySells.php'>Contact</a>";
+               echo" </div>
+                ";
 
-        foreach (getMessagesByProductID($conn, $product['id']) as $message) {
-            if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']){
-                echo "<div class='messageShow'></div>";
-                break;
-            }
+        if ($product['buyerid'] == null) {
+            echo "<p class='owner'>Nerezervováno</p>";
+        } else {
+            echo "<p class='owner'>" . getUserByID($conn, $product['buyerid'])['name'] . " " . getUserByID($conn, $product['buyerid'])['surname'] . "</p>";
         }
         echo "
-</button>
-</div>
-  </div>";
+                <p class='reservation'>" . getStatusByID($conn, $product['statusid'])['name'] . "<br></p>   
+                <div class='price-grid'>
+                    <p class='price'>" . $product['price'] . " Kč</p>";
+        if ($product['statusid'] == 2) {
+            echo "<button class='sells-cancel-button'><a class='sells-cancel-button-text' href='includes/MY.inc.php?issue=resell&id=" . $product['id'] . "&return=mySells.php'>Zrušit rezervaci</a></button>";
+        }
+        echo "
+                </div>
+            </div>
+        </div>
+
+        <div class='buttons-div'> ";
+        if ($product['statusid'] == 2 || $product['statusid'] == 3) {
+            echo "<button class='kontakt-button'><a  class='kontakt-button-text' href='contact.php?id=" . $product['id'] . "&return=myOrders.php'>Kontakt";
+
+            foreach (getMessagesByProductID($conn, $product['id']) as $message) {
+                if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
+                    echo "<i class='material-icons' style='font-size: 3vw;'>sms_failed</i>";
+                    break;
+                }
+            }
+            echo "</a></button>";
+        } else {
+            echo "<p></p>";
+            echo "<button class='cancel-button'><a class='cancel-button-text' href='includes/MY.inc.php?issue=markassold&id=" . $product['id'] . "&return=mySells.php'>Označit jako prodané</a></button>";
+        }
+        echo "
+    </div>
+</div>";
     }
+    include_once 'errorHandler.php';
 
-}
-?>
+    echo "<div id='add-item' class='add-item'><a href='sell.php'>
+<button id='add-item-btn' class='add-item-btn'><p>+</p></button></a>
+</div>"
+    ?>
 
-<?php
-include_once 'footer.php';
-?>
+</div>
+<style>
+        body {
+            font-family: Kanit-Light;
+            margin: 0;
+            background-color: black;
+        }
+
+        .menu-container {
+            margin: 0;
+        }
+
+        *, *:before, *:after {
+            box-sizing: content-box;
+        }
+
+        button {
+            line-height: 1;
+            display: inline-block;
+        }
+
+
+
+        img {
+            width: 75%;
+        }
+
+        button:hover {
+            background: rgb(53, 51, 51);
+            color: white;
+        }
+    </style>
+    <?php
+    include_once 'footer.php';
+    ?>

@@ -224,7 +224,7 @@ function createUser($conn, $name, $surname, $class, $email, $pwd){
     if(mysqli_num_rows($resultData) > 0){
         while($row = mysqli_fetch_assoc($resultData)){
             $userid = $row['id'];
-            $sql = "INSERT INTO profileImg (userid,status)
+            $sql = "INSERT INTO profileimg (userid,status)
         VALUES ('$userid',0)";
             mysqli_query($conn, $sql);
         }
@@ -488,6 +488,13 @@ function getSubjects($conn){
     return $ranks;
 }
 
+function getClasses($conn){
+    $sql = "SELECT * FROM class ORDER BY classYear;";
+    $result = mysqli_query($conn, $sql);
+    $class = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    return $class;
+}
+
 function getPlaces($conn):array{
     $result = mysqli_query($conn, "SELECT * FROM place;");
     $places = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -519,6 +526,8 @@ function createItem($conn, $userid, $productslistid, $rankid, $price){
     exit();
 }
 
+//messages functions
+
 function getMessagesByProductID($conn, $productid){
     $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."'");
     $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -529,4 +538,9 @@ function getMessageByProductIDDesc($conn, $productid){
     $result = mysqli_query($conn, "SELECT * FROM message WHERE productid = '".$productid."' ORDER BY id DESC");
     $messages = mysqli_fetch_all($result, MYSQLI_ASSOC);
     return $messages;
+}
+
+
+function readMessageByProductID(object $conn, int $productid){
+    mysqli_query($conn, "UPDATE message SET isViewed = 1 WHERE productid = '".$productid."';");
 }

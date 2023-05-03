@@ -4,3 +4,11 @@ INSERT INTO productslist (itemName, subjectid, year, publishYear)
     VALUES ("matika rovnice", 1, 6, 1986);
 INSERT INTO productslist (itemName, subjectid, year, publishYear)
     VALUES ("matika nerovnice", 1, 6, 1996);
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("maturita solutions intermediate", 3, 5, 2016);
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("maturita solutions pre-intermediate", 3, 4, 2010);
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("maturita solutions after-intermediate", 3, 7, 2020);
+INSERT INTO productslist (itemName, subjectid, year, publishYear)
+    VALUES ("maturita solutions advanced", 3, 8, 2023);
