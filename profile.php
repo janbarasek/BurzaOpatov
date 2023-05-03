@@ -70,10 +70,10 @@ if (!isset($_SESSION['id'])) {
     ?>
 
 
-    <button class="smallbtn3"><a class="profilebtn" href="#"><b class="svoby3">Změnit heslo</b>
+    <button class="smallbtn3" disabled="disabled"><a class="profilebtn" href="#"><b class="svoby3">Změnit heslo</b>
 
             <br>
-            <button class="smallbtn4"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby3">Změnit
+            <button class="smallbtn4" disabled><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby3">Změnit
                         údaje</b></a></button>
             <br>
 
@@ -94,7 +94,7 @@ if (!isset($_SESSION['id'])) {
             foreach (getProductsByBuyerID($conn, $_SESSION['id']) as $product) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
-                        echo "<div class='messageShow'></div>";
+                        echo "<img src='loser2.png' style='' class='messageShow'></div>";
                         $notification = 1;
                         break;
                     }
@@ -112,7 +112,7 @@ if (!isset($_SESSION['id'])) {
                 foreach (getMessagesByProductID($conn, $product['id']) as $message) {
                     if ($message['isViewed'] == 0 && $message['recieverid'] == $_SESSION['id']) {
                         if($notification == 0){
-                            echo "<div class='messageShow'></div>";
+                            echo "<img src='loser2.png' style='margin-right:-20px;margin-top:2px;z-index:1;' class='messageShow'></div>";
                             break;
                         }
                     }
@@ -122,10 +122,11 @@ if (!isset($_SESSION['id'])) {
             ?>
 
             <br>
-            <hr>
+            <hr style='margin-top:-250px;background-color:black;'>
+            
             <button class="smallbtn5"><a class="profilebtn" href="includes/logout.inc.php"><b class="svoby32">Logout<img
-                                class="houbiczlobi3" src="Photos/logout.png"></img></b>
-</div>
+                                class="houbiczlobi3" src="Photos/logout.png"></img></b></a></button>
+</div>   
 
 
 <?php
@@ -186,7 +187,7 @@ include_once 'footer.php';
 
     .svoby32 {
 
-
+color: black;
         margin-left: -50px;
 
     }
