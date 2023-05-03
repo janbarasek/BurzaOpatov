@@ -83,6 +83,18 @@ include_once 'header.php';
     flex-direction: row;
     justify-content: start;
     align-items: center;' for='year'>Oktáva</label>
+    
+    <input style='width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: end;' type='radio' name='year' value='' <?php if (!isset($_POST['year'])) echo "checked" ?>>
+            <label style='    font-size: 20px;
+    text-align: left;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;' for='year'>Něco</label>
             
 
         </div>

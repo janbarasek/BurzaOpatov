@@ -96,6 +96,7 @@ if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProduc
     font-weight: bold;
     font-size: 15px;
     margin-right: 10px;
+    
    
 
 }
@@ -114,6 +115,36 @@ if (getProductByID($conn, $_GET['id'])['userid'] == $_SESSION['id'] || getProduc
     clear: both;
 }
 
+..messageText {
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px #888888;
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    float: right;
+    font-family: Roboto;
+    font-weight: 1000;
+   
+    clear: both;
+}
+.messageLeft {
+   
+    border-radius: 5px;
+    /* border: 1px solid black; */
+    /* box-shadow: 2px 2px #888888; */
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    float: left;
+    font-family: Roboto;
+    font-weight: 1000;
+    clear: both;
+    background-color: black;
+    color: white;
+
+}
 . {
     background-color: black;
     border-radius: 5px;
