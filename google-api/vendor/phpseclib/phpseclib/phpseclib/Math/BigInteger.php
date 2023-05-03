@@ -1608,7 +1608,8 @@ class BigInteger
 
         for ($i = count($dividend) - 1; $i >= 0; --$i) {
             $temp = self::$baseFull * $carry + $dividend[$i];
-            $result[$i] = $this->_safe_divide($temp, $divisor);
+            /** @var TYPE_NAME $divisor */
+            $result[$i] = $this->_safe_divide($temp, (int)$divisor);
             $carry = (int) ($temp - $divisor * $result[$i]);
         }
 

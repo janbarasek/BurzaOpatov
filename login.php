@@ -6,7 +6,7 @@ include_once 'header.php';
 session_regenerate_id(true);
 include_once 'includes/dbh.inc.php';
 
-if(isset($_SESSION['login_id']) || isset($_SESSION['id'])){
+if(isset($_SESSION['login_id']) && isset($_SESSION['id'])){
     header('Location: index.php');
     exit;
 }
@@ -145,6 +145,10 @@ else:
         <a type="button" class="login-with-google-btn" href="<?php echo $client->createAuthUrl(); ?>">
             Sign in with Google
         </a>
+
+        <br>
+
+        <a href="signup.php">Nemáte účet? Zaregistrujte se!</a>
 
         <button class="alficek" type="submit" name="submit">Přihlásit se</button>
         <?php
