@@ -794,6 +794,7 @@ width: 110px;
     display: grid;
     grid-template-columns: 10% 25% 10% 25% 10% 25%;
     padding: 10px;
+    width: 100%;
 
 }
 

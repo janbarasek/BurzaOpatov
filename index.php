@@ -95,7 +95,6 @@ include_once 'header.php';
     flex-direction: row;
     justify-content: start;
     align-items: center;' for='year'>Něco</label>
-            
 
         </div>
         <br>
@@ -111,20 +110,24 @@ include_once 'header.php';
             <h2 style='margin-left:5px;font-size:20px;'>Předměty</h2>
 
 
+           <div class="yearSellContainer">
+
+
             <?php
             $subjects = getSubjects($conn);
-            echo "<input style='display:inline-block;margin-left:22%;'type='radio' name='subjectid' value='' checked>Jakýkoliv</input>";
+            echo "<input type='radio' name='subjectid' class='yearSell' value='' checked>Jakýkoliv</input>";
             foreach ($subjects as $subject) {
                 if (isset($_POST['subjectid']))
                     if ($_POST['subjectid'] == $subject['subjectid'])
-                        echo "<input style='display:inline-block;margin-left:22%;'type='radio' name='subjectid' value='" . $subject['subjectid'] . "' checked>" . $subject['subjectName'] . "</input>";
+                        echo "<input type='radio' name='subjectid' class='yearSell' value='" . $subject['subjectid'] . "' checked>" . $subject['subjectName'] . "</input>";
                     else
-                        echo "<input style='display:inline-block;margin-left:22%;' type='radio' name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
+                        echo "<input  type='radio' name='subjectid' class='yearSell' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
                 else
-                    echo "<input style='display:inline-block;margin-left:22%;' type='radio' name='subjectid' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
+                    echo "<input  type='radio' name='subjectid' class='yearSell' value='" . $subject['subjectid'] . "'>" . $subject['subjectName'] . "</input>";
 
             }
             ?>
+           </div>
         </select>
         <hr style='
     background-color: black;
