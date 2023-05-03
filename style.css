@@ -530,10 +530,7 @@ a {
 	font-family: Poppins, sans-serif;
 }
 
-@media only screen and (min-width: 920px) { 
-  body {
-    width: 400px;
-  }
+
 
 @media only screen and (min-width: 920px) { 
   .menu-container {
