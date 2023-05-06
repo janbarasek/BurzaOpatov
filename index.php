@@ -2,7 +2,6 @@
 <?php
   include_once 'header.php';
 ?>
-<script src="script-for-index"></script>
   <div class="srch-cont">
     <div class="drop-div">
      <button id="showDropdown"  class="showdrop" onclick="showDropdown()">Předmět</button>
@@ -25,16 +24,15 @@
   <div class="u-srch"></div>
   <div class="objednavky">
     <template id="vzor">
-    <div class="item-div" id="b">
-      <div class="item-grid">
+      <div class="item-div" id="b">
+        <div class="item-grid">
           <div class="img-div">
               <img id="image" src="" class="img" width="75%">
           </div>
   
           <div class="item-text">
               <div class="name-grid">
-                  <h1 id="book-name" class="name"></h1>
-                  
+                  <h1 id="book-name" class="name"></h1>      
               </div>
               <p id="owner" class="owner" style="font-size: 3vw;"></p>
               <p id="date" class="reservation" style="font-size: 3vw;"></p>
@@ -47,7 +45,7 @@
     <div id="storage-box"> </div>
   </div>
 
-<<<<<<< HEAD
+  <script src="script-for-index.js"></script>
 <style>
   body {
     font-family: Kanit-Light;
@@ -65,6 +63,21 @@
 
   img {
     width: 75%;
+  }
+  button{
+     margin-top: 0; 
+    width: 0;
+    justify-content: center;
+    display: inline-block;
+    font-weight: normal;
+    border-radius: 0;
+    cursor: auto;
+    border: 3px solid black;
+    transition: 0.2s;
+    background-color: white;
+    color: black;
+    padding: 0;
+    font-size: 1em;
   }
 </style>
 

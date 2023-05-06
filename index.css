@@ -224,8 +224,7 @@ font-family: ErasDemil;
     background-color: white;
     width: 20vw;
     height: 8vw;
-    padding-top: 4vw;
-    padding-bottom: 4vw;
+    padding: 1vw 0;
     border: none;
 
 }
@@ -238,7 +237,7 @@ font-family: ErasDemil;
     grid-template-columns: 26vw 45vw 11vw;
     position: fixed;
     left: 0;
-    top:2vw;
+    top: 12vh;
     z-index: 10;
 }
 
