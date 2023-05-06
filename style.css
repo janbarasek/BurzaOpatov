@@ -4,10 +4,10 @@
 * {
 	margin: 0;
 	padding: 0;
-}
+}/*DEL*/
 li {
     font-size: 45px;
-}
+}/*DEL*/
 
 html {
     scroll-behavior: smooth;
@@ -102,7 +102,7 @@ p {
 	vertical-align: middle;
 	top: 500px;
 
-}
+}/*DEL*/
 
 
 
@@ -420,7 +420,7 @@ input[type=range]::-webkit-slider-thumb {
     border-radius: 50%;
     box-shadow: 0 0 0 1px #C6C6C6;
     cursor: pointer;
-}
+}/*DEL*/
 
 input[type=range]::-moz-range-thumb {
     -webkit-appearance: none;
@@ -431,16 +431,16 @@ input[type=range]::-moz-range-thumb {
     border-radius: 50%;
     box-shadow: 0 0 0 1px #C6C6C6;
     cursor: pointer;
-}
+}/*DEL*/
 
 input[type=range]::-webkit-slider-thumb:hover {
     background: #f7f7f7;
-}
+}/*DEL*/
 
 input[type=range]::-webkit-slider-thumb:active {
     box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
     -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
-}
+}/*DEL*/
 
 input[type="number"] {
     color: #8a8383;
@@ -448,12 +448,12 @@ input[type="number"] {
     height: 30px;
     font-size: 20px;
     border: none;
-}
+}/*DEL*/
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     opacity: 1;
-}
+}/*DEL*/
 
 input[type="range"] {
     -webkit-appearance: none;
@@ -463,7 +463,7 @@ input[type="range"] {
     position: absolute;
     background-color: #C6C6C6;
     pointer-events: none;
-}
+}/*DEL*/
 
 .form_control_container__time {
   margin-left: 0px;
@@ -492,7 +492,7 @@ input[type="range"] {
  html, body {
   height: 100%;
   
- }
+ }/*DEL*/
 
   .menu {
     position: absolute;
@@ -524,7 +524,7 @@ input[type="range"] {
 a {
 	text-decoration: none;
 	
-	  font-weight: 600;
+	  font-weight: 600;/*DEL*/
 
 	color: white;
 	font-family: Poppins, sans-serif;
@@ -572,7 +572,7 @@ a {
 
   a:hover {
   	color: red;
-  }
+  }/*DEL*/
 }
 
 
@@ -658,7 +658,7 @@ label {
   font-size: 16px;
   font-weight: 500;
   color: black;
-}
+}/*DEL*/
       *,
 *:before,
 *:after{
@@ -677,7 +677,7 @@ label {
 option {
 	color: black;
 	background-color: black;
-}
+}/*DEL*/
 
 .black {
 	color: black;
@@ -689,7 +689,7 @@ h3 {
 	font-size: 40px;
 	margin-top: -12px;
 
-}
+}/*DEL*/
 
 
 input{
@@ -706,7 +706,7 @@ input{
     font-weight: 300;
     
     
-}
+}/*DEL*/
 ::placeholder{
     color: #e5e5e5;
 }
@@ -735,18 +735,18 @@ button{
     font-size: 18px;
     color: white;
    
-}
+}/*DEL*/
 
 button:hover {
 	transition: 0.2s;
 	 background: #f44336;
 	 color: white;
-}
+}/*DEL*/
 
 select {
 	background-color: black;
 	color: black;
-}
+}/*DEL*/
 
 .D {
 	background-color: black;
