@@ -58,7 +58,7 @@ vyhledavani.addEventListener("input", e => {
 function showDropdown() {
   document.getElementById("dropdown").classList.toggle("hide")
 }
-var topic = "predmet"
+var topic = "Předmět"
 function changeTopic(top) {
   document.getElementById("showDropdown").innerHTML = top;
   document.getElementById("dropdown").classList.toggle("hide")
@@ -100,4 +100,15 @@ document.getElementById("b").id = String(count);
 book.id = document.getElementById(String(count));
   count++
   console.log(book)
+}
+//-------------------------------this is a stolen script WIP
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var drop = document.getElementById("dropdown");
+    if (!drop.classList.contains('hide')) {
+      drop.classList.add('hide');
+    }
+  }
 }

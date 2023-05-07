@@ -199,18 +199,7 @@ font-family: ErasDemil;
 .hide {
     display: none;
 }
-.u-srch{
-    height: 14vw;
-    background-color: black;
-    padding: 0;
-    border: none;
-    margin: 0;
-}
-.dropdown{
-    border: 1px solid black;
-    width: 20vw;
-    height: 32vw;
-}
+
 .drop-btn{
     background-color: white;
     width: 20vw;
@@ -235,10 +224,7 @@ font-family: ErasDemil;
     height: 10vw;
     display: grid;
     grid-template-columns: 26vw 45vw 11vw;
-    position: fixed;
-    left: 0;
-    top: 12vh;
-    z-index: 10;
+    margin: 2vw 0 2vw;
 }
 
 .drop-div{
@@ -286,4 +272,7 @@ font-family: ErasDemil;
     
     background-color: white;
     font-family: Kanit-Light;
+}
+.srch-pr-input{
+    display: inline-block;
 }
